@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
-</helmet>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet></helmet>
 
 <div ref="{{ rootRef }}" class="root-wrap">
 
@@ -21,18 +20,29 @@
 
   <div ref="{{ progressBar }}" class="progress-bar"></div>
 
-  <nav data-nav class="nav-bar">
-    <a href="#top" data-cursor class="nav-logo-link">
+  <nav data-nav class="nav-bar" role="navigation" aria-label="Main navigation">
+    <a href="#top" data-cursor class="nav-logo-link" aria-label="Back to top">
       <span class="nav-logo-badge">M</span>
       <span class="nav-logo-name">Midhun Shankar</span>
     </a>
-    <div class="nav-links">
-      <a href="#work" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;">Work</a>
-      <a href="#capabilities" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;">Capabilities</a>
-      <a href="#process" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;">Process</a>
-      <a href="#contact" data-cursor class="nav-cta" style-hover="background:#12886A;">Let's talk</a>
+    <div class="nav-links" role="list">
+      <a href="#work" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Work</a>
+      <a href="#capabilities" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Capabilities</a>
+      <a href="#process" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Process</a>
+      <a href="#contact" data-cursor class="nav-cta" style-hover="background:#12886A;" role="listitem">Let's talk</a>
     </div>
+    <button class="nav-hamburger" data-nav-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
   </nav>
+  <div id="mobile-nav" class="nav-mobile" data-nav-mobile aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+    <a href="#work" class="nav-mobile-link" data-nav-mobile-link>Work</a>
+    <a href="#capabilities" class="nav-mobile-link" data-nav-mobile-link>Capabilities</a>
+    <a href="#process" class="nav-mobile-link" data-nav-mobile-link>Process</a>
+    <a href="#contact" class="nav-mobile-cta" data-nav-mobile-link>Let's talk</a>
+  </div>
 
   <!-- ============ HERO ============ -->
   <section id="top" class="hero-section">
@@ -121,9 +131,9 @@
               <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="1.6"></circle></svg></div>
               <div class="fc-card-title">Product Design</div>
               <div class="fc-skill-list">
-                <span class="fc-skill-item">User Research</span>
-                <span class="fc-skill-item">UI / UX Design</span>
-                <span class="fc-skill-item">Design Systems</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>User Research</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>UI / UX Design</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Design Systems</span>
               </div>
             </div>
           </div>
@@ -134,9 +144,9 @@
               <div class="fc-icon-wrap fc-icon-amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
               <div class="fc-card-title">AI Automation</div>
               <div class="fc-skill-list">
-                <span class="fc-skill-item">Workflow Design</span>
-                <span class="fc-skill-item">n8n · Make</span>
-                <span class="fc-skill-item">AI Integrations</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></span>Workflow Design</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></span>n8n · Make</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01M14 12h.01"/></svg></span>AI Integrations</span>
               </div>
             </div>
           </div>
@@ -147,9 +157,9 @@
               <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
               <div class="fc-card-title">Development</div>
               <div class="fc-skill-list">
-                <span class="fc-skill-item">Next.js</span>
-                <span class="fc-skill-item">React</span>
-                <span class="fc-skill-item">Tailwind CSS</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Next.js</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span>React</span>
+                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 4.5 17h15a2.5 2.5 0 0 1 .44 4.96A2.5 2.5 0 0 1 17 19.5V4.5A2.5 2.5 0 0 1 19.5 2h-10z"/></svg></span>Tailwind CSS</span>
               </div>
             </div>
           </div>
@@ -595,6 +605,7 @@ class Component extends DCLogic {
     this.initJourney(root);
     this.initMagnetic(root);
     this.initContactPath(root);
+    this.initMobileNav(root);
   }
 
   initContactPath(root) {
@@ -707,12 +718,21 @@ class Component extends DCLogic {
       const body = card.querySelector('[data-proj-body]');
       const rowMock = card.querySelector('.proj-row-mock');
       const stepEls = card.querySelectorAll('[data-step]');
+      const closeCard = (c) => {
+        const b = c.querySelector('[data-proj-body]');
+        const m = c.querySelector('.proj-row-mock');
+        const ss = c.querySelectorAll('[data-step]');
+        c.removeAttribute('data-expanded');
+        if(b){ b.style.maxHeight='0px'; b.style.opacity='0'; b.style.marginTop='0'; }
+        ss.forEach(s=>s.removeAttribute('data-in'));
+        if(m) m.style.transform='none';
+      };
       toggle.addEventListener('click', () => {
         const open = card.hasAttribute('data-expanded');
+        // Close all other open cards first (single-open accordion)
+        host.querySelectorAll('[data-proj][data-expanded]').forEach(other=>{ if(other!==card) closeCard(other); });
         if (open) {
-          card.removeAttribute('data-expanded'); body.style.maxHeight='0px'; body.style.opacity='0'; body.style.marginTop='0';
-          stepEls.forEach(s=>s.removeAttribute('data-in'));
-          if(rowMock) rowMock.style.transform='none';
+          closeCard(card);
         } else {
           card.setAttribute('data-expanded',''); body.style.maxHeight=body.scrollHeight+40+'px'; body.style.opacity='1'; body.style.marginTop='28px';
           if(rowMock) rowMock.style.transform='translateY(-4px) scale(1.03)';
@@ -790,22 +810,30 @@ class Component extends DCLogic {
     const layout=()=>{
       const w=host.clientWidth;
       const horiz=w>=720;
-      const hubPos = horiz ? {design:[19,47],develop:[50,57],automate:[81,47]} : {design:[50,15],develop:[50,50],automate:[50,85]};
-      const rx = horiz ? 13 : 31;
-      const ry = horiz ? 24 : 11;
+      const narrow=w<480;
+      const hubPos = horiz ? {design:[19,47],develop:[50,57],automate:[81,47]} : {design:[50,14],develop:[50,50],automate:[50,86]};
+      const rx = horiz ? 13 : 0;
+      const ry = horiz ? 24 : 0;
       data.forEach((d)=>{
         const [hx,hy]=hubPos[d.c.key]; d.hx=hx; d.hy=hy;
         d.hub.style.left=hx+'%'; d.hub.style.top=hy+'%';
         const n=d.tools.length;
         d.tools.forEach((tn,i)=>{
-          let a;
+          let x,y;
           if(horiz){
+            let a;
             if(d.c.key==='design') a=Math.PI*(0.58+(i/(n-1))*0.84);
             else if(d.c.key==='automate') a=Math.PI*(-0.42+(i/(n-1))*0.84);
             else a=(i/n)*Math.PI*2-Math.PI/2;
-          } else { a=(i/n)*Math.PI*2-Math.PI/2; }
-          let x=hx+rx*Math.cos(a), y=hy+ry*Math.sin(a);
-          x=Math.max(8,Math.min(92,x)); y=Math.max(9,Math.min(94,y));
+            x=hx+rx*Math.cos(a); y=hy+ry*Math.sin(a);
+            x=Math.max(8,Math.min(92,x)); y=Math.max(9,Math.min(91,y));
+          } else {
+            // Mobile vertical stack: explicit left/right columns, 2 left + 3 right
+            // Each column spread vertically so no cluster bleeds into the next
+            const off=[[-26,-6],[-26,6],[26,-10],[26,0],[26,10]];
+            const [dx,dy]=off[i]||off[i%off.length];
+            x=Math.max(6,Math.min(94,hx+dx)); y=Math.max(6,Math.min(94,hy+dy));
+          }
           tn.el.style.left=x+'%'; tn.el.style.top=y+'%';
           tn.line.setAttribute('x1',hx); tn.line.setAttribute('y1',hy);
           tn.line.setAttribute('x2',x); tn.line.setAttribute('y2',y);
@@ -926,11 +954,45 @@ class Component extends DCLogic {
 
   initCapabilities(root) {
     const tabs=root.querySelectorAll('[data-cap-tab]');
+    const panels=root.querySelectorAll('[data-cap-panel]');
     const setActive=(key)=>{
       tabs.forEach(t=>{ const on=t.dataset.capTab===key; t.style.background=on?'#1B1A16':'transparent'; t.style.color=on?'#fff':'#57534B'; t.style.border=on?'none':'1px solid rgba(27,26,22,0.15)'; });
-      root.querySelectorAll('[data-cap-panel]').forEach(p=>{ if(p.dataset.capPanel===key) p.setAttribute('data-active',''); else p.removeAttribute('data-active'); });
+      panels.forEach(p=>{
+        const on=p.dataset.capPanel===key;
+        if(on){
+          p.style.display='grid';
+          p.style.opacity='0';
+          requestAnimationFrame(()=>requestAnimationFrame(()=>{ p.style.transition='opacity .35s ease'; p.style.opacity='1'; p.setAttribute('data-active',''); }));
+        } else {
+          p.style.transition='opacity .35s ease';
+          p.style.opacity='0';
+          setTimeout(()=>{ p.style.display='none'; p.removeAttribute('data-active'); }, 360);
+        }
+      });
     };
+    // Init state without transition
+    panels.forEach(p=>{ if(!p.hasAttribute('data-active')){ p.style.display='none'; p.style.opacity='0'; } else { p.style.display='grid'; p.style.opacity='1'; } });
     tabs.forEach(t=>t.addEventListener('click',()=>setActive(t.dataset.capTab)));
+  }
+
+  initMobileNav(root) {
+    const btn = root.querySelector('[data-nav-toggle]');
+    const drawer = root.querySelector('[data-nav-mobile]');
+    if(!btn||!drawer) return;
+    const links = drawer.querySelectorAll('[data-nav-mobile-link]');
+    let open = false;
+    const toggle = (force) => {
+      open = force !== undefined ? force : !open;
+      btn.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
+      btn.classList.toggle('nav-hamburger-open', open);
+      drawer.classList.toggle('nav-mobile-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    btn.addEventListener('click', ()=>toggle());
+    links.forEach(l=>l.addEventListener('click', ()=>toggle(false)));
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'&&open) toggle(false); });
+    this._cleanup.push(()=>{ document.body.style.overflow=''; });
   }
 
   initCounters(root) {
