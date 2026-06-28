@@ -1339,7 +1339,7 @@ class Component extends DCLogic {
 
     document.body.style.overflow='hidden';
     overlay.classList.add('sc-open');
-    if (window.innerWidth <= 640) history.pushState({ scModal: true }, '');
+    if (window.innerWidth <= 640) history.pushState({ scModal: true }, '', location.pathname + location.search + '#sc-modal');
     requestAnimationFrame(()=>{ const b=document.getElementById('sc-body'); if(b) b.scrollTop=0; });
   }
 
@@ -1348,7 +1348,7 @@ class Component extends DCLogic {
     if (!overlay) return;
     overlay.classList.remove('sc-open');
     document.body.style.overflow='';
-    if (!fromPopstate && window.innerWidth <= 640 && history.state && history.state.scModal) history.replaceState(null, '');
+    if (!fromPopstate && window.innerWidth <= 640 && location.hash === '#sc-modal') history.replaceState(null, '', location.pathname + location.search);
   }
 }
 </script>

@@ -3006,6 +3006,9 @@ body {
     max-height: 88vh;
     transform: translateY(48px);
   }
+  .sc-body {
+    border-radius: 0 0 20px 20px;
+  }
   .sc-overlay.sc-open .sc-modal {
     transform: translateY(0);
   }
