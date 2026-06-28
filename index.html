@@ -1356,6 +1356,8 @@ class Component extends DCLogic {
     modal.style.bottom = '10px';
     modal.style.left = '10px';
     modal.style.right = '10px';
+    modal.style.width = 'auto';
+    modal.style.maxWidth = 'none';
     modal.style.maxHeight = 'none';
     modal.style.borderRadius = '20px';
     const body = overlay.querySelector('.sc-body');
@@ -1370,7 +1372,7 @@ class Component extends DCLogic {
     overlay.style.padding = '';
     overlay.style.alignItems = '';
     const modal = overlay.querySelector('.sc-modal');
-    if (modal) { modal.style.position=''; modal.style.top=''; modal.style.bottom=''; modal.style.left=''; modal.style.right=''; modal.style.maxHeight=''; modal.style.borderRadius=''; }
+    if (modal) { modal.style.position=''; modal.style.top=''; modal.style.bottom=''; modal.style.left=''; modal.style.right=''; modal.style.width=''; modal.style.maxWidth=''; modal.style.maxHeight=''; modal.style.borderRadius=''; }
     const body = overlay.querySelector('.sc-body');
     if (body) body.style.borderRadius = '';
     document.body.style.overflow='';
