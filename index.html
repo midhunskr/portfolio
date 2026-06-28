@@ -1294,7 +1294,7 @@ class Component extends DCLogic {
     el.addEventListener('click',(e)=>{ if(e.target===el) this.closeShowcaseModal(); });
     document.getElementById('sc-close').addEventListener('click',()=>this.closeShowcaseModal());
     document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'&&el.classList.contains('sc-open')) this.closeShowcaseModal(); });
-    window.addEventListener('popstate',(e)=>{ if(window.innerWidth<=640&&el.classList.contains('sc-open')) this.closeShowcaseModal(true); });
+    window.addEventListener('popstate',(e)=>{ if(window.innerWidth<=640&&!e.state?.scModal&&el.classList.contains('sc-open')) this.closeShowcaseModal(true); });
     this._cleanup.push(()=>{ if(el.parentNode) el.parentNode.removeChild(el); });
   }
 
