@@ -88,11 +88,11 @@ const Mockups = {
   },
 
   lifeosSmall() {
-    return `<img src="assets/lifeos-collapsed-thumbnail.webp" alt="LifeOS dashboard preview" style="width:100%;height:clamp(96px,12vw,138px);object-fit:cover;object-position:top left;border-radius:10px;display:block;">`;
+    return `<img src="assets/lifeos-collapsed-thumbnail.webp" alt="LifeOS dashboard preview" style="width:100%;height:auto;border-radius:10px;display:block;">`;
   },
 
   lifeosBig() {
-    return `<img src="assets/lifeos-expanded-hero.webp" alt="LifeOS full dashboard" style="width:100%;height:clamp(168px,24vw,238px);object-fit:cover;object-position:top left;border-radius:12px;display:block;">`;
+    return `<img src="assets/lifeos-expanded-hero.webp" alt="LifeOS full dashboard" style="width:100%;height:clamp(320px,45vw,560px);object-fit:cover;object-position:top center;border-radius:12px;display:block;">`;
   },
 
   losScreen(screen) {
