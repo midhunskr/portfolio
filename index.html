@@ -1,580 +1,802 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./style.css">
-<script src="./support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./support.js"></script>
+  <script src="./mockups.js"></script>
 </head>
+
 <body>
-<x-dc>
-<helmet></helmet>
+  <x-dc>
+    <helmet></helmet>
 
-<div ref="{{ rootRef }}" class="root-wrap">
+    <div ref="{{ rootRef }}" class="root-wrap">
 
-  <div ref="{{ cursorDot }}" class="cursor-el cursor-dot"></div>
-  <div ref="{{ cursorRing }}" class="cursor-el" style="position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1.5px solid rgba(18,136,106,0.45);z-index:9000;pointer-events:none;transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),margin .25s cubic-bezier(.16,1,.3,1),border-color .25s ease,background .25s ease;"></div>
-
-  <div ref="{{ progressBar }}" class="progress-bar"></div>
-
-  <nav data-nav class="nav-bar" role="navigation" aria-label="Main navigation">
-    <a href="#top" data-cursor class="nav-logo-link" aria-label="Back to top">
-      <span class="nav-logo-badge">M</span>
-      <span class="nav-logo-name">Midhun Shankar</span>
-    </a>
-    <div class="nav-links" role="list">
-      <a href="#work" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Work</a>
-      <a href="#capabilities" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Capabilities</a>
-      <a href="#process" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;" role="listitem">Process</a>
-      <a href="#contact" data-cursor class="nav-cta" style-hover="background:#12886A;" role="listitem">Let's talk</a>
-    </div>
-    <button class="nav-hamburger" data-nav-toggle aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
-  </nav>
-  <div id="mobile-nav" class="nav-mobile" data-nav-mobile aria-hidden="true" role="dialog" aria-label="Mobile navigation">
-    <a href="#work" class="nav-mobile-link" data-nav-mobile-link>Work</a>
-    <a href="#capabilities" class="nav-mobile-link" data-nav-mobile-link>Capabilities</a>
-    <a href="#process" class="nav-mobile-link" data-nav-mobile-link>Process</a>
-    <a href="#contact" class="nav-mobile-cta" data-nav-mobile-link>Let's talk</a>
-  </div>
-
-  <!-- ============ HERO ============ -->
-  <section id="top" class="hero-section">
-    <div data-parallax="-0.06" class="parallax-blob blob-hero-green"></div>
-    <div data-parallax="0.05" class="parallax-blob blob-hero-amber"></div>
-    <div class="hero-dot-grid"></div>
-
-    <div class="hero-grid">
-      <div>
-        <div data-hero-anim class="hero-badge">
-          <span class="hero-badge-dot-wrap"><span class="hero-badge-dot"></span><span class="hero-badge-dot-pulse"></span></span>
-          <span class="hero-badge-text">Available for freelance & full-time · Kerala, India</span>
-        </div>
-
-        <h1 class="hero-h1">
-          <span data-hero-anim class="hero-h1-line">Hi, I'm Midhun.</span>
-          <span data-hero-anim class="hero-h1-line">I <span class="accent-green">design</span>, <span class="accent-green">build</span></span>
-          <span data-hero-anim class="hero-h1-line">& <span class="accent-amber">automate</span> products.</span>
-        </h1>
-
-        <p data-hero-anim class="hero-para">From the first idea to the launched product — one person across UX design, frontend development and AI-powered automation. I turn concepts into experiences people actually enjoy using.</p>
-
-        <div data-hero-anim class="hero-cta-row">
-          <a href="#work" data-cursor data-magnetic class="hero-cta-primary" style-hover="background:#12886A;">View selected work <span class="hero-cta-arrow">→</span></a>
-          <a href="#contact" data-cursor class="hero-cta-secondary" style-hover="background:rgba(255,255,255,0.7);border-color:rgba(27,26,22,0.3);">Start a conversation</a>
-        </div>
-
-        <div data-hero-anim class="hero-stats-row">
-          <div><div class="stat-value">3-in-1</div><div class="stat-label">Design · Dev · AI</div></div>
-          <div class="stat-divider"></div>
-          <div><div class="stat-value">End-to-end</div><div class="stat-label">Idea → Launch</div></div>
-          <div class="stat-divider"></div>
-          <div><div class="stat-value">18+</div><div class="stat-label">Tools & tech</div></div>
-        </div>
+      <div ref="{{ cursorDot }}" class="cursor-el cursor-dot"></div>
+      <div ref="{{ cursorRing }}" class="cursor-el"
+        style="position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1.5px solid rgba(18,136,106,0.45);z-index:9000;pointer-events:none;transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),margin .25s cubic-bezier(.16,1,.3,1),border-color .25s ease,background .25s ease;">
       </div>
 
-      <div class="hero-portrait-wrap" data-hero-anim>
-        <div ref="{{ heroStage }}" class="eco-stage">
+      <div ref="{{ progressBar }}" class="progress-bar"></div>
 
-          <!-- ambient halos -->
-          <div data-orbit data-depth="0.3" class="halo-green"></div>
-          <div class="halo-amber"></div>
-
-          <!-- orbit + signal layer -->
-          <svg viewBox="0 0 100 100" class="svg-orbit">
-            <g ref="{{ ringTilt }}" class="ring-tilt">
-              <g class="ring-spin">
-                <ellipse cx="50" cy="50" rx="47" ry="47" fill="none" stroke="rgba(27,26,22,0.10)" stroke-width="0.22" stroke-dasharray="0.5 2.1"></ellipse>
-              </g>
-              <g class="ring-spin-rev">
-                <ellipse cx="50" cy="50" rx="38.5" ry="38.5" fill="none" stroke="rgba(18,136,106,0.20)" stroke-width="0.3"></ellipse>
-              </g>
-              <ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(27,26,22,0.08)" stroke-width="0.22"></ellipse>
-            </g>
-            <g fill="none" stroke-linecap="round">
-              <path d="M28,24 Q40,38 46,45" stroke="rgba(18,136,106,0.55)" stroke-width="0.42" stroke-dasharray="1.6 2.6" class="sig-1"></path>
-              <path d="M74,28 Q60,40 54,45" stroke="rgba(204,134,54,0.55)" stroke-width="0.42" stroke-dasharray="1.6 2.6" class="sig-2"></path>
-              <path d="M72,74 Q60,60 54,54" stroke="rgba(18,136,106,0.55)" stroke-width="0.42" stroke-dasharray="1.6 2.6" class="sig-3"></path>
-              <path d="M26,72 Q40,60 46,54" stroke="rgba(18,136,106,0.42)" stroke-width="0.42" stroke-dasharray="1.6 2.6" class="sig-4"></path>
-            </g>
-          </svg>
-
-          <!-- nodes -->
-          <div data-orbit data-depth="3.3" class="orbit-node-wrap" style="top:11%;left:47%;"><span class="node-dot-wrap" style="width:11px;height:11px;"><span class="node-inner" style="background:#12886A;"></span><span class="node-ring" style="animation:nodeBeat 2.6s ease-in-out infinite;"></span></span></div>
-          <div data-orbit data-depth="3.7" class="orbit-node-wrap" style="top:29%;left:20%;"><span class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner" style="background:#12886A;"></span><span class="node-ring" style="animation:nodeBeat 3.1s ease-in-out infinite;animation-delay:-0.6s;"></span></span></div>
-          <div data-orbit data-depth="3.0" class="orbit-node-wrap" style="top:15%;left:69%;"><span class="node-dot-wrap" style="width:10px;height:10px;"><span class="node-inner" style="background:#CC8636;"></span><span class="node-ring-amber" style="animation:nodeBeat 2.8s ease-in-out infinite;animation-delay:-1.2s;"></span></span></div>
-          <div data-orbit data-depth="2.7" class="orbit-node-wrap" style="top:49%;left:92%;"><span class="node-dot-wrap" style="width:11px;height:11px;"><span class="node-inner" style="background:#CC8636;"></span><span class="node-ring-amber" style="animation:nodeBeat 3.3s ease-in-out infinite;animation-delay:-0.3s;"></span></span></div>
-          <div data-orbit data-depth="3.4" class="orbit-node-wrap" style="top:63%;left:13%;"><span class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner" style="background:#12886A;"></span><span class="node-ring" style="animation:nodeBeat 2.7s ease-in-out infinite;animation-delay:-1.6s;"></span></span></div>
-          <div data-orbit data-depth="2.5" class="orbit-node-wrap" style="top:60%;left:62%;"><span class="node-dot-wrap" style="width:8px;height:8px;"><span class="node-inner" style="background:#12886A;"></span><span class="node-ring" style="animation:nodeBeat 3.0s ease-in-out infinite;animation-delay:-0.9s;"></span></span></div>
-          <div data-orbit data-depth="2.0" class="orbit-node-wrap" style="top:89%;left:48%;"><span class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner" style="background:#12886A;"></span><span class="node-ring" style="animation:nodeBeat 3.5s ease-in-out infinite;animation-delay:-1.1s;"></span></span></div>
-
-          <!-- portrait -->
-          <div data-orbit data-depth="0.7" class="portrait-orbit-wrap">
-            <div class="portrait-glow-ring"></div>
-            <div class="portrait-circle-wrap">
-              <img src="assets/portrait.png" alt="Midhun Shankar" class="portrait-img">
-              <div class="portrait-overlay-green"></div>
-              <div class="portrait-overlay-bottom"></div>
-            </div>
-          </div>
-
-          <!-- floating capability cards -->
-          <div class="eco-fc fc-tl" data-orbit data-depth="2.6">
-            <div class="fc-card">
-              <span class="fc-status-dot fc-status-green"></span>
-              <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="1.6"></circle></svg></div>
-              <div class="fc-card-title">Product Design</div>
-              <div class="fc-skill-list">
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>User Research</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>UI / UX Design</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Design Systems</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="eco-fc fc-tr" data-orbit data-depth="2.9">
-            <div class="fc-card">
-              <span class="fc-status-dot fc-status-amber"></span>
-              <div class="fc-icon-wrap fc-icon-amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
-              <div class="fc-card-title">AI Automation</div>
-              <div class="fc-skill-list">
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></span>Workflow Design</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></span>n8n · Make</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01M14 12h.01"/></svg></span>AI Integrations</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="eco-fc fc-br" data-orbit data-depth="2.7">
-            <div class="fc-card">
-              <span class="fc-status-dot fc-status-green"></span>
-              <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-              <div class="fc-card-title">Development</div>
-              <div class="fc-skill-list">
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Next.js</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span>React</span>
-                <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 4.5 17h15a2.5 2.5 0 0 1 .44 4.96A2.5 2.5 0 0 1 17 19.5V4.5A2.5 2.5 0 0 1 19.5 2h-10z"/></svg></span>Tailwind CSS</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="eco-fc fc-bl" data-orbit data-depth="2.4">
-            <div class="fc-card">
-              <div class="fc-icon-wrap fc-icon-dark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
-              <div class="fc-card-title-tools">Tools I Use</div>
-              <div class="fc-tools-row">
-                <span title="Figma" class="tool-chip tool-chip-light tool-chip-figma">Fi</span>
-                <span title="Next.js" class="tool-chip tool-chip-dark tool-chip-next">N</span>
-                <span title="Tailwind" class="tool-chip tool-chip-light tool-chip-tw"><svg width="16" height="10" viewBox="0 0 24 14" fill="none"><path d="M6 7c1-3 2.4-4.5 4.8-4.5C13.8 2.5 14 5 16 6c1.4.7 2.6.4 3.6-.6-1 3-2.4 4.5-4.8 4.5C11.8 9.4 11.6 6.9 9.6 6 8.2 5.3 7 5.6 6 7z" fill="currentColor"></path><path d="M1.2 12.5c1-3 2.4-4.5 4.8-4.5C9 8 9.2 10.5 11.2 11.5c1.4.7 2.6.4 3.6-.6-1 3-2.4 4.5-4.8 4.5C7 15.4 6.8 12.9 4.8 12c-1.4-.7-2.6-.4-3.6.5z" fill="currentColor" opacity="0.5"></path></svg></span>
-                <span title="n8n" class="tool-chip tool-chip-amber tool-chip-n8n">n8</span>
-                <span class="tool-chip tool-chip-light tool-chip-more">···</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- center anchor pill -->
-          <div class="anchor-pill-outer">
-            <div data-orbit data-depth="1.3" class="orbit-anchor">
-              <div class="anchor-pill">
-                <span class="anchor-pill-icon">✦</span>
-                <div class="anchor-pill-text"><div class="anchor-pill-title">From idea to launch.</div><div class="anchor-pill-subtitle">One person. End-to-end.</div></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-hint-outer">
-      <div data-hero-anim class="scroll-hint-inner">
-        <span class="scroll-label">Scroll</span>
-        <span class="scroll-wheel"><span class="scroll-bob"></span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ JOURNEY ============ -->
-  <section id="journey" data-journey class="journey-section">
-    <div class="section-container-1100">
-      <div data-reveal="up" class="section-header-center">
-        <div class="section-eyebrow-mb20"><span class="eyebrow-num eyebrow-num-green">01</span><span class="eyebrow-label">The Journey</span></div>
-        <h2 class="section-h2-center">From <span class="accent-green">curiosity</span> to building <span class="accent-amber">whole products.</span></h2>
-        <p class="section-para-journey">Each stage didn't replace the last — it stacked on top of it. That's how one person ended up owning the entire arc.</p>
-      </div>
-
-      <div class="timeline-wrap">
-        <div class="timeline-track"></div>
-        <div data-journey-fill></div>
-
-        <div data-jstep class="jstep-col">
-
-          <div class="journey-row" data-reveal="up">
-            <div class="journey-left-pane">
-              <div class="journey-card">
-                <div class="journey-card-eyebrow">Where it began</div>
-                <div class="journey-card-title">Curiosity</div>
-                <p class="journey-card-para">"Why is this so clunky?" — a habit of taking products apart and believing they could be better.</p>
-              </div>
-            </div>
-            <span class="journey-node-first"></span>
-            <div class="journey-spacer"></div>
-          </div>
-
-          <div class="journey-row" data-reveal="up">
-            <div class="journey-spacer"></div>
-            <span class="journey-node"></span>
-            <div class="journey-right-pane">
-              <div class="journey-card-block">
-                <div class="journey-card-eyebrow">Milestone 01</div>
-                <div class="journey-card-title">Design</div>
-                <p class="journey-card-para">Research, hierarchy and interaction — learning to shape experiences people understand instantly.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="journey-row" data-reveal="up">
-            <div class="journey-left-pane">
-              <div class="journey-card">
-                <div class="journey-card-eyebrow">Milestone 02</div>
-                <div class="journey-card-title">Development</div>
-                <p class="journey-card-para">React, Next.js & TypeScript — closing the gap between the mockup and the shipped product.</p>
-              </div>
-            </div>
-            <span class="journey-node"></span>
-            <div class="journey-spacer"></div>
-          </div>
-
-          <div class="journey-row" data-reveal="up">
-            <div class="journey-spacer"></div>
-            <span class="journey-node"></span>
-            <div class="journey-right-pane">
-              <div class="journey-card-block">
-                <div class="journey-card-eyebrow-amber">Milestone 03</div>
-                <div class="journey-card-title">Automation</div>
-                <p class="journey-card-para">AI tools, APIs and n8n pipelines that quietly remove the repetitive parts of building.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="journey-row" data-reveal="up">
-            <div class="journey-left-pane">
-              <div class="journey-card-dark">
-                <div class="journey-card-eyebrow-light">Today</div>
-                <div class="journey-card-title-lg">Product Building</div>
-                <p class="journey-card-para-dark">Design, build and automate held in one head — so ideas reach reality with far less lost in translation.</p>
-              </div>
-            </div>
-            <span class="journey-node-last"></span>
-            <div class="journey-spacer"></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WHAT I DO / CAPABILITIES ============ -->
-  <section id="capabilities" class="cap-section">
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-left">
-        <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">02</span><span class="eyebrow-label">What I Do</span></div>
-        <h2 class="section-h2-cap">Three capabilities that <span class="accent-green">compound</span> when one person holds them.</h2>
-      </div>
-
-      <div data-reveal="up" class="cap-tabs">
-        <button data-cap-tab="design" data-cursor class="cap-tab-active">Design</button>
-        <button data-cap-tab="develop" data-cursor class="cap-tab-inactive">Develop</button>
-        <button data-cap-tab="automate" data-cursor class="cap-tab-inactive">Automate</button>
-      </div>
-
-      <div class="cap-panels-wrap">
-        <div data-cap-panel="design" data-active class="two-col cap-panel-grid">
-          <div class="cap-card-main">
-            <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-green">✦</span><div class="cap-card-h3">Design the experience</div></div>
-            <p class="cap-card-para">Research-led product design — turning ambiguity into clear, usable systems people understand at a glance.</p>
-            <div class="cap-skills-label">What it includes</div>
-            <div class="cap-tags">
-              <span class="cap-tag">UX Research</span>
-              <span class="cap-tag">Wireframing</span>
-              <span class="cap-tag">Information Architecture</span>
-              <span class="cap-tag">Interaction Design</span>
-              <span class="cap-tag">Design Systems</span>
-              <span class="cap-tag">Prototyping</span>
-            </div>
-          </div>
-          <div class="cap-side-col">
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-green">The process</div>
-              <div class="cap-process-steps">Discover <span class="cap-arrow-green">→</span> Define <span class="cap-arrow-green">→</span> Design <span class="cap-arrow-green">→</span> Validate</div>
-            </div>
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
-              <div class="cap-seen-text">LifeOS · Concept Product Case Study · Credit Card Landing Page</div>
-            </div>
-          </div>
-        </div>
-
-        <div data-cap-panel="develop" class="two-col cap-panel-grid">
-          <div class="cap-card-main">
-            <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-code">&lt;/&gt;</span><div class="cap-card-h3">Build the product</div></div>
-            <p class="cap-card-para">Translating design into fast, accessible, production-ready interfaces — with a real component system behind them.</p>
-            <div class="cap-skills-label">The stack</div>
-            <div class="cap-tags">
-              <span class="cap-tag">React</span>
-              <span class="cap-tag">Next.js</span>
-              <span class="cap-tag">TypeScript</span>
-              <span class="cap-tag">Tailwind CSS</span>
-              <span class="cap-tag">Responsive</span>
-              <span class="cap-tag">Component Systems</span>
-            </div>
-          </div>
-          <div class="cap-side-col">
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-green">The process</div>
-              <div class="cap-process-steps">Structure <span class="cap-arrow-green">→</span> Build <span class="cap-arrow-green">→</span> Polish <span class="cap-arrow-green">→</span> Ship</div>
-            </div>
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
-              <div class="cap-seen-text">LifeOS · Credit Card Landing Page · Design-to-Code Experiment</div>
-            </div>
-          </div>
-        </div>
-
-        <div data-cap-panel="automate" class="two-col cap-panel-grid">
-          <div class="cap-card-main">
-            <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-amber">⚡</span><div class="cap-card-h3">Automate the workflow</div></div>
-            <p class="cap-card-para">Removing repetitive work with AI tools, APIs and automation pipelines that quietly run in the background.</p>
-            <div class="cap-skills-label">The toolkit</div>
-            <div class="cap-tags">
-              <span class="cap-tag">n8n</span>
-              <span class="cap-tag">OpenAI API</span>
-              <span class="cap-tag">Prompt Engineering</span>
-              <span class="cap-tag">Process Automation</span>
-              <span class="cap-tag">AI-Assisted Dev</span>
-            </div>
-          </div>
-          <div class="cap-side-col">
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-amber">The process</div>
-              <div class="cap-process-steps">Map <span class="cap-arrow-amber">→</span> Integrate <span class="cap-arrow-amber">→</span> Automate <span class="cap-arrow-amber">→</span> Optimise</div>
-            </div>
-            <div class="cap-side-card">
-              <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
-              <div class="cap-seen-text">AI Workflow Automation System · Design-to-Code Experiment</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section id="work" class="work-section">
-    <div data-parallax="0.05" class="parallax-blob blob-work-green"></div>
-    <div data-parallax="-0.04" class="parallax-blob blob-work-amber"></div>
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-work">
-        <div>
-          <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">03</span><span class="eyebrow-label">Selected Work</span></div>
-          <h2 class="section-h2-work">Five problems, solved <span class="accent-green">end-to-end.</span></h2>
-        </div>
-        <p class="work-hint">Click any project to open the full case study →</p>
-      </div>
-      <div data-proj-list></div>
-    </div>
-  </section>
-
-  <!-- ============ HOW I THINK ============ -->
-  <section id="process" class="process-section">
-    <div data-parallax="0.05" class="parallax-blob blob-process-green"></div>
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-process">
-        <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-light-green">04</span><span class="eyebrow-label-dim">How I Think</span></div>
-        <h2 class="section-h2-process">A repeatable way from <span class="accent-green">messy</span> to <span class="accent-amber">shipped.</span></h2>
-      </div>
-
-      <div class="process-grid">
-        <div data-reveal="up" data-delay="0" class="process-cell" style-hover="background:#222019;">
-          <span class="process-num-green">01</span>
-          <div><div class="process-heading">Observe</div><p class="process-para">Watch real behaviour before trusting any assumption.</p></div>
-        </div>
-        <div data-reveal="up" data-delay="90" class="process-cell" style-hover="background:#222019;">
-          <span class="process-num-muted">02</span>
-          <div><div class="process-heading">Understand</div><p class="process-para">Find the real problem hiding under the asked-for one.</p></div>
-        </div>
-        <div data-reveal="up" data-delay="180" class="process-cell" style-hover="background:#222019;">
-          <span class="process-num-muted">03</span>
-          <div><div class="process-heading">Simplify</div><p class="process-para">Cut until only what matters is left — then cut again.</p></div>
-        </div>
-        <div data-reveal="up" data-delay="270" class="process-cell" style-hover="background:#222019;">
-          <span class="process-num-muted">04</span>
-          <div><div class="process-heading">Build</div><p class="process-para">Ship something real and testable, fast — not a deck.</p></div>
-        </div>
-        <div data-reveal="up" data-delay="360" class="process-cell" style-hover="background:#222019;">
-          <span class="process-num-amber">05</span>
-          <div><div class="process-heading">Refine</div><p class="process-para">Measure, learn and sharpen until it feels inevitable.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SKILLS & TOOLS ============ -->
-  <section id="stack" class="stack-section">
-    <div data-parallax="0.045" class="parallax-blob blob-stack-green"></div>
-    <div data-parallax="-0.035" class="parallax-blob blob-stack-amber"></div>
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-stack">
-        <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">05</span><span class="eyebrow-label">Skills & Tools</span></div>
-        <h2 class="section-h2-stack">Not a tag cloud — a <span class="accent-green">connected system.</span></h2>
-        <p class="section-para">Three clusters that feed each other. Hover one to trace how design, development and automation actually connect.</p>
-      </div>
-
-      <div data-reveal="up" class="filter-bar">
-        <button data-filter="all" data-cursor class="filter-btn-active">Whole system</button>
-        <button data-filter="design" data-cursor class="filter-btn-inactive">Design</button>
-        <button data-filter="develop" data-cursor class="filter-btn-inactive">Development</button>
-        <button data-filter="automate" data-cursor class="filter-btn-inactive">Automation</button>
-      </div>
-
-      <div data-reveal="up" class="constellation-wrap">
-        <div data-constellation class="constellation-bg"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROOF ============ -->
-  <section id="proof" class="proof-section">
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-proof">
-        <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">06</span><span class="eyebrow-label">Proof & Credibility</span></div>
-        <h2 class="section-h2-proof">The work speaks first. The <span class="accent-green">numbers</span> back it up.</h2>
-      </div>
-
-      <div class="proof-stats">
-        <div data-reveal="up" data-delay="0" class="proof-stat-card"><div class="proof-stat-val-green"><span data-count="5" data-pad="true">05</span></div><div class="proof-stat-desc">Case studies, end-to-end</div></div>
-        <div data-reveal="up" data-delay="80" class="proof-stat-card"><div class="proof-stat-val"><span data-count="3" data-pad="true">03</span></div><div class="proof-stat-desc">Disciplines, one workflow</div></div>
-        <div data-reveal="up" data-delay="160" class="proof-stat-card"><div class="proof-stat-val"><span data-count="18" data-suffix="+">18+</span></div><div class="proof-stat-desc">Tools & technologies</div></div>
-        <div data-reveal="up" data-delay="240" class="proof-stat-card"><div class="proof-stat-val">∞</div><div class="proof-stat-desc">Curiosity, ongoing</div></div>
-      </div>
-
-      <div class="testimonial-grid">
-        <div data-reveal="up" data-delay="0" class="testimonial-card">
-          <span class="testimonial-placeholder">Add quote</span>
-          <div class="testimonial-quote-char">"</div>
-          <p class="testimonial-text">A real client testimonial drops in here — a sentence on the outcome and what it was like to work together.</p>
-          <div class="testimonial-author-row"><span class="testimonial-avatar"></span><div><div class="testimonial-name">Client name</div><div class="testimonial-role">Role · Company</div></div></div>
-        </div>
-        <div data-reveal="up" data-delay="120" class="testimonial-card">
-          <span class="testimonial-placeholder">Add quote</span>
-          <div class="testimonial-quote-char">"</div>
-          <p class="testimonial-text">A second voice — ideally about results or numbers — reinforcing the credibility of the work delivered.</p>
-          <div class="testimonial-author-row"><span class="testimonial-avatar"></span><div><div class="testimonial-name">Client name</div><div class="testimonial-role">Role · Company</div></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BEHIND THE WORK ============ -->
-  <section id="life" class="life-section">
-    <div class="section-container-1240">
-      <div data-reveal="up" class="section-header-left">
-        <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">07</span><span class="eyebrow-label">Behind the Work</span></div>
-        <h2 class="section-h2-life">A builder who's always <span class="accent-amber">mid-experiment.</span></h2>
-      </div>
-
-      <div class="behind-grid">
-        <div data-reveal="up" data-delay="0" class="behind-dark-card">
-          <div class="behind-status-row"><span class="behind-status-dot"></span><span class="behind-status-label">Currently building</span></div>
-          <div><div class="behind-dark-title">Personal productivity systems & AI agents</div><p class="behind-dark-para">Turning my own workflows into testbeds for the tools I build for others.</p></div>
-        </div>
-        <div data-reveal="up" data-delay="80" class="behind-card">
-          <span class="behind-explore-label">What I explore</span>
-          <div class="behind-tags">
-            <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Web Development</span>
-            <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Artificial Intelligence</span>
-            <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Digital Entrepreneurship</span>
-            <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Productivity</span>
-          </div>
-        </div>
-        <div data-reveal="up" data-delay="160" class="behind-card">
-          <span class="behind-offclock-label">Off the clock</span>
-          <div><div class="behind-card-title">Gaming & systems thinking 🎮</div><p class="behind-card-para">The same instinct that takes apart a game's mechanics is the one that redesigns a clunky product.</p></div>
-        </div>
-      </div>
-
-      <div data-reveal="up" class="behind-quote-card">
-        <p class="behind-quote-text">"I learn new technologies by building real things with them."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FINAL ============ -->
-  <section id="contact" class="contact-section">
-    <div data-parallax="-0.04" class="parallax-blob blob-contact-green"></div>
-    <div class="section-container-1000">
-      <div data-reveal="up" class="contact-badge">
-        <span class="contact-badge-dot-wrap"><span class="contact-badge-dot"></span><span class="contact-badge-dot-pulse"></span></span>
-        <span class="contact-badge-label">The next chapter starts with a message</span>
-      </div>
-      <div data-reveal="up" data-delay="40" class="contact-cpath-reveal">
-        <div data-cpath class="contact-path-row">
-          <div class="contact-path-track"></div>
-          <div data-cpath-fill></div>
-          <div data-cstage data-color="#908B80" class="contact-stage">
-            <span data-cdot></span>
-            <span data-clabel>Curiosity</span>
-          </div>
-          <div data-cstage data-color="#12886A" class="contact-stage">
-            <span data-cdot></span>
-            <span data-clabel>Design</span>
-          </div>
-          <div data-cstage data-color="#1B1A16" class="contact-stage">
-            <span data-cdot></span>
-            <span data-clabel>Development</span>
-          </div>
-          <div data-cstage data-color="#CC8636" class="contact-stage">
-            <span data-cdot></span>
-            <span data-clabel>Automation</span>
-          </div>
-          <div data-cstage data-color="#12886A" data-final="1" class="contact-stage">
-            <span data-cdot>✦</span>
-            <span data-clabel>Build together</span>
-          </div>
-        </div>
-      </div>
-      <h2 data-reveal="up" data-delay="80" class="section-h2-contact">Have something <span class="accent-green">worth building?</span></h2>
-      <p data-reveal="up" data-delay="160" class="section-para-contact">A product to design, an interface to build, or a workflow to automate — let's make it real, together.</p>
-
-      <div data-reveal="scale" data-delay="200" class="contact-email-wrap">
-        <a data-magnetic data-cursor href="mailto:midhun.shankar.199@gmail.com" class="contact-email-btn" style-hover="background:#12886A;">
-          <span>midhun.shankar.199@gmail.com</span>
-          <span class="contact-email-arrow">→</span>
+      <nav data-nav class="nav-bar" role="navigation" aria-label="Main navigation">
+        <a href="#top" data-cursor class="nav-logo-link" aria-label="Back to top">
+          <span class="nav-logo-badge">M</span>
+          <span class="nav-logo-name">Midhun Shankar</span>
         </a>
+        <div class="nav-links" role="list">
+          <a href="#work" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;"
+            role="listitem">Work</a>
+          <a href="#capabilities" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;"
+            role="listitem">Capabilities</a>
+          <a href="#process" data-cursor class="nav-link" style-hover="background:#F4F0E8;color:#1B1A16;"
+            role="listitem">Process</a>
+          <a href="#contact" data-cursor class="nav-cta" style-hover="background:#12886A;" role="listitem">Let's
+            talk</a>
+        </div>
+        <button class="nav-hamburger" data-nav-toggle aria-label="Open navigation menu" aria-expanded="false"
+          aria-controls="mobile-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </nav>
+      <div id="mobile-nav" class="nav-mobile" data-nav-mobile aria-hidden="true" role="dialog"
+        aria-label="Mobile navigation">
+        <a href="#work" class="nav-mobile-link" data-nav-mobile-link>Work</a>
+        <a href="#capabilities" class="nav-mobile-link" data-nav-mobile-link>Capabilities</a>
+        <a href="#process" class="nav-mobile-link" data-nav-mobile-link>Process</a>
+        <a href="#contact" class="nav-mobile-cta" data-nav-mobile-link>Let's talk</a>
       </div>
 
-      <div data-reveal="up" data-delay="280" class="contact-social-row">
-        <a data-cursor href="https://www.linkedin.com/in/midhunsankar199" target="_blank" rel="noopener" class="contact-social-btn" style-hover="background:#fff;border-color:rgba(18,136,106,0.5);">LinkedIn ↗</a>
-        <a data-cursor href="mailto:midhun.shankar.199@gmail.com" class="contact-social-btn" style-hover="background:#fff;border-color:rgba(18,136,106,0.5);">Email ↗</a>
-        <span class="contact-location">Kerala, India</span>
-      </div>
-    </div>
+      <!-- ============ HERO ============ -->
+      <section id="top" class="hero-section">
+        <div data-parallax="-0.06" class="parallax-blob blob-hero-green"></div>
+        <div data-parallax="0.05" class="parallax-blob blob-hero-amber"></div>
+        <div class="hero-dot-grid"></div>
 
-    <div class="footer-bar">
-      <span class="footer-tagline">Design the experience · Build the product · Automate the workflow</span>
-      <span class="footer-copy">© 2026 Midhun Shankar</span>
-    </div>
-  </section>
+        <div class="hero-grid">
+          <div>
+            <div data-hero-anim class="hero-badge">
+              <span class="hero-badge-dot-wrap"><span class="hero-badge-dot"></span><span
+                  class="hero-badge-dot-pulse"></span></span>
+              <span class="hero-badge-text">Available for freelance & full-time · Kerala, India</span>
+            </div>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
+            <h1 class="hero-h1">
+              <span data-hero-anim class="hero-h1-line">Hi, I'm Midhun.</span>
+              <span data-hero-anim class="hero-h1-line">I <span class="accent-green">design</span>, <span
+                  class="accent-green">build</span></span>
+              <span data-hero-anim class="hero-h1-line">& <span class="accent-amber">automate</span> products.</span>
+            </h1>
+
+            <p data-hero-anim class="hero-para">From the first idea to the launched product — one person across UX
+              design, frontend development and AI-powered automation. I turn concepts into experiences people actually
+              enjoy using.</p>
+
+            <div data-hero-anim class="hero-cta-row">
+              <a href="#work" data-cursor data-magnetic class="hero-cta-primary" style-hover="background:#12886A;">View
+                selected work <span class="hero-cta-arrow">→</span></a>
+              <a href="#contact" data-cursor class="hero-cta-secondary"
+                style-hover="background:rgba(255,255,255,0.7);border-color:rgba(27,26,22,0.3);">Start a conversation</a>
+            </div>
+
+            <div data-hero-anim class="hero-stats-row">
+              <div>
+                <div class="stat-value">3-in-1</div>
+                <div class="stat-label">Design · Dev · AI</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div>
+                <div class="stat-value">End-to-end</div>
+                <div class="stat-label">Idea → Launch</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div>
+                <div class="stat-value">18+</div>
+                <div class="stat-label">Tools & tech</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-portrait-wrap" data-hero-anim>
+            <div ref="{{ heroStage }}" class="eco-stage">
+
+              <!-- ambient halos -->
+              <div data-orbit data-depth="0.3" class="halo-green"></div>
+              <div class="halo-amber"></div>
+
+              <!-- orbit + signal layer -->
+              <svg viewBox="0 0 100 100" class="svg-orbit">
+                <g ref="{{ ringTilt }}" class="ring-tilt">
+                  <g class="ring-spin">
+                    <ellipse cx="50" cy="50" rx="47" ry="47" fill="none" stroke="rgba(27,26,22,0.10)"
+                      stroke-width="0.22" stroke-dasharray="0.5 2.1"></ellipse>
+                  </g>
+                  <g class="ring-spin-rev">
+                    <ellipse cx="50" cy="50" rx="38.5" ry="38.5" fill="none" stroke="rgba(18,136,106,0.20)"
+                      stroke-width="0.3"></ellipse>
+                  </g>
+                  <ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(27,26,22,0.08)" stroke-width="0.22">
+                  </ellipse>
+                </g>
+                <g fill="none" stroke-linecap="round">
+                  <path d="M28,24 Q40,38 46,45" stroke="rgba(18,136,106,0.55)" stroke-width="0.42"
+                    stroke-dasharray="1.6 2.6" class="sig-1"></path>
+                  <path d="M74,28 Q60,40 54,45" stroke="rgba(204,134,54,0.55)" stroke-width="0.42"
+                    stroke-dasharray="1.6 2.6" class="sig-2"></path>
+                  <path d="M72,74 Q60,60 54,54" stroke="rgba(18,136,106,0.55)" stroke-width="0.42"
+                    stroke-dasharray="1.6 2.6" class="sig-3"></path>
+                  <path d="M26,72 Q40,60 46,54" stroke="rgba(18,136,106,0.42)" stroke-width="0.42"
+                    stroke-dasharray="1.6 2.6" class="sig-4"></path>
+                </g>
+              </svg>
+
+              <!-- nodes -->
+              <div data-orbit data-depth="3.3" class="orbit-node-wrap" style="top:11%;left:47%;"><span
+                  class="node-dot-wrap" style="width:11px;height:11px;"><span class="node-inner"
+                    style="background:#12886A;"></span><span class="node-ring"
+                    style="animation:nodeBeat 2.6s ease-in-out infinite;"></span></span></div>
+              <div data-orbit data-depth="3.7" class="orbit-node-wrap" style="top:29%;left:20%;"><span
+                  class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner"
+                    style="background:#12886A;"></span><span class="node-ring"
+                    style="animation:nodeBeat 3.1s ease-in-out infinite;animation-delay:-0.6s;"></span></span></div>
+              <div data-orbit data-depth="3.0" class="orbit-node-wrap" style="top:15%;left:69%;"><span
+                  class="node-dot-wrap" style="width:10px;height:10px;"><span class="node-inner"
+                    style="background:#CC8636;"></span><span class="node-ring-amber"
+                    style="animation:nodeBeat 2.8s ease-in-out infinite;animation-delay:-1.2s;"></span></span></div>
+              <div data-orbit data-depth="2.7" class="orbit-node-wrap" style="top:49%;left:92%;"><span
+                  class="node-dot-wrap" style="width:11px;height:11px;"><span class="node-inner"
+                    style="background:#CC8636;"></span><span class="node-ring-amber"
+                    style="animation:nodeBeat 3.3s ease-in-out infinite;animation-delay:-0.3s;"></span></span></div>
+              <div data-orbit data-depth="3.4" class="orbit-node-wrap" style="top:63%;left:13%;"><span
+                  class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner"
+                    style="background:#12886A;"></span><span class="node-ring"
+                    style="animation:nodeBeat 2.7s ease-in-out infinite;animation-delay:-1.6s;"></span></span></div>
+              <div data-orbit data-depth="2.5" class="orbit-node-wrap" style="top:60%;left:62%;"><span
+                  class="node-dot-wrap" style="width:8px;height:8px;"><span class="node-inner"
+                    style="background:#12886A;"></span><span class="node-ring"
+                    style="animation:nodeBeat 3.0s ease-in-out infinite;animation-delay:-0.9s;"></span></span></div>
+              <div data-orbit data-depth="2.0" class="orbit-node-wrap" style="top:89%;left:48%;"><span
+                  class="node-dot-wrap" style="width:9px;height:9px;"><span class="node-inner"
+                    style="background:#12886A;"></span><span class="node-ring"
+                    style="animation:nodeBeat 3.5s ease-in-out infinite;animation-delay:-1.1s;"></span></span></div>
+
+              <!-- portrait -->
+              <div data-orbit data-depth="0.7" class="portrait-orbit-wrap">
+                <div class="portrait-glow-ring"></div>
+                <div class="portrait-circle-wrap">
+                  <img src="assets/portrait.png" alt="Midhun Shankar" class="portrait-img">
+                  <div class="portrait-overlay-green"></div>
+                  <div class="portrait-overlay-bottom"></div>
+                </div>
+              </div>
+
+              <!-- floating capability cards -->
+              <div class="eco-fc fc-tl" data-orbit data-depth="2.6">
+                <div class="fc-card">
+                  <span class="fc-status-dot fc-status-green"></span>
+                  <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                      <path d="M2 2l7.586 7.586"></path>
+                      <circle cx="11" cy="11" r="1.6"></circle>
+                    </svg></div>
+                  <div class="fc-card-title">Product Design</div>
+                  <div class="fc-skill-list">
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <circle cx="11" cy="11" r="8" />
+                          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg></span>User Research</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M12 20h9" />
+                          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                        </svg></span>UI / UX Design</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <rect x="3" y="3" width="7" height="7" />
+                          <rect x="14" y="3" width="7" height="7" />
+                          <rect x="14" y="14" width="7" height="7" />
+                          <rect x="3" y="14" width="7" height="7" />
+                        </svg></span>Design Systems</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="eco-fc fc-tr" data-orbit data-depth="2.9">
+                <div class="fc-card">
+                  <span class="fc-status-dot fc-status-amber"></span>
+                  <div class="fc-icon-wrap fc-icon-amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg></div>
+                  <div class="fc-card-title">AI Automation</div>
+                  <div class="fc-skill-list">
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <polyline points="16 3 21 3 21 8" />
+                          <line x1="4" y1="20" x2="21" y2="3" />
+                          <polyline points="21 16 21 21 16 21" />
+                          <line x1="15" y1="15" x2="21" y2="21" />
+                        </svg></span>Workflow Design</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="3" />
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+                        </svg></span>n8n · Make</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <rect x="2" y="6" width="20" height="12" rx="2" />
+                          <path d="M6 12h.01M10 12h.01M14 12h.01" />
+                        </svg></span>AI Integrations</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="eco-fc fc-br" data-orbit data-depth="2.7">
+                <div class="fc-card">
+                  <span class="fc-status-dot fc-status-green"></span>
+                  <div class="fc-icon-wrap fc-icon-green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg></div>
+                  <div class="fc-card-title">Development</div>
+                  <div class="fc-skill-list">
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <polyline points="16 18 22 12 16 6" />
+                          <polyline points="8 6 2 12 8 18" />
+                        </svg></span>Next.js</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="3" />
+                          <circle cx="12" cy="12" r="9" />
+                          <line x1="3" y1="12" x2="21" y2="12" />
+                        </svg></span>React</span>
+                    <span class="fc-skill-item"><span class="fc-skill-icon"><svg width="10" height="10"
+                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path
+                            d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 4.5 17h15a2.5 2.5 0 0 1 .44 4.96A2.5 2.5 0 0 1 17 19.5V4.5A2.5 2.5 0 0 1 19.5 2h-10z" />
+                        </svg></span>Tailwind CSS</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="eco-fc fc-bl" data-orbit data-depth="2.4">
+                <div class="fc-card">
+                  <div class="fc-icon-wrap fc-icon-dark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                      </path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg></div>
+                  <div class="fc-card-title-tools">Tools I Use</div>
+                  <div class="fc-tools-row">
+                    <span title="Figma" class="tool-chip tool-chip-light tool-chip-figma">Fi</span>
+                    <span title="Next.js" class="tool-chip tool-chip-dark tool-chip-next">N</span>
+                    <span title="Tailwind" class="tool-chip tool-chip-light tool-chip-tw"><svg width="16" height="10"
+                        viewBox="0 0 24 14" fill="none">
+                        <path
+                          d="M6 7c1-3 2.4-4.5 4.8-4.5C13.8 2.5 14 5 16 6c1.4.7 2.6.4 3.6-.6-1 3-2.4 4.5-4.8 4.5C11.8 9.4 11.6 6.9 9.6 6 8.2 5.3 7 5.6 6 7z"
+                          fill="currentColor"></path>
+                        <path
+                          d="M1.2 12.5c1-3 2.4-4.5 4.8-4.5C9 8 9.2 10.5 11.2 11.5c1.4.7 2.6.4 3.6-.6-1 3-2.4 4.5-4.8 4.5C7 15.4 6.8 12.9 4.8 12c-1.4-.7-2.6-.4-3.6.5z"
+                          fill="currentColor" opacity="0.5"></path>
+                      </svg></span>
+                    <span title="n8n" class="tool-chip tool-chip-amber tool-chip-n8n">n8</span>
+                    <span class="tool-chip tool-chip-light tool-chip-more">···</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- center anchor pill -->
+              <div class="anchor-pill-outer">
+                <div data-orbit data-depth="1.3" class="orbit-anchor">
+                  <div class="anchor-pill">
+                    <span class="anchor-pill-icon">✦</span>
+                    <div class="anchor-pill-text">
+                      <div class="anchor-pill-title">From idea to launch.</div>
+                      <div class="anchor-pill-subtitle">One person. End-to-end.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-hint-outer">
+          <div data-hero-anim class="scroll-hint-inner">
+            <span class="scroll-label">Scroll</span>
+            <span class="scroll-wheel"><span class="scroll-bob"></span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ JOURNEY ============ -->
+      <section id="journey" data-journey class="journey-section">
+        <div class="section-container-1100">
+          <div data-reveal="up" class="section-header-center">
+            <div class="section-eyebrow-mb20"><span class="eyebrow-num eyebrow-num-green">01</span><span
+                class="eyebrow-label">The Journey</span></div>
+            <h2 class="section-h2-center">From <span class="accent-green">curiosity</span> to building <span
+                class="accent-amber">whole products.</span></h2>
+            <p class="section-para-journey">Each stage didn't replace the last — it stacked on top of it. That's how one
+              person ended up owning the entire arc.</p>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-track"></div>
+            <div data-journey-fill></div>
+
+            <div data-jstep class="jstep-col">
+
+              <div class="journey-row" data-reveal="up">
+                <div class="journey-left-pane">
+                  <div class="journey-card">
+                    <div class="journey-card-eyebrow">Where it began</div>
+                    <div class="journey-card-title">Curiosity</div>
+                    <p class="journey-card-para">"Why is this so clunky?" — a habit of taking products apart and
+                      believing they could be better.</p>
+                  </div>
+                </div>
+                <span class="journey-node-first"></span>
+                <div class="journey-spacer"></div>
+              </div>
+
+              <div class="journey-row" data-reveal="up">
+                <div class="journey-spacer"></div>
+                <span class="journey-node"></span>
+                <div class="journey-right-pane">
+                  <div class="journey-card-block">
+                    <div class="journey-card-eyebrow">Milestone 01</div>
+                    <div class="journey-card-title">Design</div>
+                    <p class="journey-card-para">Research, hierarchy and interaction — learning to shape experiences
+                      people understand instantly.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="journey-row" data-reveal="up">
+                <div class="journey-left-pane">
+                  <div class="journey-card">
+                    <div class="journey-card-eyebrow">Milestone 02</div>
+                    <div class="journey-card-title">Development</div>
+                    <p class="journey-card-para">React, Next.js & TypeScript — closing the gap between the mockup and
+                      the shipped product.</p>
+                  </div>
+                </div>
+                <span class="journey-node"></span>
+                <div class="journey-spacer"></div>
+              </div>
+
+              <div class="journey-row" data-reveal="up">
+                <div class="journey-spacer"></div>
+                <span class="journey-node"></span>
+                <div class="journey-right-pane">
+                  <div class="journey-card-block">
+                    <div class="journey-card-eyebrow-amber">Milestone 03</div>
+                    <div class="journey-card-title">Automation</div>
+                    <p class="journey-card-para">AI tools, APIs and n8n pipelines that quietly remove the repetitive
+                      parts of building.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="journey-row" data-reveal="up">
+                <div class="journey-left-pane">
+                  <div class="journey-card-dark">
+                    <div class="journey-card-eyebrow-light">Today</div>
+                    <div class="journey-card-title-lg">Product Building</div>
+                    <p class="journey-card-para-dark">Design, build and automate held in one head — so ideas reach
+                      reality with far less lost in translation.</p>
+                  </div>
+                </div>
+                <span class="journey-node-last"></span>
+                <div class="journey-spacer"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WHAT I DO / CAPABILITIES ============ -->
+      <section id="capabilities" class="cap-section">
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-left">
+            <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">02</span><span
+                class="eyebrow-label">What I Do</span></div>
+            <h2 class="section-h2-cap">Three capabilities that <span class="accent-green">compound</span> when one
+              person holds them.</h2>
+          </div>
+
+          <div data-reveal="up" class="cap-tabs">
+            <button data-cap-tab="design" data-cursor class="cap-tab-active">Design</button>
+            <button data-cap-tab="develop" data-cursor class="cap-tab-inactive">Develop</button>
+            <button data-cap-tab="automate" data-cursor class="cap-tab-inactive">Automate</button>
+          </div>
+
+          <div class="cap-panels-wrap">
+            <div data-cap-panel="design" data-active class="two-col cap-panel-grid">
+              <div class="cap-card-main">
+                <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-green">✦</span>
+                  <div class="cap-card-h3">Design the experience</div>
+                </div>
+                <p class="cap-card-para">Research-led product design — turning ambiguity into clear, usable systems
+                  people understand at a glance.</p>
+                <div class="cap-skills-label">What it includes</div>
+                <div class="cap-tags">
+                  <span class="cap-tag">UX Research</span>
+                  <span class="cap-tag">Wireframing</span>
+                  <span class="cap-tag">Information Architecture</span>
+                  <span class="cap-tag">Interaction Design</span>
+                  <span class="cap-tag">Design Systems</span>
+                  <span class="cap-tag">Prototyping</span>
+                </div>
+              </div>
+              <div class="cap-side-col">
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-green">The process</div>
+                  <div class="cap-process-steps">Discover <span class="cap-arrow-green">→</span> Define <span
+                      class="cap-arrow-green">→</span> Design <span class="cap-arrow-green">→</span> Validate</div>
+                </div>
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
+                  <div class="cap-seen-text">LifeOS · Concept Product Case Study · Credit Card Landing Page</div>
+                </div>
+              </div>
+            </div>
+
+            <div data-cap-panel="develop" class="two-col cap-panel-grid">
+              <div class="cap-card-main">
+                <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-code">&lt;/&gt;</span>
+                  <div class="cap-card-h3">Build the product</div>
+                </div>
+                <p class="cap-card-para">Translating design into fast, accessible, production-ready interfaces — with a
+                  real component system behind them.</p>
+                <div class="cap-skills-label">The stack</div>
+                <div class="cap-tags">
+                  <span class="cap-tag">React</span>
+                  <span class="cap-tag">Next.js</span>
+                  <span class="cap-tag">TypeScript</span>
+                  <span class="cap-tag">Tailwind CSS</span>
+                  <span class="cap-tag">Responsive</span>
+                  <span class="cap-tag">Component Systems</span>
+                </div>
+              </div>
+              <div class="cap-side-col">
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-green">The process</div>
+                  <div class="cap-process-steps">Structure <span class="cap-arrow-green">→</span> Build <span
+                      class="cap-arrow-green">→</span> Polish <span class="cap-arrow-green">→</span> Ship</div>
+                </div>
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
+                  <div class="cap-seen-text">LifeOS · Credit Card Landing Page · Design-to-Code Experiment</div>
+                </div>
+              </div>
+            </div>
+
+            <div data-cap-panel="automate" class="two-col cap-panel-grid">
+              <div class="cap-card-main">
+                <div class="cap-card-header"><span class="cap-card-icon cap-card-icon-amber">⚡</span>
+                  <div class="cap-card-h3">Automate the workflow</div>
+                </div>
+                <p class="cap-card-para">Removing repetitive work with AI tools, APIs and automation pipelines that
+                  quietly run in the background.</p>
+                <div class="cap-skills-label">The toolkit</div>
+                <div class="cap-tags">
+                  <span class="cap-tag">n8n</span>
+                  <span class="cap-tag">OpenAI API</span>
+                  <span class="cap-tag">Prompt Engineering</span>
+                  <span class="cap-tag">Process Automation</span>
+                  <span class="cap-tag">AI-Assisted Dev</span>
+                </div>
+              </div>
+              <div class="cap-side-col">
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-amber">The process</div>
+                  <div class="cap-process-steps">Map <span class="cap-arrow-amber">→</span> Integrate <span
+                      class="cap-arrow-amber">→</span> Automate <span class="cap-arrow-amber">→</span> Optimise</div>
+                </div>
+                <div class="cap-side-card">
+                  <div class="cap-side-card-eyebrow cap-side-card-eyebrow-muted">Seen in</div>
+                  <div class="cap-seen-text">AI Workflow Automation System · Design-to-Code Experiment</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="work" class="work-section">
+        <div data-parallax="0.05" class="parallax-blob blob-work-green"></div>
+        <div data-parallax="-0.04" class="parallax-blob blob-work-amber"></div>
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-work">
+            <div>
+              <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">03</span><span
+                  class="eyebrow-label">Selected Work</span></div>
+              <h2 class="section-h2-work">Five problems, solved <span class="accent-green">end-to-end.</span></h2>
+            </div>
+            <p class="work-hint">Click any project to open the full case study →</p>
+          </div>
+          <div data-proj-list></div>
+        </div>
+      </section>
+
+      <!-- ============ HOW I THINK ============ -->
+      <section id="process" class="process-section">
+        <div data-parallax="0.05" class="parallax-blob blob-process-green"></div>
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-process">
+            <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-light-green">04</span><span
+                class="eyebrow-label-dim">How I Think</span></div>
+            <h2 class="section-h2-process">A repeatable way from <span class="accent-green">messy</span> to <span
+                class="accent-amber">shipped.</span></h2>
+          </div>
+
+          <div class="process-grid">
+            <div data-reveal="up" data-delay="0" class="process-cell" style-hover="background:#222019;">
+              <span class="process-num-green">01</span>
+              <div>
+                <div class="process-heading">Observe</div>
+                <p class="process-para">Watch real behaviour before trusting any assumption.</p>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="90" class="process-cell" style-hover="background:#222019;">
+              <span class="process-num-muted">02</span>
+              <div>
+                <div class="process-heading">Understand</div>
+                <p class="process-para">Find the real problem hiding under the asked-for one.</p>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="180" class="process-cell" style-hover="background:#222019;">
+              <span class="process-num-muted">03</span>
+              <div>
+                <div class="process-heading">Simplify</div>
+                <p class="process-para">Cut until only what matters is left — then cut again.</p>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="270" class="process-cell" style-hover="background:#222019;">
+              <span class="process-num-muted">04</span>
+              <div>
+                <div class="process-heading">Build</div>
+                <p class="process-para">Ship something real and testable, fast — not a deck.</p>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="360" class="process-cell" style-hover="background:#222019;">
+              <span class="process-num-amber">05</span>
+              <div>
+                <div class="process-heading">Refine</div>
+                <p class="process-para">Measure, learn and sharpen until it feels inevitable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SKILLS & TOOLS ============ -->
+      <section id="stack" class="stack-section">
+        <div data-parallax="0.045" class="parallax-blob blob-stack-green"></div>
+        <div data-parallax="-0.035" class="parallax-blob blob-stack-amber"></div>
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-stack">
+            <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">05</span><span
+                class="eyebrow-label">Skills & Tools</span></div>
+            <h2 class="section-h2-stack">Not a tag cloud — a <span class="accent-green">connected system.</span></h2>
+            <p class="section-para">Three clusters that feed each other. Hover one to trace how design, development and
+              automation actually connect.</p>
+          </div>
+
+          <div data-reveal="up" class="filter-bar">
+            <button data-filter="all" data-cursor class="filter-btn-active">Whole system</button>
+            <button data-filter="design" data-cursor class="filter-btn-inactive">Design</button>
+            <button data-filter="develop" data-cursor class="filter-btn-inactive">Development</button>
+            <button data-filter="automate" data-cursor class="filter-btn-inactive">Automation</button>
+          </div>
+
+          <div data-reveal="up" class="constellation-wrap">
+            <div data-constellation class="constellation-bg"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROOF ============ -->
+      <section id="proof" class="proof-section">
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-proof">
+            <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">06</span><span
+                class="eyebrow-label">Proof & Credibility</span></div>
+            <h2 class="section-h2-proof">The work speaks first. The <span class="accent-green">numbers</span> back it
+              up.</h2>
+          </div>
+
+          <div class="proof-stats">
+            <div data-reveal="up" data-delay="0" class="proof-stat-card">
+              <div class="proof-stat-val-green"><span data-count="5" data-pad="true">05</span></div>
+              <div class="proof-stat-desc">Case studies, end-to-end</div>
+            </div>
+            <div data-reveal="up" data-delay="80" class="proof-stat-card">
+              <div class="proof-stat-val"><span data-count="3" data-pad="true">03</span></div>
+              <div class="proof-stat-desc">Disciplines, one workflow</div>
+            </div>
+            <div data-reveal="up" data-delay="160" class="proof-stat-card">
+              <div class="proof-stat-val"><span data-count="18" data-suffix="+">18+</span></div>
+              <div class="proof-stat-desc">Tools & technologies</div>
+            </div>
+            <div data-reveal="up" data-delay="240" class="proof-stat-card">
+              <div class="proof-stat-val">∞</div>
+              <div class="proof-stat-desc">Curiosity, ongoing</div>
+            </div>
+          </div>
+
+          <div class="testimonial-grid">
+            <div data-reveal="up" data-delay="0" class="testimonial-card">
+              <span class="testimonial-placeholder">Add quote</span>
+              <div class="testimonial-quote-char">"</div>
+              <p class="testimonial-text">A real client testimonial drops in here — a sentence on the outcome and what
+                it was like to work together.</p>
+              <div class="testimonial-author-row"><span class="testimonial-avatar"></span>
+                <div>
+                  <div class="testimonial-name">Client name</div>
+                  <div class="testimonial-role">Role · Company</div>
+                </div>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="120" class="testimonial-card">
+              <span class="testimonial-placeholder">Add quote</span>
+              <div class="testimonial-quote-char">"</div>
+              <p class="testimonial-text">A second voice — ideally about results or numbers — reinforcing the
+                credibility of the work delivered.</p>
+              <div class="testimonial-author-row"><span class="testimonial-avatar"></span>
+                <div>
+                  <div class="testimonial-name">Client name</div>
+                  <div class="testimonial-role">Role · Company</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BEHIND THE WORK ============ -->
+      <section id="life" class="life-section">
+        <div class="section-container-1240">
+          <div data-reveal="up" class="section-header-left">
+            <div class="section-eyebrow"><span class="eyebrow-num eyebrow-num-green">07</span><span
+                class="eyebrow-label">Behind the Work</span></div>
+            <h2 class="section-h2-life">A builder who's always <span class="accent-amber">mid-experiment.</span></h2>
+          </div>
+
+          <div class="behind-grid">
+            <div data-reveal="up" data-delay="0" class="behind-dark-card">
+              <div class="behind-status-row"><span class="behind-status-dot"></span><span
+                  class="behind-status-label">Currently building</span></div>
+              <div>
+                <div class="behind-dark-title">Personal productivity systems & AI agents</div>
+                <p class="behind-dark-para">Turning my own workflows into testbeds for the tools I build for others.</p>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="80" class="behind-card">
+              <span class="behind-explore-label">What I explore</span>
+              <div class="behind-tags">
+                <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Web Development</span>
+                <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Artificial
+                  Intelligence</span>
+                <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Digital
+                  Entrepreneurship</span>
+                <span data-cursor class="behind-tag" style-hover="background:#12886A;color:#fff;">Productivity</span>
+              </div>
+            </div>
+            <div data-reveal="up" data-delay="160" class="behind-card">
+              <span class="behind-offclock-label">Off the clock</span>
+              <div>
+                <div class="behind-card-title">Gaming & systems thinking 🎮</div>
+                <p class="behind-card-para">The same instinct that takes apart a game's mechanics is the one that
+                  redesigns a clunky product.</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-reveal="up" class="behind-quote-card">
+            <p class="behind-quote-text">"I learn new technologies by building real things with them."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FINAL ============ -->
+      <section id="contact" class="contact-section">
+        <div data-parallax="-0.04" class="parallax-blob blob-contact-green"></div>
+        <div class="section-container-1000">
+          <div data-reveal="up" class="contact-badge">
+            <span class="contact-badge-dot-wrap"><span class="contact-badge-dot"></span><span
+                class="contact-badge-dot-pulse"></span></span>
+            <span class="contact-badge-label">The next chapter starts with a message</span>
+          </div>
+          <div data-reveal="up" data-delay="40" class="contact-cpath-reveal">
+            <div data-cpath class="contact-path-row">
+              <div class="contact-path-track"></div>
+              <div data-cpath-fill></div>
+              <div data-cstage data-color="#908B80" class="contact-stage">
+                <span data-cdot></span>
+                <span data-clabel>Curiosity</span>
+              </div>
+              <div data-cstage data-color="#12886A" class="contact-stage">
+                <span data-cdot></span>
+                <span data-clabel>Design</span>
+              </div>
+              <div data-cstage data-color="#1B1A16" class="contact-stage">
+                <span data-cdot></span>
+                <span data-clabel>Development</span>
+              </div>
+              <div data-cstage data-color="#CC8636" class="contact-stage">
+                <span data-cdot></span>
+                <span data-clabel>Automation</span>
+              </div>
+              <div data-cstage data-color="#12886A" data-final="1" class="contact-stage">
+                <span data-cdot>✦</span>
+                <span data-clabel>Build together</span>
+              </div>
+            </div>
+          </div>
+          <h2 data-reveal="up" data-delay="80" class="section-h2-contact">Have something <span
+              class="accent-green">worth building?</span></h2>
+          <p data-reveal="up" data-delay="160" class="section-para-contact">A product to design, an interface to build,
+            or a workflow to automate — let's make it real, together.</p>
+
+          <div data-reveal="scale" data-delay="200" class="contact-email-wrap">
+            <a data-magnetic data-cursor href="mailto:midhun.shankar.199@gmail.com" class="contact-email-btn"
+              style-hover="background:#12886A;">
+              <span>midhun.shankar.199@gmail.com</span>
+              <span class="contact-email-arrow">→</span>
+            </a>
+          </div>
+
+          <div data-reveal="up" data-delay="280" class="contact-social-row">
+            <a data-cursor href="https://www.linkedin.com/in/midhunsankar199" target="_blank" rel="noopener"
+              class="contact-social-btn" style-hover="background:#fff;border-color:rgba(18,136,106,0.5);">LinkedIn ↗</a>
+            <a data-cursor href="mailto:midhun.shankar.199@gmail.com" class="contact-social-btn"
+              style-hover="background:#fff;border-color:rgba(18,136,106,0.5);">Email ↗</a>
+            <span class="contact-location">Kerala, India</span>
+          </div>
+        </div>
+
+        <div class="footer-bar">
+          <span class="footer-tagline">Design the experience · Build the product · Automate the workflow</span>
+          <span class="footer-copy">© 2026 Midhun Shankar</span>
+        </div>
+      </section>
+
+    </div>
+  </x-dc>
+  <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   rootRef = React.createRef();
   cursorDot = React.createRef();
@@ -606,6 +828,7 @@ class Component extends DCLogic {
     this.initMagnetic(root);
     this.initContactPath(root);
     this.initMobileNav(root);
+    this.buildShowcaseModal(root);
   }
 
   initContactPath(root) {
@@ -644,7 +867,21 @@ class Component extends DCLogic {
         process:'Product strategy and UX research first, then UI design, then a frontend build with AI-assisted workflows woven in.',
         solution:'One calm, structured workspace that ties long-term goals to the tasks of the day.',
         outcome:'A coherent system a single user can actually keep up with — designed, built and shipped end-to-end.',
-        tags:['Product Strategy','UX Research','UI Design','Frontend','AI Workflows'], mock:'dashboard' },
+        tags:['Product Strategy','UX Research','UI Design','Frontend','AI Workflows'], mock:'dashboard',
+        showcase:{
+          liveUrl:'https://www.getlifeos.cloud/',
+          summary:'LifeOS is a full-stack personal productivity platform built to unify goals, tasks, habits, focus sessions and reflection in one calm workspace. Designed end-to-end — from research to shipped product.',
+          features:[
+            {num:'01', title:'Dashboard', desc:'Your entire day at a glance. Focus blocks, priorities, mood tracking, habits and quick capture — all wired together so nothing slips through.', screen:'today'},
+            {num:'02', title:'Task Management', desc:'List, Kanban and Timeline views for organising and prioritising work with energy level estimates and time budgets.', screen:'tasks'},
+            {num:'03', title:'Calendar', desc:'Weekly planning with focus blocks, meetings and rest breaks. Schedule balance shown at a glance so every week stays intentional.', screen:'calendar'},
+            {num:'04', title:'Habit Tracking', desc:'Build consistency with daily habits, streak tracking and weekly completion rates. Small routines, compounded over time.', screen:'habits'},
+            {num:'05', title:'Ada — AI Assistant', desc:'Ada lives inside LifeOS. Summarise your day, plan tomorrow, find focus blocks or capture a thought — all in a single conversational interface.', screen:'ada'},
+            {num:'06', title:'Insights', desc:'Understand your energy patterns, mood distribution, burnout signals and habit consistency. Data that actually shapes how you plan.', screen:'insights'},
+          ],
+          tech:['Next.js','React','TypeScript','Supabase','PostgreSQL','OpenAI','Claude','Framer Motion','n8n','Tailwind CSS']
+        }
+      },
       { n:'02', name:'Credit Card Landing Page', cat:'Fintech Conversion Page', tagline:'A responsive marketing site built to convert.',
         challenge:'Communicate dense credit-card benefits clearly while driving sign-ups.',
         approach:'Lead with the single most valuable benefit; let hierarchy do the persuading.',
@@ -689,6 +926,7 @@ class Component extends DCLogic {
         </div>`;
       }).join('');
       const tags = p.tags.map(t=>`<span class="proj-tag">${t}</span>`).join('');
+      const hasShowcase = !!p.showcase;
       card.innerHTML = `
         <div data-proj-toggle data-cursor class="proj-toggle">
           <span class="proj-num">${p.n}</span>
@@ -697,7 +935,9 @@ class Component extends DCLogic {
             <h3 class="proj-name">${p.name}</h3>
             <p class="proj-tagline">${p.tagline}</p>
           </div>
-          <div class="proj-row-mock">${this.mockup(p.mock)}</div>
+          <div class="proj-row-mock">
+            ${this.mockup(p.mock)}
+          </div>
           <span data-proj-plus>+</span>
         </div>
         <div data-proj-body>
@@ -712,6 +952,7 @@ class Component extends DCLogic {
               ${stepsHtml}
             </div>
           </div>
+          ${hasShowcase ? `<button class="sc-trigger" data-showcase-btn aria-label="Open ${p.name} showcase">↗</button>` : ''}
         </div>`;
       host.appendChild(card);
       const toggle = card.querySelector('[data-proj-toggle]');
@@ -739,23 +980,17 @@ class Component extends DCLogic {
           stepEls.forEach((s,si)=>setTimeout(()=>s.setAttribute('data-in',''), 130+si*125));
         }
       });
+      if (hasShowcase) {
+        const scBtn = card.querySelector('[data-showcase-btn]');
+        if (scBtn) scBtn.addEventListener('click', (e)=>{ e.stopPropagation(); this.openShowcaseModal(p.showcase, p.name, p.cat); });
+      }
       card.addEventListener('mouseenter', ()=>{ card.style.boxShadow='0 34px 70px -34px rgba(27,26,22,0.42)'; card.style.transform='translateY(-2px)'; });
       card.addEventListener('mouseleave', ()=>{ card.style.boxShadow='0 22px 50px -36px rgba(27,26,22,0.3)'; card.style.transform='translateY(0)'; });
       window.addEventListener('resize', ()=>{ if(card.hasAttribute('data-expanded')) body.style.maxHeight=body.scrollHeight+40+'px'; }, {passive:true});
     });
   }
 
-  mockup(kind, big) {
-    const h = big ? 'clamp(168px,24vw,238px)' : 'clamp(96px,12vw,138px)';
-    const sh = big ? '0 22px 48px -22px rgba(27,26,22,0.32)' : '0 8px 20px -12px rgba(27,26,22,0.22)';
-    const frame = (inner) => `<div style="border:1px solid rgba(27,26,22,0.1);border-radius:${big?'12px':'9px'};overflow:hidden;background:#FBF9F4;height:${h};display:flex;flex-direction:column;box-shadow:${sh};"><div style="display:flex;gap:5px;padding:8px 10px;border-bottom:1px solid rgba(27,26,22,0.07);flex:0 0 auto;"><span style="width:6px;height:6px;border-radius:50%;background:rgba(27,26,22,0.2);"></span><span style="width:6px;height:6px;border-radius:50%;background:rgba(27,26,22,0.13);"></span><span style="width:6px;height:6px;border-radius:50%;background:rgba(27,26,22,0.1);"></span></div><div style="flex:1;position:relative;overflow:hidden;">${inner}</div></div>`;
-    const bar=(w,c)=>`<span style="display:block;height:5px;width:${w};border-radius:3px;background:${c||'rgba(27,26,22,0.12)'};"></span>`;
-    if (kind==='dashboard') return frame(`<div style="display:flex;height:100%;"><div style="flex:0 0 26%;border-right:1px solid rgba(27,26,22,0.06);padding:9px 7px;display:flex;flex-direction:column;gap:7px;"><span style="width:14px;height:14px;border-radius:4px;background:#12886A;"></span>${bar('80%')}${bar('60%')}${bar('70%')}</div><div style="flex:1;padding:9px;display:flex;flex-direction:column;gap:7px;">${bar('50%','rgba(27,26,22,0.22)')}<div style="display:flex;gap:6px;"><div style="flex:1;height:28px;border-radius:6px;background:rgba(18,136,106,0.12);border:1px solid rgba(18,136,106,0.3);"></div><div style="flex:1;height:28px;border-radius:6px;background:rgba(27,26,22,0.05);"></div></div><div style="width:26px;height:26px;border-radius:50%;background:conic-gradient(#12886A 68%,rgba(27,26,22,0.1) 0);"></div></div></div>`);
-    if (kind==='card') return frame(`<div style="display:flex;height:100%;align-items:center;gap:8px;padding:10px;"><div style="flex:1;display:flex;flex-direction:column;gap:6px;">${bar('70%','rgba(27,26,22,0.22)')}${bar('90%')}${bar('50%')}<span style="display:inline-block;width:46px;height:14px;border-radius:7px;background:#12886A;margin-top:3px;"></span></div><div style="flex:0 0 42%;height:54px;border-radius:8px;background:linear-gradient(135deg,#16302B,#0c1c18);border:1px solid rgba(18,136,106,0.3);padding:8px;display:flex;flex-direction:column;justify-content:space-between;"><span style="width:16px;height:11px;border-radius:2px;background:rgba(31,182,140,0.6);"></span><span style="font-family:monospace;font-size:7px;letter-spacing:1px;color:rgba(244,240,232,0.6);">•••• 4291</span></div></div>`);
-    if (kind==='flow') return frame(`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:space-around;padding:0 8px;"><div style="width:24%;height:30px;border-radius:6px;background:rgba(27,26,22,0.05);border:1px solid rgba(27,26,22,0.12);"></div><div style="width:24%;height:30px;border-radius:6px;background:rgba(204,134,54,0.16);border:1px solid rgba(204,134,54,0.45);"></div><div style="width:24%;height:30px;border-radius:6px;background:rgba(27,26,22,0.05);border:1px solid rgba(27,26,22,0.12);"></div></div><svg style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="none"><line x1="33%" y1="50%" x2="42%" y2="50%" stroke="#CC8636" stroke-width="1"></line><line x1="58%" y1="50%" x2="67%" y2="50%" stroke="#CC8636" stroke-width="1"></line></svg>`);
-    if (kind==='code') return frame(`<div style="display:flex;height:100%;"><div style="flex:1;border-right:1px solid rgba(27,26,22,0.06);padding:9px;display:flex;flex-direction:column;gap:6px;">${bar('60%')}${bar('80%','rgba(18,136,106,0.35)')}${bar('45%')}</div><div style="flex:1;padding:9px;display:flex;flex-direction:column;gap:5px;">${bar('40%','rgba(18,136,106,0.45)')}${bar('70%','rgba(27,26,22,0.18)')}${bar('55%','rgba(27,26,22,0.12)')}${bar('65%','rgba(18,136,106,0.28)')}</div></div>`);
-    return frame(`<div style="display:flex;height:100%;align-items:center;justify-content:center;"><div style="width:40px;height:76px;border:1px solid rgba(27,26,22,0.16);border-radius:9px;padding:6px 5px;display:flex;flex-direction:column;gap:5px;background:#fff;"><span style="width:14px;height:3px;border-radius:2px;background:rgba(27,26,22,0.16);margin:0 auto;"></span>${bar('100%','rgba(18,136,106,0.3)')}${bar('80%')}${bar('90%')}${bar('60%')}</div></div>`);
-  }
+  mockup(kind, big) { return Mockups.mockup(kind, big); }
 
   buildConstellation(root) {
     const host = root.querySelector('[data-constellation]');
@@ -1025,7 +1260,95 @@ class Component extends DCLogic {
       el.addEventListener('mouseleave',()=>{ el.style.transform='translate(0,0)'; });
     });
   }
+
+  /* ─── LifeOS CSS-art mockups ─────────────────────────────── */
+
+  losSidebar(compact) { return Mockups.losSidebar(compact); }
+
+  losChrome(extra) { return Mockups.losChrome(extra); }
+
+  lifeosSmall() { return Mockups.lifeosSmall(); }
+
+  lifeosBig() { return Mockups.lifeosBig(); }
+
+  losScreen(screen) { return Mockups.losScreen(screen); }
+  losHeroComposition() { return Mockups.losHeroComposition(); }
+
+  /* ─── Showcase modal system ──────────────────────────────── */
+
+  buildShowcaseModal(root) {
+    if (document.getElementById('sc-overlay')) return;
+    const el = document.createElement('div');
+    el.id = 'sc-overlay';
+    el.className = 'sc-overlay';
+    el.setAttribute('role','dialog');
+    el.setAttribute('aria-modal','true');
+    el.setAttribute('aria-label','Project showcase');
+    el.innerHTML = `
+      <div class="sc-modal" id="sc-modal">
+        <button class="sc-close" id="sc-close" aria-label="Close showcase">×</button>
+        <div class="sc-body" id="sc-body"></div>
+      </div>`;
+    document.body.appendChild(el);
+
+    el.addEventListener('click',(e)=>{ if(e.target===el) this.closeShowcaseModal(); });
+    document.getElementById('sc-close').addEventListener('click',()=>this.closeShowcaseModal());
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'&&el.classList.contains('sc-open')) this.closeShowcaseModal(); });
+    this._cleanup.push(()=>{ if(el.parentNode) el.parentNode.removeChild(el); });
+  }
+
+  openShowcaseModal(showcase, name, cat) {
+    const overlay = document.getElementById('sc-overlay');
+    const body = document.getElementById('sc-body');
+    if (!overlay||!body) return;
+
+    const techChips = showcase.tech.map(t=>`<span class="sc-tech-chip">${t}</span>`).join('');
+    const featuresHtml = showcase.features.map((f,i)=>`
+      <div class="sc-feat${i%2===1?' sc-feat-alt':''}">
+        <div class="sc-feat-text">
+          <div class="sc-feat-eyebrow">${f.num} — Feature</div>
+          <h3 class="sc-feat-title">${f.title}</h3>
+          <p class="sc-feat-desc">${f.desc}</p>
+        </div>
+        <div class="sc-feat-image">
+          <div class="sc-feat-screen">${this.losChrome()}<div style="height:clamp(160px,20vw,240px);overflow:hidden;">${this.losScreen(f.screen)}</div></div>
+        </div>
+      </div>`).join('');
+
+    body.innerHTML = `
+      <div class="sc-hero-wrap">
+        <div class="sc-hero-bg"></div>
+        <div class="sc-hero-inner">${this.losHeroComposition()}</div>
+      </div>
+      <div class="sc-inner">
+        <div class="sc-info">
+          <div class="sc-info-eyebrow">${cat}</div>
+          <h2 class="sc-info-title">${name}</h2>
+          <p class="sc-info-summary">${showcase.summary}</p>
+        </div>
+        <div class="sc-features">${featuresHtml}</div>
+        <div class="sc-tech">
+          <div class="sc-tech-label">Built with</div>
+          <div class="sc-tech-chips">${techChips}</div>
+        </div>
+        <div class="sc-cta">
+          <a href="${showcase.liveUrl}" target="_blank" rel="noopener" class="sc-live-btn">Open Live Site <span class="sc-live-arrow">↗</span></a>
+        </div>
+      </div>`;
+
+    document.body.style.overflow='hidden';
+    overlay.classList.add('sc-open');
+    requestAnimationFrame(()=>{ const b=document.getElementById('sc-body'); if(b) b.scrollTop=0; });
+  }
+
+  closeShowcaseModal() {
+    const overlay = document.getElementById('sc-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('sc-open');
+    document.body.style.overflow='';
+  }
 }
 </script>
 </body>
+
 </html>
