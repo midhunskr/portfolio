@@ -606,10 +606,17 @@ const Mockups = {
       </div>`;
 
     return /* html */`
-      <div style="position:relative;width:100%;max-width:960px;height:clamp(220px,30vw,380px);">
+      <style>
+        @media (max-width:640px) {
+          .los-hero { height: clamp(160px,48vw,220px) !important; }
+          .los-hero-brand, .los-hero-tasks, .los-hero-habits, .los-hero-right { display: none !important; }
+          .los-hero-center { left: 0 !important; right: 0 !important; border-radius: 0 !important; }
+        }
+      </style>
+      <div class="los-hero" style="position:relative;width:100%;max-width:960px;height:clamp(220px,30vw,380px);">
 
         <!-- Left: branding + AI card -->
-        <div style="position:absolute;left:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding-right:8px;">
+        <div class="los-hero-brand" style="position:absolute;left:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding-right:8px;">
           <div>
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <span style="width:clamp(20px,2.2vw,28px);height:clamp(20px,2.2vw,28px);border-radius:6px;background:#16A34A;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:clamp(10px,1.1vw,14px);color:#fff;font-weight:700;font-family:'Bricolage Grotesque';">L</span>
@@ -631,7 +638,7 @@ const Mockups = {
         </div>
 
         <!-- Tasks floating card -->
-        <div style="position:absolute;left:22%;top:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
+        <div class="los-hero-tasks" style="position:absolute;left:22%;top:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
           <div style="padding:7px 9px;border-bottom:1px solid #E7E5E4;">
             <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;">WORKSPACE</span>
             <span style="font-size:clamp(9px,1.1vw,13px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';">Tasks</span>
@@ -651,7 +658,7 @@ const Mockups = {
         </div>
 
         <!-- Habits floating card -->
-        <div style="position:absolute;left:22%;bottom:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
+        <div class="los-hero-habits" style="position:absolute;left:22%;bottom:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
           <div style="padding:7px 9px;border-bottom:1px solid #E7E5E4;">
             <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;">PRACTICE</span>
             <span style="font-size:clamp(9px,1.1vw,13px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';">Habits</span>
@@ -674,7 +681,7 @@ const Mockups = {
         </div>
 
         <!-- Center: main browser window -->
-        <div style="position:absolute;left:38%;top:0;bottom:0;right:22%;border-radius:12px;overflow:hidden;background:#FAFAF9;border:1px solid rgba(255,255,255,0.1);box-shadow:0 32px 80px -20px rgba(0,0,0,0.75);">
+        <div class="los-hero-center" style="position:absolute;left:38%;top:0;bottom:0;right:22%;border-radius:12px;overflow:hidden;background:#FAFAF9;border:1px solid rgba(255,255,255,0.1);box-shadow:0 32px 80px -20px rgba(0,0,0,0.75);">
           ${Mockups.losChrome()}
           <div style="position:relative;height:calc(100% - 23px);overflow:hidden;">
             <div style="position:absolute;top:0;left:0;width:${P};height:${P};transform:scale(${S});transform-origin:top left;display:flex;">
@@ -685,7 +692,7 @@ const Mockups = {
         </div>
 
         <!-- Right: calendar + notes -->
-        <div style="position:absolute;right:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;gap:clamp(5px,0.8vw,10px);">
+        <div class="los-hero-right" style="position:absolute;right:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;gap:clamp(5px,0.8vw,10px);">
           <div style="flex:0 0 58%;background:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
             <div style="padding:6px 9px;border-bottom:1px solid #E7E5E4;display:flex;justify-content:space-between;align-items:center;">
               <span style="font-size:clamp(7px,0.8vw,9px);color:#57534E;font-family:'JetBrains Mono';">‹ Today ›</span>
