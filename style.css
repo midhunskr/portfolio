@@ -3338,10 +3338,6 @@ body {
     order: -1;
   }
 
-  .sc-modal {
-    max-height: 96vh;
-  }
-
   .sc-hero-wrap {
     min-height: clamp(160px, 48vw, 280px);
     padding: clamp(20px, 4vw, 36px) clamp(14px, 4vw, 28px);
