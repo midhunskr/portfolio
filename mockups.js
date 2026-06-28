@@ -500,81 +500,227 @@ const Mockups = {
 
   losHeroComposition() {
     const S = 0.5, P = `${Math.round(100 / S)}%`;
-    const mkSidebar = (active) => /* html */`
-      <div style="width:116px;flex:0 0 116px;background:#F7F6F3;border-right:1px solid #E7E5E4;padding:11px 8px;display:flex;flex-direction:column;gap:2px;">
-        <div style="display:flex;align-items:center;gap:5px;margin-bottom:11px;">
-          <span style="width:19px;height:19px;border-radius:6px;background:#16A34A;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;font-family:'Bricolage Grotesque';">L</span>
-          <span style="font-size:11px;font-weight:600;color:#1C1917;font-family:'Bricolage Grotesque';">Life OS</span>
+
+    const sidebar = /* html */`
+      <div style="width:120px;flex:0 0 120px;background:#F7F6F3;border-right:1px solid #E7E5E4;padding:11px 8px;display:flex;flex-direction:column;gap:2px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;padding:2px 4px;">
+          <span style="width:20px;height:20px;border-radius:5px;background:#16A34A;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;font-family:'Bricolage Grotesque';">L</span>
+          <span style="font-size:12px;font-weight:600;color:#1C1917;font-family:'Bricolage Grotesque';">Life OS</span>
         </div>
-        ${['Today', 'Tasks', 'Calendar', 'Habits', 'Notes', 'Insights'].map(n => {
-          const a = n === active;
-          return `<div style="padding:5px 7px;border-radius:6px;${a ? 'background:rgba(22,163,74,0.08);' : ''}display:flex;align-items:center;gap:6px;"><span style="width:9px;height:9px;border-radius:2px;background:${a ? 'rgba(22,163,74,0.5)' : 'rgba(28,25,23,0.1)'};flex:0 0 auto;"></span><span style="font-size:11px;font-weight:${a ? 500 : 400};color:${a ? '#16A34A' : '#57534E'};font-family:'Hanken Grotesk';">${n}</span></div>`;
-        }).join('')}
+        <div style="padding:4px 7px;border-radius:6px;background:rgba(22,163,74,0.08);display:flex;align-items:center;gap:6px;">
+          <span style="width:9px;height:9px;border-radius:2px;background:rgba(22,163,74,0.5);flex:0 0 auto;"></span>
+          <span style="font-size:11px;font-weight:500;color:#16A34A;font-family:'Hanken Grotesk';">Today</span>
+        </div>
+        ${['Tasks','Calendar','Habits','Notes','Insights'].map(n => `
+          <div style="padding:4px 7px;display:flex;align-items:center;gap:6px;">
+            <span style="width:9px;height:9px;border-radius:2px;background:rgba(28,25,23,0.1);flex:0 0 auto;"></span>
+            <span style="font-size:11px;color:#57534E;font-family:'Hanken Grotesk';">${n}</span>
+          </div>`).join('')}
+        <div style="margin-top:auto;padding-top:10px;border-top:1px solid #E7E5E4;">
+          <div style="display:flex;align-items:center;gap:6px;padding:3px 4px;">
+            <span style="width:18px;height:18px;border-radius:50%;background:#16A34A;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;font-family:'Bricolage Grotesque';">M</span>
+            <span style="font-size:10px;color:#57534E;font-family:'Hanken Grotesk';">Midhun Shankar</span>
+          </div>
+        </div>
       </div>`;
+
+    const todayMain = /* html */`
+      <div style="flex:1;padding:14px;overflow:hidden;display:flex;flex-direction:column;gap:8px;background:#FAFAF9;">
+        <div style="display:flex;justify-content:space-between;align-items:start;">
+          <div>
+            <span style="font-size:8px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;margin-bottom:3px;">SATURDAY, JUNE 27</span>
+            <span style="font-size:17px;font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';letter-spacing:-0.02em;line-height:1.1;display:block;">Good evening, Midhun. Stay grounded.</span>
+          </div>
+          <span style="font-size:8px;color:#A8A29E;font-family:'JetBrains Mono';white-space:nowrap;padding-top:2px;">✦ Ask Ada</span>
+        </div>
+        <div style="background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.2);border-radius:9px;padding:9px 11px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <span style="font-size:7px;font-weight:700;color:#16A34A;font-family:'JetBrains Mono';letter-spacing:0.1em;">FOCUS TODAY</span>
+            <span style="font-size:7px;color:#57534E;font-family:'JetBrains Mono';">● In progress</span>
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#1C1917;font-family:'Bricolage Grotesque';display:block;margin-bottom:4px;">2 of 3 sessions complete.</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:7.5px;color:#57534E;font-family:'Hanken Grotesk';">2 of 3 blocks · 1h 26m deep work logged</span>
+            <span style="background:#1C1917;color:#fff;font-size:8px;font-weight:600;padding:4px 10px;border-radius:100px;font-family:'Hanken Grotesk';white-space:nowrap;">⚡ Enter focus</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+          <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:8px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;">PRIORITIES  2</span>
+              <span style="font-size:7px;color:#16A34A;font-family:'Hanken Grotesk';">Ada's picks</span>
+            </div>
+            ${[['Complete LifeOS Landing Page','high'],['Review Investor Deck','med']].map(([t,p]) => `
+              <div style="display:flex;align-items:center;gap:5px;padding:4px 0;border-bottom:1px solid rgba(28,25,23,0.04);">
+                <span style="width:9px;height:9px;border-radius:2px;border:1.5px solid #D6D3D1;flex:0 0 auto;"></span>
+                <span style="flex:1;font-size:7.5px;color:#1C1917;font-family:'Hanken Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t}</span>
+                <span style="font-size:6.5px;color:${p==='high'?'#DC2626':'#A8A29E'};background:${p==='high'?'rgba(220,38,38,0.07)':'rgba(28,25,23,0.05)'};padding:1px 4px;border-radius:3px;font-family:'JetBrains Mono';">● ${p}</span>
+              </div>`).join('')}
+          </div>
+          <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:8px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;">HOW ARE YOU</span>
+              <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';">8:27 PM</span>
+            </div>
+            <div style="display:flex;gap:5px;margin-bottom:6px;">${[['#1C1917','focused'],['rgba(28,25,23,0.12)','calm'],['#16A34A','productive'],['rgba(28,25,23,0.09)','tired'],['rgba(28,25,23,0.06)','overwhelm']].map(([c,l],i) => `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><span style="width:13px;height:13px;border-radius:50%;background:${c};border:1px solid rgba(28,25,23,0.1);display:block;${i===2?'box-shadow:0 0 0 2px rgba(22,163,74,0.35);':''}"></span><span style="font-size:5.5px;color:#78716C;font-family:'Hanken Grotesk';">${l}</span></div>`).join('')}</div>
+            <div style="display:flex;align-items:center;gap:5px;">
+              <span style="font-size:7.5px;color:#57534E;font-family:'Hanken Grotesk';">Energy</span>
+              <div style="flex:1;height:3px;background:rgba(28,25,23,0.07);border-radius:2px;overflow:hidden;"><span style="display:block;width:70%;height:100%;background:#16A34A;border-radius:2px;"></span></div>
+              <span style="font-size:8px;font-weight:600;color:#1C1917;font-family:'Hanken Grotesk';">7/10</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:1;min-height:0;">
+          <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:8px;overflow:hidden;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;">TODAY'S SCHEDULE</span>
+              <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';">Sat, Jun 27</span>
+            </div>
+            ${[['9:00 AM','Focus Block','Deep work','2h'],['11:30 AM','Team Standup','Sync','30m'],['1:00 PM','Lunch Break','Rest','1h'],['2:00 PM','Design Review','Project','1h']].map(([t,n,s,d]) => `
+              <div style="display:flex;align-items:center;gap:5px;padding:3px 0;border-bottom:1px solid rgba(28,25,23,0.04);">
+                <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';flex:0 0 44px;">${t}</span>
+                <div style="flex:1;min-width:0;"><span style="font-size:7.5px;font-weight:500;color:#1C1917;font-family:'Hanken Grotesk';display:block;white-space:nowrap;overflow:hidden;">${n}</span><span style="font-size:6.5px;color:#A8A29E;font-family:'Hanken Grotesk';">${s}</span></div>
+                <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';">${d}</span>
+              </div>`).join('')}
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:8px;flex:0 0 auto;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;">HABITS</span>
+                <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';">This week</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div><span style="font-size:8px;font-weight:500;color:#1C1917;font-family:'Hanken Grotesk';display:block;">Cycling · 3 day streak</span></div>
+                <div style="display:flex;gap:2px;margin-left:auto;">${[1,1,1,0,0].map(a=>`<span style="width:10px;height:10px;border-radius:2px;background:${a?'#16A34A':'rgba(28,25,23,0.08)'};display:block;"></span>`).join('')}</div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:8px;flex:1;">
+              <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;margin-bottom:4px;">REFLECTION · LAST 7 DAYS</span>
+              <span style="font-size:7.5px;color:#57534E;font-family:'Hanken Grotesk';display:block;margin-bottom:7px;line-height:1.4;">You're building momentum. Keep protecting your focus time.</span>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;">
+                ${[['6.5h','avg energy'],['4h 20m','deep work'],['71%','habit consistency']].map(([v,l]) => `<div><span style="font-size:12px;font-weight:700;color:#1C1917;display:block;font-family:'Bricolage Grotesque';">${v}</span><span style="font-size:5.5px;color:#A8A29E;font-family:'JetBrains Mono';">${l}</span></div>`).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
     return /* html */`
-      <div style="position:relative;width:100%;max-width:900px;height:clamp(200px,26vw,340px);">
-        <div style="position:absolute;left:-1%;top:10%;width:50%;height:76%;border-radius:12px;overflow:hidden;background:#FAFAF9;border:1px solid rgba(255,255,255,0.18);box-shadow:0 24px 64px -24px rgba(0,0,0,0.55);opacity:0.82;transform:rotate(-3deg);">
-          ${Mockups.losChrome()}
-          <div style="position:relative;height:calc(100% - 27px);overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;width:${P};height:${P};transform:scale(${S});transform-origin:top left;display:flex;">
-              ${mkSidebar('Insights')}
-              <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:9px;overflow:hidden;min-width:0;background:#FAFAF9;">
-                <span style="font-size:18px;font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';letter-spacing:-0.02em;">Insights</span>
-                <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:10px;">
-                  <span style="font-size:7px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.1em;display:block;margin-bottom:5px;">PATTERN · LAST 30 DAYS</span>
-                  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">${[['0%', 'focus'], ['—', 'energy'], ['0h', 'deep work'], ['0%', 'habits']].map(([v, l]) => `<div><span style="font-size:15px;font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';display:block;">${v}</span><span style="font-size:6px;color:#A8A29E;font-family:'JetBrains Mono';">${l}</span></div>`).join('')}</div>
-                </div>
-                <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:10px;flex:1;">
-                  <span style="font-size:7px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.1em;display:block;margin-bottom:6px;">ENERGY THROUGH THE DAY</span>
-                  <svg viewBox="0 0 100 20" style="width:100%;height:28px;overflow:visible;"><path d="M0 10 Q25 9 50 10 Q75 11 100 10" fill="none" stroke="#16A34A" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
+      <div style="position:relative;width:100%;max-width:960px;height:clamp(220px,30vw,380px);">
+
+        <!-- Left: branding + AI card -->
+        <div style="position:absolute;left:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding-right:8px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="width:clamp(20px,2.2vw,28px);height:clamp(20px,2.2vw,28px);border-radius:6px;background:#16A34A;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:clamp(10px,1.1vw,14px);color:#fff;font-weight:700;font-family:'Bricolage Grotesque';">L</span>
+              <span style="font-size:clamp(13px,1.5vw,18px);font-weight:700;color:#fff;font-family:'Bricolage Grotesque';">Life OS</span>
+            </div>
+            <p style="font-size:clamp(10px,1.2vw,14px);font-weight:700;color:#fff;font-family:'Bricolage Grotesque';line-height:1.3;margin:0 0 5px;">Your productivity.<br><span style="color:#4ADE80;">Unified.</span></p>
+            <p style="font-size:clamp(8px,0.9vw,11px);color:rgba(255,255,255,0.45);font-family:'Hanken Grotesk';line-height:1.5;margin:0 0 10px;">Plan better. Focus deeper.<br>Achieve more.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;">
+              ${['Tasks','Calendar','Habits','Notes','Insights','Ada'].map(n=>`<span style="font-size:clamp(7px,0.75vw,9px);padding:2px 7px;border-radius:100px;border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.5);font-family:'Hanken Grotesk';">${n}</span>`).join('')}
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.11);border-radius:10px;padding:8px 10px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+              <span style="font-size:clamp(8px,1vw,11px);color:#4ADE80;">✦</span>
+              <span style="font-size:clamp(8px,1vw,11px);font-weight:600;color:#fff;font-family:'Bricolage Grotesque';">AI Assistant</span>
+            </div>
+            <p style="font-size:clamp(7px,0.8vw,9px);color:rgba(255,255,255,0.5);font-family:'Hanken Grotesk';margin:0;line-height:1.5;">Your afternoon is open.<br>Want to schedule deep work?</p>
+          </div>
+        </div>
+
+        <!-- Tasks floating card -->
+        <div style="position:absolute;left:22%;top:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
+          <div style="padding:7px 9px;border-bottom:1px solid #E7E5E4;">
+            <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;">WORKSPACE</span>
+            <span style="font-size:clamp(9px,1.1vw,13px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';">Tasks</span>
+          </div>
+          <div style="padding:7px 9px;">
+            <div style="display:flex;gap:4px;margin-bottom:6px;">
+              <span style="font-size:7px;background:#1C1917;color:#fff;padding:2px 7px;border-radius:100px;font-family:'Hanken Grotesk';">Ada's picks</span>
+              <span style="font-size:7px;color:#57534E;border:1px solid #E7E5E4;padding:2px 7px;border-radius:100px;font-family:'Hanken Grotesk';">Personal</span>
+            </div>
+            <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';display:block;margin-bottom:5px;">This week · 2</span>
+            ${[['Complete LifeOS Landing Page'],['Review Investor Deck']].map(([t])=>`
+              <div style="display:flex;align-items:center;gap:5px;padding:4px 0;border-bottom:1px solid rgba(28,25,23,0.04);">
+                <span style="width:9px;height:9px;border-radius:2px;border:1.5px solid #D6D3D1;flex:0 0 auto;"></span>
+                <span style="font-size:7.5px;color:#1C1917;font-family:'Hanken Grotesk';overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${t}</span>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- Habits floating card -->
+        <div style="position:absolute;left:22%;bottom:4%;width:15%;background:#fff;border:1px solid #E7E5E4;border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
+          <div style="padding:7px 9px;border-bottom:1px solid #E7E5E4;">
+            <span style="font-size:6.5px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.08em;display:block;">PRACTICE</span>
+            <span style="font-size:clamp(9px,1.1vw,13px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';">Habits</span>
+          </div>
+          <div style="padding:7px 9px;">
+            <span style="font-size:6.5px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';display:block;margin-bottom:2px;">ACTIVE HABITS</span>
+            <span style="font-size:clamp(16px,2vw,22px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';display:block;line-height:1;">3</span>
+            <span style="font-size:7px;color:#A8A29E;font-family:'Hanken Grotesk';display:block;margin-bottom:6px;">tracked</span>
+            <div style="border-top:1px solid #E7E5E4;padding-top:6px;">
+              <span style="font-size:8px;font-weight:500;color:#1C1917;font-family:'Hanken Grotesk';display:block;">Cycling</span>
+              <span style="font-size:6.5px;color:#A8A29E;font-family:'Hanken Grotesk';display:block;margin-bottom:4px;">every day · 3 day streak</span>
+              <div style="display:flex;gap:2px;margin-bottom:4px;">${[1,1,1,0,0,0,0].map(a=>`<span style="width:clamp(9px,1vw,12px);height:clamp(9px,1vw,12px);border-radius:2px;background:${a?'#16A34A':'rgba(28,25,23,0.08)'};display:block;"></span>`).join('')}</div>
+              <div style="display:flex;align-items:baseline;gap:3px;">
+                <span style="font-size:clamp(11px,1.3vw,15px);font-weight:700;color:#1C1917;font-family:'Bricolage Grotesque';">60%</span>
+                <span style="font-size:6.5px;color:#A8A29E;font-family:'Hanken Grotesk';">consistency</span>
               </div>
+              <div style="height:3px;background:rgba(28,25,23,0.07);border-radius:2px;margin-top:4px;overflow:hidden;"><span style="display:block;width:60%;height:100%;background:#16A34A;border-radius:2px;"></span></div>
             </div>
           </div>
         </div>
-        <div style="position:absolute;right:0;top:0;bottom:0;width:68%;border-radius:14px;overflow:hidden;background:#FAFAF9;border:1px solid rgba(255,255,255,0.22);box-shadow:0 36px 90px -26px rgba(0,0,0,0.72);">
+
+        <!-- Center: main browser window -->
+        <div style="position:absolute;left:38%;top:0;bottom:0;right:22%;border-radius:12px;overflow:hidden;background:#FAFAF9;border:1px solid rgba(255,255,255,0.1);box-shadow:0 32px 80px -20px rgba(0,0,0,0.75);">
           ${Mockups.losChrome()}
-          <div style="position:relative;height:calc(100% - 27px);overflow:hidden;">
+          <div style="position:relative;height:calc(100% - 23px);overflow:hidden;">
             <div style="position:absolute;top:0;left:0;width:${P};height:${P};transform:scale(${S});transform-origin:top left;display:flex;">
-              ${mkSidebar('Today')}
-              <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden;min-width:0;background:#FAFAF9;">
-                <div>
-                  <span style="font-size:9px;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.1em;display:block;margin-bottom:5px;">FRIDAY, JUNE 26</span>
-                  <span style="font-size:20px;font-weight:700;color:#1C1917;letter-spacing:-0.025em;display:block;font-family:'Bricolage Grotesque';line-height:1.1;">Good afternoon, Midhun.<br><span style="color:#57534E;">Stay grounded.</span></span>
-                </div>
-                <div style="background:rgba(22,163,74,0.07);border:1px solid rgba(22,163,74,0.2);border-radius:10px;padding:10px 12px;">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
-                    <span style="font-size:8px;font-weight:700;color:#16A34A;font-family:'JetBrains Mono';letter-spacing:0.12em;">FOCUS TODAY</span>
-                    <span style="font-size:8px;color:#A8A29E;font-family:'JetBrains Mono';">● Not started</span>
-                  </div>
-                  <span style="font-size:11px;color:#57534E;font-family:'Hanken Grotesk';display:block;margin-bottom:6px;">No focus blocks scheduled yet.</span>
-                  <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:8px;color:#A8A29E;font-family:'JetBrains Mono';">0 of 3 blocks · 0m deep work</span>
-                    <span style="background:#1C1917;color:#fff;font-size:8px;font-weight:600;padding:4px 9px;border-radius:100px;font-family:'Hanken Grotesk';white-space:nowrap;">⚡ Enter focus</span>
-                  </div>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;min-height:0;">
-                  <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:9px;">
-                    <span style="font-size:7px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.1em;display:block;margin-bottom:5px;">PRIORITIES</span>
-                    <span style="font-size:10px;color:#A8A29E;font-family:'Hanken Grotesk';">No tasks yet.</span>
-                  </div>
-                  <div style="background:#fff;border:1px solid #E7E5E4;border-radius:8px;padding:9px;">
-                    <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
-                      <span style="font-size:7px;font-weight:700;color:#A8A29E;font-family:'JetBrains Mono';letter-spacing:0.1em;">HOW ARE YOU</span>
-                      <span style="font-size:7px;color:#A8A29E;font-family:'JetBrains Mono';">1:11 PM</span>
-                    </div>
-                    <div style="display:flex;gap:4px;margin-bottom:5px;">${[0, 1, 2, 3, 4].map((_, i) => `<span style="width:14px;height:14px;border-radius:50%;background:${i === 0 ? '#1C1917' : 'rgba(28,25,23,0.1)'};border:1px solid rgba(28,25,23,0.12);display:block;"></span>`).join('')}</div>
-                    <div style="display:flex;align-items:center;gap:5px;">
-                      <span style="font-size:8px;color:#57534E;font-family:'Hanken Grotesk';">Energy</span>
-                      <div style="flex:1;height:3px;background:rgba(28,25,23,0.07);border-radius:2px;overflow:hidden;"><span style="display:block;width:70%;height:100%;background:#16A34A;border-radius:2px;"></span></div>
-                      <span style="font-size:8px;font-weight:600;color:#1C1917;font-family:'Hanken Grotesk';">7/10</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ${sidebar}
+              ${todayMain}
             </div>
           </div>
         </div>
+
+        <!-- Right: calendar + notes -->
+        <div style="position:absolute;right:0;top:0;bottom:0;width:21%;display:flex;flex-direction:column;gap:clamp(5px,0.8vw,10px);">
+          <div style="flex:0 0 58%;background:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.35);">
+            <div style="padding:6px 9px;border-bottom:1px solid #E7E5E4;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:clamp(7px,0.8vw,9px);color:#57534E;font-family:'JetBrains Mono';">‹ Today ›</span>
+              <div style="display:flex;gap:3px;">
+                <span style="font-size:6.5px;padding:2px 6px;border-radius:100px;background:#1C1917;color:#fff;font-family:'Hanken Grotesk';">Day</span>
+                <span style="font-size:6.5px;padding:2px 6px;border-radius:100px;border:1px solid #E7E5E4;color:#57534E;font-family:'Hanken Grotesk';">Week</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #E7E5E4;">
+              ${[['Wed','24'],['Thu','25'],['Fri','26']].map(([d,n],i)=>`
+                <div style="padding:4px;text-align:center;${i===2?'background:rgba(22,163,74,0.05);':''}">
+                  <span style="font-size:6px;color:#A8A29E;display:block;font-family:'JetBrains Mono';">${d}</span>
+                  <span style="font-size:clamp(10px,1.4vw,15px);font-weight:${i===2?700:500};color:${i===2?'#16A34A':'#1C1917'};font-family:'Bricolage Grotesque';">${n}</span>
+                </div>`).join('')}
+            </div>
+            <div style="padding:6px 8px;display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+              ${[['Focus Block','9:00–11:00','#16A34A','rgba(22,163,74,0.08)'],['Team Standup','11:30–12:00','#1C1917','rgba(28,25,23,0.04)'],['Lunch Break','1:00–2:00','#1C1917','rgba(28,25,23,0.04)'],['Design Review','2:00–3:00','#1C1917','rgba(28,25,23,0.04)']].map(([n,t,tc,bg])=>`
+                <div style="background:${bg};border-radius:6px;padding:4px 7px;border-left:2px solid ${tc};">
+                  <span style="font-size:clamp(7px,0.85vw,9px);font-weight:500;color:#1C1917;font-family:'Hanken Grotesk';display:block;">${n}</span>
+                  <span style="font-size:6px;color:#A8A29E;font-family:'JetBrains Mono';">${t}</span>
+                </div>`).join('')}
+            </div>
+          </div>
+          <div style="flex:1;background:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.28);">
+            <div style="padding:6px 9px;border-bottom:1px solid #E7E5E4;">
+              <span style="font-size:clamp(7px,0.8vw,9px);color:#A8A29E;font-family:'Hanken Grotesk';">Search notes...</span>
+            </div>
+            <div style="padding:7px 9px;">
+              <span style="font-size:clamp(7.5px,0.9vw,9.5px);font-weight:600;color:#1C1917;font-family:'Hanken Grotesk';display:block;margin-bottom:2px;">LifeOS ideas</span>
+              <span style="font-size:6px;color:#A8A29E;font-family:'JetBrains Mono';display:block;margin-bottom:5px;">about 2 hours ago</span>
+              ${['• New AI habit coach','• Weekly insights','• Smart focus timer'].map(l=>`<span style="font-size:clamp(7px,0.85vw,8.5px);color:#57534E;font-family:'Hanken Grotesk';display:block;line-height:1.6;">${l}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+
       </div>`;
   },
 
