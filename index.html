@@ -1295,7 +1295,7 @@ class Component extends DCLogic {
     document.getElementById('sc-close').addEventListener('click',()=>this.closeShowcaseModal());
     document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'&&el.classList.contains('sc-open')) this.closeShowcaseModal(); });
     window.addEventListener('popstate',(e)=>{ if(window.innerWidth<=640&&!e.state?.scModal&&el.classList.contains('sc-open')) this.closeShowcaseModal(true); });
-    window.addEventListener('pageshow',(e)=>{ if(e.persisted&&el.classList.contains('sc-open')) this._applyMobileModalStyles(el); });
+    window.addEventListener('pageshow',(e)=>{ if(e.persisted&&el.classList.contains('sc-open')&&el.dataset.mobileCompact) this._applyMobileModalStyles(el); });
     this._cleanup.push(()=>{ if(el.parentNode) el.parentNode.removeChild(el); });
   }
 
@@ -1339,18 +1339,25 @@ class Component extends DCLogic {
       </div>`;
 
     document.body.style.overflow='hidden';
-    this._applyMobileModalStyles(overlay);
+    if (window.innerWidth <= 640) {
+      overlay.dataset.mobileCompact = '1';
+      this._applyMobileModalStyles(overlay);
+    }
     overlay.classList.add('sc-open');
     if (window.innerWidth <= 640) history.pushState({ scModal: true }, '', location.pathname + location.search + '#sc-modal');
     requestAnimationFrame(()=>{ const b=document.getElementById('sc-body'); if(b) b.scrollTop=0; });
   }
 
   _applyMobileModalStyles(overlay) {
-    if (window.innerWidth > 640) return;
-    overlay.style.padding = '52px 10px 10px';
-    overlay.style.alignItems = 'flex-end';
     const modal = overlay.querySelector('.sc-modal');
-    if (modal) modal.style.borderRadius = '20px';
+    if (!modal) return;
+    modal.style.position = 'absolute';
+    modal.style.top = '52px';
+    modal.style.bottom = '10px';
+    modal.style.left = '10px';
+    modal.style.right = '10px';
+    modal.style.maxHeight = 'none';
+    modal.style.borderRadius = '20px';
     const body = overlay.querySelector('.sc-body');
     if (body) body.style.borderRadius = '0 0 20px 20px';
   }
@@ -1359,10 +1366,11 @@ class Component extends DCLogic {
     const overlay = document.getElementById('sc-overlay');
     if (!overlay) return;
     overlay.classList.remove('sc-open');
+    delete overlay.dataset.mobileCompact;
     overlay.style.padding = '';
     overlay.style.alignItems = '';
     const modal = overlay.querySelector('.sc-modal');
-    if (modal) modal.style.borderRadius = '';
+    if (modal) { modal.style.position=''; modal.style.top=''; modal.style.bottom=''; modal.style.left=''; modal.style.right=''; modal.style.maxHeight=''; modal.style.borderRadius=''; }
     const body = overlay.querySelector('.sc-body');
     if (body) body.style.borderRadius = '';
     document.body.style.overflow='';
