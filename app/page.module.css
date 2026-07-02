@@ -1,0 +1,6 @@
+/* Root wrapper — mirrors the original .root-wrap (overflow-x guard + base
+   colors, which now live on <body> via globals). Layout added in later phases. */
+.root {
+  position: relative;
+  overflow-x: hidden;
+}

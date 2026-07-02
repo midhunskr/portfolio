@@ -1,0 +1,16 @@
+/* Capabilities section module — Phase 1 placeholder only. */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  background: var(--color-cream-deep);
+  border-top: 1px solid var(--ink-a07);
+  border-bottom: 1px solid var(--ink-a07);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}

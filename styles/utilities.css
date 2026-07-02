@@ -1,0 +1,69 @@
+/* =============================================================
+   SHARED GLOBAL UTILITIES — deliberately tiny (<15 classes).
+   Only patterns reused in 5+ places where per-module duplication
+   would cause visual drift live here. Everything else is scoped
+   to a component module.
+   ============================================================= */
+
+/* ── Containers ─────────────────────────────────────── */
+.container-1000 {
+  max-width: var(--container-sm);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.container-1100 {
+  max-width: var(--container-md);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.container-1240 {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  width: 100%;
+  position: relative;
+}
+
+.container-1300 {
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* ── Universal section padding ──────────────────────── */
+.section-pad {
+  position: relative;
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+/* ── Eyebrow (mono uppercase label) ─────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+/* ── Inline accent words ────────────────────────────── */
+.accent-green {
+  color: var(--color-green);
+}
+
+.accent-amber {
+  color: var(--color-amber);
+}
+
+/* ── Accessibility helper ───────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

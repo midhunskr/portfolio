@@ -1,0 +1,16 @@
+/* Orbit system module — Phase 1 placeholder only. */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 466px;
+  aspect-ratio: 1 / 1;
+  border: 1px dashed var(--ink-a15);
+  border-radius: var(--radius-3xl);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
