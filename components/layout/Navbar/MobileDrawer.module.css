@@ -1,0 +1,48 @@
+/* Mobile drawer — ported from the reference .nav-mobile. Opacity and
+   pointer-events are handled by Framer's mount/unmount, so only the resting
+   appearance lives here. */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  background: rgba(244, 240, 232, 0.97);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  padding: 10px 24px;
+  border-radius: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.link:hover {
+  background: var(--ink-a07);
+}
+
+.cta {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  color: var(--color-cream);
+  background: var(--color-ink);
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  transition: background 0.2s ease;
+}
+
+.cta:hover {
+  background: var(--color-green);
+}

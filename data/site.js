@@ -31,11 +31,18 @@
 
 /** @type {SiteContent} */
 export const site = {
-  name: '',
-  logoInitial: '',
+  name: 'Midhun Shankar',
+  logoInitial: 'M',
+  // email / location / socials / contactPath are migrated in Phase 8.
   email: '',
   location: '',
-  nav: [],
+  // Nav content is migrated here in Phase 2 (Navbar). Mirrors the reference.
+  nav: [
+    { label: 'Work', href: '#work' },
+    { label: 'Capabilities', href: '#capabilities' },
+    { label: 'Process', href: '#process' },
+    { label: "Let's talk", href: '#contact', cta: true },
+  ],
   socials: [],
   contactPath: [],
 };

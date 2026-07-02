@@ -1,5 +1,6 @@
 import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import '@/styles/globals.css';
+import { CursorFollower } from '@/components/layout/CursorFollower/CursorFollower';
 
 /* next/font loads the three families and exposes each as a CSS variable,
    which styles/tokens.css maps onto --font-display / --font-sans / --font-mono. */
@@ -73,7 +74,10 @@ export default function RootLayout({ children }) {
   const fontVars = `${bricolage.variable} ${hanken.variable} ${jbMono.variable}`;
   return (
     <html lang="en" className={fontVars}>
-      <body>{children}</body>
+      <body>
+        <CursorFollower />
+        {children}
+      </body>
     </html>
   );
 }

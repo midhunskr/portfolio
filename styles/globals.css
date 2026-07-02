@@ -18,6 +18,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Offset in-page anchor jumps so section tops clear the fixed navbar. */
+  scroll-padding-top: 90px;
 }
 
 body {

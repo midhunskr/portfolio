@@ -1,13 +1,24 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 /**
  * Reports the user's reduced-motion preference. Gates ambient loops and
  * parallax in JS (the CSS kill-switch lives in styles/animations.css).
  *
- * Phase 1: shell only. Logic implemented in Phase 2.
+ * SSR-safe: starts false.
  * @returns {boolean}
  */
 export function usePrefersReducedMotion() {
-  // TODO(Phase 2): matchMedia('(prefers-reduced-motion: reduce)').
-  return false;
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  return reduced;
 }

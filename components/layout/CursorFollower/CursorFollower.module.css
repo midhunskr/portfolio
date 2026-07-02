@@ -1,0 +1,44 @@
+/* Cursor infrastructure — base styles ported from the reference cursor-dot /
+   cursor ring. JS writes `transform` (position) and toggles [data-grown].
+   Polish (dot fade on grow, etc.) is deferred to a later phase. */
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: var(--color-green);
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1.5px solid var(--green-a45);
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  transition:
+    width 0.25s var(--ease-signature),
+    height 0.25s var(--ease-signature),
+    margin 0.25s var(--ease-signature),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.ring[data-grown] {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-color: rgba(18, 136, 106, 0.7);
+  background: rgba(18, 136, 106, 0.06);
+}

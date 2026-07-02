@@ -1,13 +1,160 @@
-/* Navbar module — Phase 1 placeholder only. */
-.placeholder {
+/* Navbar — ported from the reference .nav-bar and related rules.
+   Condensed state (data-condensed="true") animates background / blur /
+   shadow / padding via CSS transition, matching the original .45s feel. */
+
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--section-pad-x);
+  background: transparent;
+  transition:
+    background 0.45s ease,
+    backdrop-filter 0.45s ease,
+    box-shadow 0.45s ease,
+    padding 0.45s ease;
+}
+
+.navBar[data-condensed='true'] {
+  background: rgba(244, 240, 232, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--ink-a07);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logoBadge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--color-ink);
+  color: var(--color-cream);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 64px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  border-bottom: 1px solid var(--ink-a07);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.logoName {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+/* ── Desktop link pill group ──────────────────────────── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white-a60);
+  border: 1px solid var(--ink-a07);
+  border-radius: var(--radius-full);
+  padding: 5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navLink:hover {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Active section indication — subtle, within the existing palette:
+   darken the label to ink (no persistent pill) so it reads as "you are here"
+   without diverging from the reference's resting appearance. */
+.navLinkActive {
+  color: var(--color-ink);
+}
+
+.navCta {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-ink);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.navCta:hover {
+  background: var(--color-green);
+}
+
+/* ── Hamburger (hidden until 880px) ───────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: var(--white-a70);
+  border: 1px solid var(--ink-a10);
+  border-radius: 10px;
+  padding: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.25s ease;
+}
+
+.bar {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.35s var(--ease-signature), opacity 0.25s ease;
+}
+
+.hamburgerOpen .bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.hamburgerOpen .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburgerOpen .bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Breakpoint: 880px — hide desktop links, show hamburger ── */
+@media (max-width: 880px) {
+  .navLinks {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
