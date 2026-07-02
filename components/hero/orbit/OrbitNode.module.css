@@ -1,0 +1,39 @@
+/* Orbit node — ported from the reference .orbit-node-wrap / .node-* rules.
+   Positioned by top-left corner (no centering transform), matching the
+   reference. Ring pulse animation is deferred to Phase 3B.2. */
+
+.wrap {
+  position: absolute;
+  z-index: 2;
+  will-change: transform;
+}
+
+.dotWrap {
+  position: relative;
+  display: block;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.innerGreen {
+  background: var(--color-green);
+}
+
+.innerAmber {
+  background: var(--color-amber);
+}
+
+.ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.4px solid rgba(18, 136, 106, 0.5);
+}
+
+.ringAmber {
+  border-color: rgba(204, 134, 54, 0.5);
+}

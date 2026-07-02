@@ -1,0 +1,22 @@
+/* Orbit rings SVG — ported from the reference .svg-orbit. Ring spin and
+   signal dash animation are deferred to Phase 3B.2; the group nesting and
+   transform-origin are kept so rotation can attach later. */
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ringTilt {
+  transform-origin: 50px 50px;
+}
+
+.ringSpin,
+.ringSpinRev {
+  transform-origin: 50px 50px;
+}

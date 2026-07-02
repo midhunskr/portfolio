@@ -1,16 +1,51 @@
-/* Orbit system module — Phase 1 placeholder only. */
-.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Orbit stage — ported from the reference .eco-stage and ambient halos.
+   The halo breathing animation (haloBreath) is deferred to Phase 3B.2;
+   here the halos are static glow layers for depth. */
+
+.stage {
+  position: relative;
   width: 100%;
   max-width: 466px;
+  margin: 0 0 0 auto;
   aspect-ratio: 1 / 1;
-  border: 1px dashed var(--ink-a15);
-  border-radius: var(--radius-3xl);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-text-faint);
+}
+
+.haloGreen {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 42%,
+    rgba(18, 136, 106, 0.26),
+    rgba(18, 136, 106, 0) 66%
+  );
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+.haloAmber {
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 74% 78%,
+    rgba(204, 134, 54, 0.14),
+    transparent 56%
+  );
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+/* ── Responsive: stage sizing (matches reference eco-stage) ── */
+@media (max-width: 1024px) {
+  .stage {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    max-width: 340px;
+  }
 }
