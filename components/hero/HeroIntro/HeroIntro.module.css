@@ -1,0 +1,191 @@
+/* Hero intro — ported from the reference .hero-badge / .hero-h1 / .hero-para /
+   .hero-cta-* / .hero-stats-* rules. Values via tokens. */
+
+.intro {
+  position: relative;
+}
+
+/* ── Badge ────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white-a70);
+  border: 1px solid var(--ink-a08);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  margin-bottom: clamp(26px, 4vh, 40px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.badgeDotWrap {
+  position: relative;
+  display: flex;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green);
+}
+
+.badgeDotPulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-green);
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+
+.badgeText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+/* ── Headline ─────────────────────────────────────────── */
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6.6vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+}
+
+.h1Line {
+  display: block;
+}
+
+/* ── Paragraph ────────────────────────────────────────── */
+.para {
+  margin-top: clamp(24px, 3.5vh, 34px);
+  max-width: 46ch;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* ── CTA row ──────────────────────────────────────────── */
+.ctaRow {
+  margin-top: clamp(30px, 4.5vh, 42px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px 26px;
+  border-radius: var(--radius-full);
+  transition: background 0.35s ease, transform 0.35s ease;
+  will-change: transform;
+}
+
+.ctaPrimary:hover {
+  background: var(--color-green);
+}
+
+.ctaArrow {
+  font-size: 17px;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--ink-a18);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.ctaSecondary:hover {
+  background: var(--white-a70);
+  border-color: rgba(27, 26, 22, 0.3);
+}
+
+/* ── Stats row ────────────────────────────────────────── */
+.statsRow {
+  margin-top: clamp(34px, 5vh, 52px);
+  display: flex;
+  gap: clamp(22px, 3vw, 46px);
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  color: var(--color-ink);
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+  margin-top: 3px;
+}
+
+.statDivider {
+  width: 1px;
+  background: var(--ink-a12);
+}
+
+/* ── Responsive: 640px — centered single-column intro ─── */
+@media (max-width: 640px) {
+  .intro {
+    text-align: center;
+  }
+
+  .badge {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .badgeDotWrap {
+    margin-top: 2px;
+  }
+
+  .para {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ctaRow {
+    justify-content: center;
+  }
+
+  .statsRow {
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+
+  .statDivider {
+    display: none;
+  }
+}
+
+/* ── Responsive: 480px — headline scale-down ──────────── */
+@media (max-width: 480px) {
+  .h1 {
+    font-size: clamp(2.2rem, 9vw, 2.6rem);
+  }
+}
