@@ -1,8 +1,11 @@
 'use client';
 
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './JourneySection.module.css';
 import { journeySteps } from '@/data/journey';
 import { cx } from '@/lib/utils';
+import { revealVariants, REVEAL_VIEWPORT } from '@/lib/motion';
 
 const EYEBROW_TONE = {
   green: styles.eyebrowGreen,
@@ -18,14 +21,33 @@ const NODE_VARIANT = {
 
 /**
  * Journey timeline — 5 alternating milestone cards on a vertical track.
- * Phase 4A: structure only (no scroll-linked fill, no reveal animations).
+ * Phase 4B adds: scroll-linked fill line + per-row scroll reveals.
+ *
+ * Fill formula (ported from reference initJourney):
+ *   progress = clamp(0, 1, (vh*0.6 - rect.top) / (rect.height * 0.8))
+ * Implemented via useScroll + useTransform rather than a raw rAF loop.
  */
 export function JourneySection() {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start 0.6', 'end 0.2'],
+  });
+
+  const fillHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
   return (
-    <section id="journey" className={styles.section}>
+    <section id="journey" className={styles.section} ref={sectionRef}>
       <div className={styles.container}>
-        {/* Section header */}
-        <div className={styles.header}>
+        {/* Section header — reveals on scroll */}
+        <motion.div
+          className={styles.header}
+          variants={revealVariants('up')}
+          initial="hidden"
+          whileInView="shown"
+          viewport={REVEAL_VIEWPORT}
+        >
           <div className={styles.eyebrowRow}>
             <span className={styles.eyebrowNum}>01</span>
             <span className={styles.eyebrowLabel}>The Journey</span>
@@ -38,16 +60,23 @@ export function JourneySection() {
             Each stage didn&apos;t replace the last — it stacked on top of it.
             That&apos;s how one person ended up owning the entire arc.
           </p>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className={styles.timelineWrap}>
           <div className={styles.track} />
-          <div className={styles.fill} />
+          <motion.div className={styles.fill} style={{ height: fillHeight }} />
 
           <div className={styles.steps}>
             {journeySteps.map((step, i) => (
-              <div key={i} className={styles.row}>
+              <motion.div
+                key={i}
+                className={styles.row}
+                variants={revealVariants('up')}
+                initial="hidden"
+                whileInView="shown"
+                viewport={REVEAL_VIEWPORT}
+              >
                 {step.side === 'left' ? (
                   <>
                     <div className={styles.leftPane}>
@@ -65,7 +94,7 @@ export function JourneySection() {
                     </div>
                   </>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
