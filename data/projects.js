@@ -71,7 +71,7 @@ export const projects = [
       'AI Workflows',
     ],
     thumbnail: {
-      src: img('lifeos', 'thumbnail.png'),
+      src: img('lifeos', 'thumbnail.svg'),
       alt: 'LifeOS dashboard overview',
       width: 800,
       height: 600,
@@ -192,7 +192,7 @@ export const projects = [
     },
     tags: ['UX Design', 'Responsive', 'SEO', 'Conversion UI'],
     thumbnail: {
-      src: img('finx', 'thumbnail.png'),
+      src: img('finx', 'thumbnail.svg'),
       alt: 'FinX credit card landing page',
       width: 800,
       height: 600,
@@ -221,7 +221,7 @@ export const projects = [
       'Data Visualization',
     ],
     thumbnail: {
-      src: img('skillgap-navigator', 'thumbnail.png'),
+      src: img('skillgap-navigator', 'thumbnail.svg'),
       alt: 'SkillGap Navigator interface',
       width: 800,
       height: 600,
