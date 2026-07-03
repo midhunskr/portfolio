@@ -8,7 +8,7 @@ import styles from './PortraitFrame.module.css';
  */
 export function PortraitFrame() {
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} data-depth="0.7">
       <div className={styles.glowRing} aria-hidden="true" />
       <div className={styles.circle}>
         <Image

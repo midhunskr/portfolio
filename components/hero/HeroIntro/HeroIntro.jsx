@@ -3,14 +3,21 @@
 import { motion } from 'framer-motion';
 import styles from './HeroIntro.module.css';
 import { heroReveal } from '@/lib/motion';
+import { useMagnetic } from '@/hooks/useMagnetic';
+import { usePointerFine } from '@/hooks/usePointerFine';
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 
 /**
  * Hero intro — the left text column, at visual parity with the reference.
  * Each element reveals on mount with the reference's index-based stagger
- * (heroReveal). Reduced-motion is honored globally via the MotionConfig in
- * HeroSection. The orbit stage (right column) belongs to Phase 3B.
+ * (heroReveal). The primary CTA is magnetic (reference data-magnetic). Reduced
+ * motion is honored via MotionConfig (reveals) and the magnetic enable-gate.
  */
 export function HeroIntro() {
+  const fine = usePointerFine();
+  const reduced = usePrefersReducedMotion();
+  const magneticRef = useMagnetic({ enabled: fine && !reduced });
+
   return (
     <div className={styles.intro}>
       <motion.div
@@ -73,7 +80,7 @@ export function HeroIntro() {
         initial="hidden"
         animate="shown"
       >
-        <a href="#work" data-cursor className={styles.ctaPrimary}>
+        <a ref={magneticRef} href="#work" data-cursor className={styles.ctaPrimary}>
           View selected work <span className={styles.ctaArrow}>→</span>
         </a>
         <a href="#contact" data-cursor className={styles.ctaSecondary}>

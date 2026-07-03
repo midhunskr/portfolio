@@ -140,6 +140,7 @@ export function FloatingCards() {
         title="Product Design"
         floatDuration={6.4}
         floatDelay={0}
+        depth={2.6}
         skills={[
           { icon: SearchIcon, label: 'User Research' },
           { icon: PenIcon, label: 'UI / UX Design' },
@@ -155,6 +156,7 @@ export function FloatingCards() {
         title="AI Automation"
         floatDuration={7.1}
         floatDelay={-1.5}
+        depth={2.9}
         skills={[
           { icon: WorkflowIcon, label: 'Workflow Design' },
           { icon: SettingsIcon, label: 'n8n · Make' },
@@ -170,6 +172,7 @@ export function FloatingCards() {
         title="Development"
         floatDuration={6.8}
         floatDelay={-0.8}
+        depth={2.7}
         skills={[
           { icon: CodeIcon, label: 'Next.js' },
           { icon: AtomIcon, label: 'React' },
@@ -185,6 +188,7 @@ export function FloatingCards() {
         titleTools
         floatDuration={7.4}
         floatDelay={-2.1}
+        depth={2.4}
         tools={[
           { kind: 'figma', label: 'Fi', title: 'Figma' },
           { kind: 'next', label: 'N', title: 'Next.js' },

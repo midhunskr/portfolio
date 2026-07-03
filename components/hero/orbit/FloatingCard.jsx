@@ -26,6 +26,7 @@ const CHIP = {
  * @param {boolean} [props.titleTools]
  * @param {number} props.floatDuration
  * @param {number} props.floatDelay
+ * @param {number} props.depth Parallax depth factor.
  * @param {{ icon: import('react').ReactNode, label: string }[]} [props.skills]
  * @param {{ kind: keyof typeof CHIP, label?: string, node?: import('react').ReactNode, title?: string }[]} [props.tools]
  */
@@ -38,11 +39,12 @@ export function FloatingCard({
   titleTools,
   floatDuration,
   floatDelay,
+  depth,
   skills,
   tools,
 }) {
   return (
-    <div className={cx(styles.ecoFc, CORNER[corner])}>
+    <div className={cx(styles.ecoFc, CORNER[corner])} data-depth={depth}>
       <div
         className={styles.card}
         style={{ animation: `floatY ${floatDuration}s ease-in-out infinite ${floatDelay}s` }}

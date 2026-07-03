@@ -9,7 +9,8 @@ import { signalPaths } from './orbitConfig';
 export function OrbitRings() {
   return (
     <svg viewBox="0 0 100 100" className={styles.svg} aria-hidden="true">
-      <g className={styles.ringTilt}>
+      <g className={styles.ringTilt} data-orbit-tilt>
+
         <g className={styles.ringSpin} style={{ animation: 'ringspin 95s linear infinite' }}>
           <ellipse
             cx="50"

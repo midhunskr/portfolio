@@ -9,7 +9,7 @@ import styles from './AnchorPill.module.css';
 export function AnchorPill() {
   return (
     <div className={styles.outer}>
-      <div className={styles.anchor}>
+      <div className={styles.anchor} data-depth="1.3">
         <div className={styles.pill}>
           <span className={styles.icon}>✦</span>
           <div className={styles.text}>
