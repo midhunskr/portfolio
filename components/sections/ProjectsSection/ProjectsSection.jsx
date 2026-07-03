@@ -5,8 +5,6 @@ import Image from 'next/image';
 import styles from './ProjectsSection.module.css';
 import { projects } from '@/data/projects';
 
-const isSvg = (src) => src.endsWith('.svg');
-
 const NARRATIVE_STEPS = [
   { key: 'challenge', label: 'Challenge' },
   { key: 'process', label: 'Process' },
@@ -38,7 +36,7 @@ export function ProjectsSection() {
             </h2>
           </div>
           <p className={styles.hint}>
-            Click any project to open the full case study →
+            Expand a project to explore the story behind it →
           </p>
         </div>
 
@@ -96,6 +94,7 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
         className={styles.toggle}
         role="button"
         tabIndex={0}
+        aria-expanded={isOpen}
         onClick={() => onToggle(project.slug)}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -117,7 +116,7 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
             width={project.thumbnail.width}
             height={project.thumbnail.height}
             sizes="(max-width: 640px) 0px, 230px"
-            unoptimized={isSvg(project.thumbnail.src)}
+            unoptimized={project.thumbnail.src.endsWith('.svg')}
           />
         </div>
         <span className={isOpen ? styles.plusBtnOpen : styles.plusBtn}>+</span>
@@ -134,7 +133,7 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
                 width={project.thumbnail.width}
                 height={project.thumbnail.height}
                 sizes="(max-width: 760px) 100vw, 500px"
-                unoptimized={isSvg(project.thumbnail.src)}
+                unoptimized={project.thumbnail.src.endsWith('.svg')}
               />
             </div>
             <div className={styles.tagsRow}>

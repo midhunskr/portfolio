@@ -121,6 +121,7 @@
 .rowThumb {
   flex: 0 0 auto;
   width: clamp(150px, 18vw, 230px);
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--ink-a07);
@@ -496,8 +497,3 @@
   }
 }
 
-@media (max-width: 480px) {
-  .projName {
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
-  }
-}
