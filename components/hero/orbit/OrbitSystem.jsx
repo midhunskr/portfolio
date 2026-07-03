@@ -16,7 +16,11 @@ import { orbitNodes } from './orbitConfig';
 export function OrbitSystem() {
   return (
     <div className={styles.stage}>
-      <div className={styles.haloGreen} aria-hidden="true" />
+      <div
+        className={styles.haloGreen}
+        style={{ animation: 'haloBreath 8s ease-in-out infinite' }}
+        aria-hidden="true"
+      />
       <div className={styles.haloAmber} aria-hidden="true" />
 
       <OrbitRings />

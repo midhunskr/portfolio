@@ -16,7 +16,13 @@
   transform-origin: 50px 50px;
 }
 
+/* Outer dashed ring rotates; inner green ring counter-rotates (95s / 72s
+   linear). The `animation` shorthand is applied inline in the JSX so it
+   references the GLOBAL @keyframes in styles/animations.css — CSS Modules
+   would otherwise localize the keyframe name and break the reference.
+   transform-origin / will-change stay here (not localized). */
 .ringSpin,
 .ringSpinRev {
   transform-origin: 50px 50px;
+  will-change: transform;
 }

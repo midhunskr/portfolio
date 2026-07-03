@@ -21,6 +21,10 @@
   );
   filter: blur(16px);
   pointer-events: none;
+  /* Ambient glow pulse (opacity + scale) — `animation` applied inline in the
+     JSX to reference the GLOBAL haloBreath keyframe. Amber halo stays static,
+     matching the reference. */
+  will-change: transform, opacity;
 }
 
 .haloAmber {

@@ -10,7 +10,7 @@ export function OrbitRings() {
   return (
     <svg viewBox="0 0 100 100" className={styles.svg} aria-hidden="true">
       <g className={styles.ringTilt}>
-        <g className={styles.ringSpin}>
+        <g className={styles.ringSpin} style={{ animation: 'ringspin 95s linear infinite' }}>
           <ellipse
             cx="50"
             cy="50"
@@ -22,7 +22,10 @@ export function OrbitRings() {
             strokeDasharray="0.5 2.1"
           />
         </g>
-        <g className={styles.ringSpinRev}>
+        <g
+          className={styles.ringSpinRev}
+          style={{ animation: 'ringspinrev 72s linear infinite' }}
+        >
           <ellipse
             cx="50"
             cy="50"
@@ -53,6 +56,7 @@ export function OrbitRings() {
             stroke={p.color}
             strokeWidth="0.42"
             strokeDasharray="1.6 2.6"
+            style={{ animation: `signal ${p.duration}s linear infinite` }}
           />
         ))}
       </g>
