@@ -1,0 +1,74 @@
+/* Anchor pill — ported from the reference .anchor-pill-outer / .anchor-pill. */
+
+.outer {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* Parallax depth attaches here in Phase 3B.2B.2. */
+.anchor {
+  will-change: transform;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius-full);
+  padding: 8px;
+  box-shadow: 0 24px 46px -20px rgba(27, 26, 22, 0.42);
+  white-space: nowrap;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-size: 15px;
+}
+
+.text {
+  padding-right: 12px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive (matches reference) ──────────────────── */
+@media (max-width: 1024px) {
+  .outer {
+    white-space: normal;
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  .outer {
+    bottom: -14%;
+  }
+}

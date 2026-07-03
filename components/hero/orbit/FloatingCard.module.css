@@ -1,0 +1,265 @@
+/* Floating capability cards — ported from the reference .eco-fc / .fc-* rules.
+   Positioning + glass + typography + icons + shadows + layering.
+   The floatY bob is applied inline in the JSX (references the GLOBAL keyframe,
+   same pattern as Phase 3B.2A). Parallax (data-orbit) is Phase 3B.2B.2. */
+
+.ecoFc {
+  position: absolute;
+  z-index: 4;
+  will-change: transform;
+}
+
+.tl {
+  top: -3%;
+  left: -8%;
+  width: clamp(140px, 27%, 170px);
+}
+
+.tr {
+  top: 2%;
+  right: -9%;
+  width: clamp(140px, 27%, 170px);
+}
+
+.br {
+  bottom: 11%;
+  right: -7%;
+  width: clamp(140px, 27%, 170px);
+}
+
+.bl {
+  bottom: 7%;
+  left: -9%;
+  width: clamp(144px, 28%, 176px);
+}
+
+/* ── Glass card ───────────────────────────────────────── */
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  padding: 13px 15px;
+  box-shadow:
+    0 24px 46px -22px rgba(27, 26, 22, 0.4),
+    0 2px 8px -5px rgba(27, 26, 22, 0.22);
+}
+
+/* ── Status dot ───────────────────────────────────────── */
+.statusDot {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.statusGreen {
+  background: var(--color-green);
+  box-shadow: 0 0 0 3px rgba(18, 136, 106, 0.16);
+}
+
+.statusAmber {
+  background: var(--color-amber);
+  box-shadow: 0 0 0 3px rgba(204, 134, 54, 0.18);
+}
+
+/* ── Icon chip ────────────────────────────────────────── */
+.iconWrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 11px;
+}
+
+.iconGreen {
+  background: rgba(18, 136, 106, 0.12);
+  color: var(--color-green);
+}
+
+.iconAmber {
+  background: rgba(204, 134, 54, 0.14);
+  color: var(--color-amber);
+}
+
+.iconDark {
+  background: rgba(27, 26, 22, 0.07);
+  color: var(--color-ink);
+}
+
+/* ── Titles ───────────────────────────────────────────── */
+.cardTitle,
+.cardTitleTools {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+.cardTitle {
+  margin-bottom: 8px;
+}
+
+.cardTitleTools {
+  margin-bottom: 10px;
+}
+
+/* ── Skill list ───────────────────────────────────────── */
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skillItem {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.skillIcon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Tools row + chips ────────────────────────────────── */
+.toolsRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chipLight {
+  background: var(--color-cream);
+  border: 1px solid var(--ink-a08);
+}
+
+.chipDark {
+  background: var(--color-ink);
+}
+
+.chipAmber {
+  background: rgba(204, 134, 54, 0.14);
+}
+
+.chipFigma {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-green);
+}
+
+.chipNext {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+}
+
+.chipTw {
+  color: var(--color-green);
+}
+
+.chipN8n {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--color-amber);
+}
+
+.chipMore {
+  font-size: 14px;
+  color: var(--color-text-faint);
+  letter-spacing: 1px;
+}
+
+/* ── Responsive: 1024px — compact cards, tools row hidden ── */
+@media (max-width: 1024px) {
+  .toolsRow {
+    display: none;
+  }
+
+  .card {
+    padding: 10px 12px;
+  }
+
+  .cardTitle,
+  .cardTitleTools {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .iconWrap {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    margin-bottom: 5px;
+  }
+
+  .statusDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .ecoFc {
+    width: clamp(100px, 24%, 130px);
+  }
+
+  .skillList {
+    gap: 4px;
+  }
+
+  .skillItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+  }
+
+  .skillIcon {
+    flex: 0 0 auto;
+    opacity: 0.65;
+  }
+}
+
+/* ── Responsive: 640px — pull cards to edges ──────────── */
+@media (max-width: 640px) {
+  .ecoFc {
+    width: clamp(90px, 36%, 120px);
+  }
+
+  .tl {
+    top: 2%;
+    left: -1%;
+  }
+
+  .tr {
+    top: 2%;
+    right: -1%;
+  }
+
+  .br {
+    bottom: 12%;
+    right: -1%;
+  }
+
+  .bl {
+    bottom: 12%;
+    left: -1%;
+  }
+}

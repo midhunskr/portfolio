@@ -4,14 +4,17 @@ import styles from './OrbitSystem.module.css';
 import { OrbitRings } from './OrbitRings';
 import { OrbitNode } from './OrbitNode';
 import { PortraitFrame } from './PortraitFrame';
+import { FloatingCards } from './FloatingCards';
+import { AnchorPill } from './AnchorPill';
 import { orbitNodes } from './orbitConfig';
 
 /**
- * Orbit stage — geometry and layering only (Phase 3B.1).
+ * Orbit stage — composition, layering and ambient motion.
  * Layers, back to front (matching the reference z-index order):
- *   halos (glow) → rings + connection lines (z1) → nodes (z2) → portrait (z3).
- * Floating cards, anchor pill, signals, parallax, hover and ambient motion
- * all belong to Phase 3B.2.
+ *   halos (glow) → rings + connection lines (z1) → nodes (z2) →
+ *   portrait (z3) → floating cards (z4) → anchor pill (z5).
+ * Mouse parallax, hover, cursor reactions and magnetic behavior belong to
+ * Phase 3B.2B.2.
  */
 export function OrbitSystem() {
   return (
@@ -30,6 +33,9 @@ export function OrbitSystem() {
       ))}
 
       <PortraitFrame />
+
+      <FloatingCards />
+      <AnchorPill />
     </div>
   );
 }
