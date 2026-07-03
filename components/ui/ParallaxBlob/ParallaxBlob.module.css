@@ -1,0 +1,5 @@
+.blob {
+  pointer-events: none;
+  will-change: transform;
+  border-radius: 50%;
+}

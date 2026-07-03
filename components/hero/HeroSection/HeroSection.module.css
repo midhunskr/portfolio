@@ -10,7 +10,33 @@
   overflow: hidden;
 }
 
-/* Static dot-grid background (parallax blobs belong to Phase 3B). */
+.blobGreen {
+  position: absolute;
+  top: -10%;
+  left: -6%;
+  width: min(48vw, 560px);
+  height: min(48vw, 560px);
+  background: radial-gradient(
+    circle at center,
+    rgba(18, 136, 106, 0.14),
+    rgba(18, 136, 106, 0) 68%
+  );
+}
+
+.blobAmber {
+  position: absolute;
+  right: -4%;
+  bottom: -12%;
+  width: min(42vw, 520px);
+  height: min(42vw, 520px);
+  background: radial-gradient(
+    circle at center,
+    rgba(204, 134, 54, 0.13),
+    rgba(204, 134, 54, 0) 68%
+  );
+}
+
+/* Static dot-grid background. */
 .dotGrid {
   position: absolute;
   inset: 0;

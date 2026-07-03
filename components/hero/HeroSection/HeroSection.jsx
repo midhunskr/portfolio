@@ -4,6 +4,7 @@ import { MotionConfig, motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
 import { HeroIntro } from '@/components/hero/HeroIntro/HeroIntro';
 import { OrbitSystem } from '@/components/hero/orbit/OrbitSystem';
+import { ParallaxBlob } from '@/components/ui/ParallaxBlob/ParallaxBlob';
 import { heroReveal } from '@/lib/motion';
 
 /**
@@ -18,14 +19,21 @@ import { heroReveal } from '@/lib/motion';
 export function HeroSection() {
   return (
     <section id="top" className={styles.hero}>
+      <ParallaxBlob className={styles.blobGreen} factor={-0.06} />
+      <ParallaxBlob className={styles.blobAmber} factor={0.05} />
       <div className={styles.dotGrid} aria-hidden="true" />
 
       <MotionConfig reducedMotion="user">
         <div className={styles.grid}>
           <HeroIntro />
-          <div className={styles.portraitWrap}>
+          <motion.div
+            className={styles.portraitWrap}
+            variants={heroReveal(7)}
+            initial="hidden"
+            animate="shown"
+          >
             <OrbitSystem />
-          </div>
+          </motion.div>
         </div>
 
         <div className={styles.scrollHint}>

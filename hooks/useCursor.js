@@ -51,8 +51,13 @@ export function useCursor({ dotRef, ringRef, enabled = true }) {
       const target = /** @type {Element} */ (e.target);
       const interactive =
         target && target.closest && target.closest('a, button, [data-cursor]');
-      if (interactive) ring.setAttribute('data-grown', '');
-      else ring.removeAttribute('data-grown');
+      if (interactive) {
+        ring.setAttribute('data-grown', '');
+        dot.style.opacity = '0';
+      } else {
+        ring.removeAttribute('data-grown');
+        dot.style.opacity = '1';
+      }
     };
 
     window.addEventListener('mousemove', onMove, { passive: true });
