@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CapabilitiesSection.module.css';
 import { capabilities } from '@/data/capabilities';
 import { cx } from '@/lib/utils';
+import { revealVariants, REVEAL_VIEWPORT, panelFade } from '@/lib/motion';
 
 const ICON_TONE = {
   green: styles.iconGreen,
@@ -25,11 +27,18 @@ const ARROW_TONE = {
 
 export function CapabilitiesSection() {
   const [activeKey, setActiveKey] = useState('design');
+  const activeCap = capabilities.find((c) => c.key === activeKey);
 
   return (
     <section id="capabilities" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          variants={revealVariants('up')}
+          initial="hidden"
+          whileInView="shown"
+          viewport={REVEAL_VIEWPORT}
+        >
           <div className={styles.eyebrowRow}>
             <span className={styles.eyebrowNum}>02</span>
             <span className={styles.eyebrowLabel}>What I Do</span>
@@ -38,9 +47,15 @@ export function CapabilitiesSection() {
             Three capabilities that <span className="accent-green">compound</span>{' '}
             when one person holds them.
           </h2>
-        </div>
+        </motion.div>
 
-        <div className={styles.tabs}>
+        <motion.div
+          className={styles.tabs}
+          variants={revealVariants('up')}
+          initial="hidden"
+          whileInView="shown"
+          viewport={REVEAL_VIEWPORT}
+        >
           {capabilities.map((cap) => (
             <button
               key={cap.key}
@@ -50,55 +65,61 @@ export function CapabilitiesSection() {
               {cap.tabLabel}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         <div className={styles.panelsWrap}>
-          {capabilities.map((cap) => (
-            <div
-              key={cap.key}
-              className={activeKey === cap.key ? styles.panelGrid : styles.panelHidden}
-            >
-              <div className={styles.cardMain}>
-                <div className={styles.cardHeader}>
-                  <span className={cx(styles.cardIcon, ICON_TONE[cap.iconTone])}>
-                    {cap.icon}
-                  </span>
-                  <div className={styles.cardH3}>{cap.title}</div>
+          <AnimatePresence mode="wait">
+            {activeCap && (
+              <motion.div
+                key={activeCap.key}
+                className={styles.panelGrid}
+                variants={panelFade}
+                initial="hidden"
+                animate="shown"
+                exit="exit"
+              >
+                <div className={styles.cardMain}>
+                  <div className={styles.cardHeader}>
+                    <span className={cx(styles.cardIcon, ICON_TONE[activeCap.iconTone])}>
+                      {activeCap.icon}
+                    </span>
+                    <div className={styles.cardH3}>{activeCap.title}</div>
+                  </div>
+                  <p className={styles.cardPara}>{activeCap.description}</p>
+                  <div className={styles.skillsLabel}>{activeCap.skillsLabel}</div>
+                  <div className={styles.tags}>
+                    {activeCap.tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <p className={styles.cardPara}>{cap.description}</p>
-                <div className={styles.skillsLabel}>{cap.skillsLabel}</div>
-                <div className={styles.tags}>
-                  {cap.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
+
+                <div className={styles.sideCol}>
+                  {activeCap.side.map((s, i) => (
+                    <div key={i} className={styles.sideCard}>
+                      <div className={cx(styles.sideEyebrow, SIDE_EYEBROW_TONE[s.tone])}>
+                        {s.eyebrow}
+                      </div>
+                      {s.steps ? (
+                        <div className={styles.processSteps}>
+                          {s.steps.map((step, j) => (
+                            <span key={j}>
+                              {j > 0 && (
+                                <span className={ARROW_TONE[s.tone]}>→ </span>
+                              )}
+                              {step}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className={styles.seenText}>{s.text}</div>
+                      )}
+                    </div>
                   ))}
                 </div>
-              </div>
-
-              <div className={styles.sideCol}>
-                {cap.side.map((s, i) => (
-                  <div key={i} className={styles.sideCard}>
-                    <div className={cx(styles.sideEyebrow, SIDE_EYEBROW_TONE[s.tone])}>
-                      {s.eyebrow}
-                    </div>
-                    {s.steps ? (
-                      <div className={styles.processSteps}>
-                        {s.steps.map((step, j) => (
-                          <span key={j}>
-                            {j > 0 && (
-                              <span className={ARROW_TONE[s.tone]}>→ </span>
-                            )}
-                            {step}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className={styles.seenText}>{s.text}</div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
