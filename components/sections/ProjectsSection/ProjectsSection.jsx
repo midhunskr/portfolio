@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import styles from './ProjectsSection.module.css';
 import { projects } from '@/data/projects';
 import { ShowcaseFrame } from '@/components/ui/ShowcaseFrame/ShowcaseFrame';
+import { ShowcaseModal } from '@/components/ui/ShowcaseModal/ShowcaseModal';
 
 const NARRATIVE_STEPS = [
   { key: 'challenge', label: 'Challenge' },
@@ -54,7 +55,7 @@ export function ProjectsSection() {
       </div>
 
       {modalProject && (
-        <ShowcasePlaceholder
+        <ShowcaseModal
           project={modalProject}
           onClose={() => setModalProject(null)}
         />
@@ -171,70 +172,6 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
             ↗
           </button>
         )}
-      </div>
-    </div>
-  );
-}
-
-function ShowcasePlaceholder({ project, onClose }) {
-  const { showcase, name, category } = project;
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
-
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
-  return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button
-          className={styles.modalClose}
-          onClick={onClose}
-          aria-label="Close showcase"
-        >
-          ×
-        </button>
-        <div className={styles.modalBody}>
-          <div className={styles.modalPlaceholder}>
-            <h2>{name}</h2>
-            <p>{category}</p>
-            <p style={{ marginTop: 16 }}>{showcase.summary}</p>
-
-            {showcase.tech && (
-              <div className={styles.modalTech}>
-                <div className={styles.modalTechLabel}>Built with</div>
-                <div className={styles.modalTechChips}>
-                  {showcase.tech.map((t) => (
-                    <span key={t} className={styles.modalTechChip}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {showcase.liveUrl && (
-              <a
-                href={showcase.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.modalLiveBtn}
-              >
-                Open Live Site <span>↗</span>
-              </a>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );
