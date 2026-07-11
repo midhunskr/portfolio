@@ -5,41 +5,42 @@
 ```
 public/images/projects/
 ├── lifeos/
-│   ├── thumbnail.png          Card-row preview
-│   ├── hero.png               Showcase modal header
-│   ├── feature-dashboard.png  Feature section image
-│   ├── feature-tasks.png
-│   ├── feature-calendar.png
-│   ├── feature-habits.png
-│   ├── feature-ada.png
-│   └── feature-insights.png
+│   ├── thumbnail.webp          Card-row preview (1200×900)
+│   ├── showcase-hero.webp      Showcase modal header (1600×1200)
+│   ├── modal-hero.webp         Alternate hero — not currently referenced
+│   ├── feature-dashboard.webp  Feature section image
+│   ├── feature-tasks.webp
+│   ├── feature-calendar.webp
+│   ├── feature-habits.webp
+│   ├── feature-ada.webp
+│   └── feature-insights.webp
 ├── finx/
-│   └── thumbnail.png          Card-row preview
+│   └── thumbnail.svg           Placeholder
 └── skillgap-navigator/
-    └── thumbnail.png          Card-row preview
+    └── thumbnail.svg           Placeholder
 ```
 
 ## Image Types
 
-| Type | Usage | Dimensions | Format |
-|------|-------|------------|--------|
-| `thumbnail.png` | Project card row preview | 800 × 600 | PNG or WebP |
-| `hero.png` | Showcase modal header band | 1400 × 800 | PNG or WebP |
-| `feature-*.png` | Showcase feature sections | 1200 × 800 | PNG or WebP |
+| Type | Usage | Dimensions | Aspect Ratio | Format |
+|------|-------|------------|--------------|--------|
+| `thumbnail` | Project card row preview | 1200 × 900 | 4:3 | WebP (SVG placeholder) |
+| `showcase-hero` | Showcase modal header | 1600 × 1200 | 4:3 | WebP |
+| `feature-*` | Showcase feature sections | 1200 × 1200 | 1:1 | WebP |
 
 ## File Naming
 
 - **Slug-based folders**: folder name matches the project `slug` in `data/projects.js`
-- **Lowercase, hyphenated**: `feature-dashboard.png`, not `FeatureDashboard.png`
-- **Descriptive suffix**: `feature-{name}.png` where `{name}` matches the feature purpose
+- **Lowercase, hyphenated**: `feature-dashboard.webp`, not `FeatureDashboard.webp`
+- **Descriptive suffix**: `feature-{name}.webp` where `{name}` matches the feature purpose
 - **No spaces or special characters**
 
 ## Adding a New Project
 
 1. Create a folder: `public/images/projects/{slug}/`
-2. Add at minimum: `thumbnail.png` (800 × 600)
+2. Add at minimum: `thumbnail.webp` (1200 × 900)
 3. Add entry to `data/projects.js` — use the `img(slug, name)` helper for paths
-4. If the project has a showcase modal, add `hero.png` and `feature-*.png` files
+4. If the project has a showcase, add `showcase-hero.webp` and `feature-*.webp` files
 
 ## Replacing an Image
 
@@ -63,5 +64,4 @@ This means:
 
 ## Supported Formats
 
-PNG is the default. WebP is supported — just change the extension in the data file.
-For best quality at reasonable size, use PNG for screenshots with text, WebP for photos.
+WebP is the default for real assets. SVG placeholders are used for projects without final screenshots.

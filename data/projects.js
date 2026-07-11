@@ -7,7 +7,7 @@
  * stays consistent and greppable.
  *
  * @typedef {Object} ProjectImage
- * @property {string} src     Path relative to /public, e.g. "/images/projects/lifeos/thumbnail.png"
+ * @property {string} src     Path relative to /public, e.g. "/images/projects/lifeos/thumbnail.webp"
  * @property {string} alt     Accessible description.
  * @property {number} width   Intrinsic width in px (for Next Image).
  * @property {number} height  Intrinsic height in px (for Next Image).
@@ -71,20 +71,20 @@ export const projects = [
       'AI Workflows',
     ],
     thumbnail: {
-      src: img('lifeos', 'thumbnail.svg'),
+      src: img('lifeos', 'thumbnail.webp'),
       alt: 'LifeOS dashboard overview',
-      width: 800,
-      height: 600,
+      width: 1200,
+      height: 900,
     },
     showcase: {
       liveUrl: 'https://www.getlifeos.cloud/',
       summary:
         'LifeOS is a full-stack personal productivity platform built to unify goals, tasks, habits, focus sessions and reflection in one calm workspace. Designed end-to-end — from research to shipped product.',
       hero: {
-        src: img('lifeos', 'hero.png'),
+        src: img('lifeos', 'showcase-hero.webp'),
         alt: 'LifeOS hero composition',
-        width: 1400,
-        height: 800,
+        width: 1600,
+        height: 1200,
       },
       features: [
         {
@@ -93,10 +93,10 @@ export const projects = [
           description:
             'Your entire day at a glance. Focus blocks, priorities, mood tracking, habits and quick capture — all wired together so nothing slips through.',
           image: {
-            src: img('lifeos', 'feature-dashboard.png'),
+            src: img('lifeos', 'feature-dashboard.webp'),
             alt: 'LifeOS dashboard screen',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
         {
@@ -105,10 +105,10 @@ export const projects = [
           description:
             'List, Kanban and Timeline views for organising and prioritising work with energy level estimates and time budgets.',
           image: {
-            src: img('lifeos', 'feature-tasks.png'),
+            src: img('lifeos', 'feature-tasks.webp'),
             alt: 'LifeOS task management screen',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
         {
@@ -117,10 +117,10 @@ export const projects = [
           description:
             'Weekly planning with focus blocks, meetings and rest breaks. Schedule balance shown at a glance so every week stays intentional.',
           image: {
-            src: img('lifeos', 'feature-calendar.png'),
+            src: img('lifeos', 'feature-calendar.webp'),
             alt: 'LifeOS calendar screen',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
         {
@@ -129,10 +129,10 @@ export const projects = [
           description:
             'Build consistency with daily habits, streak tracking and weekly completion rates. Small routines, compounded over time.',
           image: {
-            src: img('lifeos', 'feature-habits.png'),
+            src: img('lifeos', 'feature-habits.webp'),
             alt: 'LifeOS habit tracking screen',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
         {
@@ -141,10 +141,10 @@ export const projects = [
           description:
             'Ada lives inside LifeOS. Summarise your day, plan tomorrow, find focus blocks or capture a thought — all in a single conversational interface.',
           image: {
-            src: img('lifeos', 'feature-ada.png'),
+            src: img('lifeos', 'feature-ada.webp'),
             alt: 'LifeOS AI assistant Ada',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
         {
@@ -153,10 +153,10 @@ export const projects = [
           description:
             'Understand your energy patterns, mood distribution, burnout signals and habit consistency. Data that actually shapes how you plan.',
           image: {
-            src: img('lifeos', 'feature-insights.png'),
+            src: img('lifeos', 'feature-insights.webp'),
             alt: 'LifeOS insights dashboard',
             width: 1200,
-            height: 800,
+            height: 1200,
           },
         },
       ],

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import styles from './ProjectsSection.module.css';
 import { projects } from '@/data/projects';
+import { ShowcaseFrame } from '@/components/ui/ShowcaseFrame/ShowcaseFrame';
 
 const NARRATIVE_STEPS = [
   { key: 'challenge', label: 'Challenge' },
@@ -109,16 +109,11 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
           <h3 className={styles.projName}>{project.name}</h3>
           <p className={styles.projTagline}>{project.tagline}</p>
         </div>
-        <div className={styles.rowThumb}>
-          <Image
-            src={project.thumbnail.src}
-            alt={project.thumbnail.alt}
-            width={project.thumbnail.width}
-            height={project.thumbnail.height}
-            sizes="(max-width: 640px) 0px, 230px"
-            unoptimized={project.thumbnail.src.endsWith('.svg')}
-          />
-        </div>
+        <ShowcaseFrame
+          image={project.thumbnail}
+          sizes="(max-width: 640px) 0px, 230px"
+          className={styles.rowThumb}
+        />
         <span className={isOpen ? styles.plusBtnOpen : styles.plusBtn}>+</span>
       </div>
 
@@ -126,16 +121,11 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
         <div className={styles.bodyGrid}>
           <div className={styles.previewCol}>
             <div className={styles.previewLabel}>Product preview</div>
-            <div className={styles.previewFrame}>
-              <Image
-                src={project.thumbnail.src}
-                alt={project.thumbnail.alt}
-                width={project.thumbnail.width}
-                height={project.thumbnail.height}
-                sizes="(max-width: 760px) 100vw, 500px"
-                unoptimized={project.thumbnail.src.endsWith('.svg')}
-              />
-            </div>
+            <ShowcaseFrame
+              image={project.thumbnail}
+              sizes="(max-width: 760px) 100vw, 500px"
+              className={styles.previewFrame}
+            />
             <div className={styles.tagsRow}>
               {project.tags.map((tag) => (
                 <span key={tag} className={styles.tag}>
