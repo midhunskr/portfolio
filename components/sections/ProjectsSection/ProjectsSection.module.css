@@ -135,7 +135,7 @@
    independent of CSS Module bundle order. Targets the imgWrap structurally
    (direct child div) rather than by hashed class name. */
 .rowThumb.rowThumb {
-  padding: clamp(8px, 1.4vw, 14px);
+  padding: clamp(12px, 1.8vw, 18px);
   border-radius: var(--radius-lg);
 }
 
