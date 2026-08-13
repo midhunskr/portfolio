@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './ShowcaseFrame.module.css';
 
-export function ShowcaseFrame({ image, sizes, className }) {
+export function ShowcaseFrame({ image, sizes, className, priority }) {
   const isSvg = image.src.endsWith('.svg');
 
   return (
@@ -13,6 +13,7 @@ export function ShowcaseFrame({ image, sizes, className }) {
         height={image.height}
         sizes={sizes}
         unoptimized={isSvg}
+        priority={priority}
       />
     </div>
   );

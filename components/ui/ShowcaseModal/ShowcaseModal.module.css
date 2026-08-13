@@ -1,5 +1,4 @@
-/* ShowcaseModal — ported from reference .sc-* rules.
-   Reusable across all projects with showcase data. */
+/* ShowcaseModal — reusable across all projects with showcase data. */
 
 /* ── Overlay ─────────────────────────────────────────── */
 .overlay {
@@ -13,17 +12,21 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.open {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .closing {
   opacity: 0;
   pointer-events: none;
-}
-
-.closing .modal {
-  transform: scale(0.94) translateY(18px);
-  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Modal panel ─────────────────────────────────────── */
@@ -39,6 +42,22 @@
   flex-direction: column;
   box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform: scale(0.94) translateY(18px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.open .modal {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  transition: transform 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closing .modal {
+  transform: scale(0.94) translateY(18px);
+  opacity: 0;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -174,70 +193,18 @@
   max-width: 60ch;
 }
 
-/* ── Features ────────────────────────────────────────── */
-.features {
+/* ── Showcase gallery ────────────────────────────────── */
+.gallery {
   display: flex;
   flex-direction: column;
-  gap: clamp(60px, 9vw, 110px);
+  gap: clamp(24px, 4vw, 40px);
   padding-bottom: clamp(60px, 8vh, 100px);
   border-bottom: 1px solid var(--ink-a08);
   margin-bottom: clamp(44px, 6vh, 72px);
 }
 
-.feat {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(28px, 4vw, 64px);
-  align-items: center;
-}
-
-.featAlt {
-  composes: feat;
-  direction: rtl;
-}
-
-.featAlt > * {
-  direction: ltr;
-}
-
-.featText {
-  /* no extra styles needed — inherits from grid cell */
-}
-
-.featEyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-green);
-  margin-bottom: 14px;
-}
-
-.featTitle {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
-  letter-spacing: -0.02em;
-  line-height: 1.04;
-  color: var(--color-ink);
-  margin-bottom: 16px;
-}
-
-.featDesc {
-  font-size: 15px;
-  line-height: 1.68;
-  color: var(--color-text-muted);
-}
-
-.featImage {
-  box-shadow: 0 30px 68px -28px rgba(27, 26, 22, 0.38);
-  padding: clamp(14px, 2vw, 22px);
-  background: radial-gradient(
-      circle at 30% 20%,
-      rgba(18, 136, 106, 0.07),
-      transparent 58%
-    ),
-    var(--color-cream-deep);
+.galleryFrame {
+  box-shadow: 0 20px 52px -20px rgba(27, 26, 22, 0.32);
 }
 
 /* ── Tech stack ──────────────────────────────────────── */
@@ -325,21 +292,6 @@
 
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 760px) {
-  .feat,
-  .featAlt {
-    grid-template-columns: 1fr;
-    direction: ltr;
-    gap: clamp(20px, 4vw, 32px);
-  }
-
-  .featAlt > * {
-    direction: ltr;
-  }
-
-  .featImage {
-    order: -1;
-  }
-
   .heroWrap {
     min-height: clamp(160px, 48vw, 280px);
     padding: clamp(20px, 4vw, 36px) clamp(14px, 4vw, 28px);
@@ -354,17 +306,21 @@
 
   .modal {
     border-radius: 20px;
-    max-height: none;
+    max-height: 88vh;
+    transform: translateY(48px);
+    opacity: 0;
+  }
+
+  .open .modal {
+    transform: translateY(0);
+  }
+
+  .closing .modal {
+    transform: translateY(48px);
   }
 
   .body {
     border-radius: 0 0 20px 20px;
-  }
-
-  .close {
-    background: rgba(27, 26, 22, 0.08);
-    border-color: rgba(27, 26, 22, 0.12);
-    color: var(--color-ink);
   }
 }
 
@@ -372,10 +328,6 @@
   .inner {
     padding-left: 16px;
     padding-right: 16px;
-  }
-
-  .features {
-    gap: clamp(44px, 12vw, 68px);
   }
 
   .infoTitle {

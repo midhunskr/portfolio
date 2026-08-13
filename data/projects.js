@@ -6,8 +6,13 @@
  * Helper `img(slug, name)` builds the path so every reference
  * stays consistent and greppable.
  *
+ * Asset structure per project:
+ *   thumbnail.webp      — card-row preview + expanded accordion
+ *   modal-hero.webp     — showcase modal header
+ *   showcase-01..04.webp — walkthrough images inside modal
+ *
  * @typedef {Object} ProjectImage
- * @property {string} src     Path relative to /public, e.g. "/images/projects/lifeos/thumbnail.webp"
+ * @property {string} src     Path relative to /public.
  * @property {string} alt     Accessible description.
  * @property {number} width   Intrinsic width in px (for Next Image).
  * @property {number} height  Intrinsic height in px (for Next Image).
@@ -18,17 +23,11 @@
  * @property {string} solution
  * @property {string} outcome
  *
- * @typedef {Object} ShowcaseFeature
- * @property {string} num         Two-digit ordinal, e.g. "01".
- * @property {string} title
- * @property {string} description
- * @property {ProjectImage} image
- *
  * @typedef {Object} Showcase
  * @property {string} [liveUrl]
  * @property {string} summary
- * @property {ProjectImage} hero       Hero image for the showcase modal header.
- * @property {ShowcaseFeature[]} features
+ * @property {ProjectImage} hero           Modal header image.
+ * @property {ProjectImage[]} images       Walkthrough showcase images.
  * @property {string[]} tech
  *
  * @typedef {Object} Project
@@ -39,7 +38,7 @@
  * @property {string} tagline
  * @property {ProjectNarrative} narrative
  * @property {string[]} tags
- * @property {ProjectImage} thumbnail  Card-row preview image.
+ * @property {ProjectImage} thumbnail  Card-row preview image (reused in expanded accordion).
  * @property {Showcase} [showcase]     Full case-study modal (only for deep projects).
  */
 
@@ -73,91 +72,43 @@ export const projects = [
     thumbnail: {
       src: img('lifeos', 'thumbnail.webp'),
       alt: 'LifeOS dashboard overview',
-      width: 1200,
-      height: 900,
+      width: 1448,
+      height: 1086,
     },
     showcase: {
       liveUrl: 'https://www.getlifeos.cloud/',
       summary:
         'LifeOS is a full-stack personal productivity platform built to unify goals, tasks, habits, focus sessions and reflection in one calm workspace. Designed end-to-end — from research to shipped product.',
       hero: {
-        src: img('lifeos', 'showcase-hero.webp'),
+        src: img('lifeos', 'modal-hero.webp'),
         alt: 'LifeOS hero composition',
-        width: 1600,
-        height: 1200,
+        width: 1448,
+        height: 1086,
       },
-      features: [
+      images: [
         {
-          num: '01',
-          title: 'Dashboard',
-          description:
-            'Your entire day at a glance. Focus blocks, priorities, mood tracking, habits and quick capture — all wired together so nothing slips through.',
-          image: {
-            src: img('lifeos', 'feature-dashboard.webp'),
-            alt: 'LifeOS dashboard screen',
-            width: 1200,
-            height: 1200,
-          },
+          src: img('lifeos', 'showcase-01.webp'),
+          alt: 'LifeOS navigation and workspace layout',
+          width: 1448,
+          height: 1086,
         },
         {
-          num: '02',
-          title: 'Task Management',
-          description:
-            'List, Kanban and Timeline views for organising and prioritising work with energy level estimates and time budgets.',
-          image: {
-            src: img('lifeos', 'feature-tasks.webp'),
-            alt: 'LifeOS task management screen',
-            width: 1200,
-            height: 1200,
-          },
+          src: img('lifeos', 'showcase-02.webp'),
+          alt: 'LifeOS task priorities and daily planning',
+          width: 1536,
+          height: 1024,
         },
         {
-          num: '03',
-          title: 'Calendar',
-          description:
-            'Weekly planning with focus blocks, meetings and rest breaks. Schedule balance shown at a glance so every week stays intentional.',
-          image: {
-            src: img('lifeos', 'feature-calendar.webp'),
-            alt: 'LifeOS calendar screen',
-            width: 1200,
-            height: 1200,
-          },
+          src: img('lifeos', 'showcase-03.webp'),
+          alt: 'LifeOS calendar and schedule view',
+          width: 1448,
+          height: 1086,
         },
         {
-          num: '04',
-          title: 'Habit Tracking',
-          description:
-            'Build consistency with daily habits, streak tracking and weekly completion rates. Small routines, compounded over time.',
-          image: {
-            src: img('lifeos', 'feature-habits.webp'),
-            alt: 'LifeOS habit tracking screen',
-            width: 1200,
-            height: 1200,
-          },
-        },
-        {
-          num: '05',
-          title: 'Ada — AI Assistant',
-          description:
-            'Ada lives inside LifeOS. Summarise your day, plan tomorrow, find focus blocks or capture a thought — all in a single conversational interface.',
-          image: {
-            src: img('lifeos', 'feature-ada.webp'),
-            alt: 'LifeOS AI assistant Ada',
-            width: 1200,
-            height: 1200,
-          },
-        },
-        {
-          num: '06',
-          title: 'Insights',
-          description:
-            'Understand your energy patterns, mood distribution, burnout signals and habit consistency. Data that actually shapes how you plan.',
-          image: {
-            src: img('lifeos', 'feature-insights.webp'),
-            alt: 'LifeOS insights dashboard',
-            width: 1200,
-            height: 1200,
-          },
+          src: img('lifeos', 'showcase-04.webp'),
+          alt: 'LifeOS habit tracking and analytics',
+          width: 1448,
+          height: 1086,
         },
       ],
       tech: [
