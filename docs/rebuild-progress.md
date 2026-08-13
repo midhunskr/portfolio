@@ -1387,3 +1387,73 @@ The Hero is at **near-complete parity**. Layout, typography, colors, spacing, or
 ## Recommendation
 
 Three fixes, all low-effort: blobs + scroll parallax (#1), orbit entrance reveal (#2), cursor dot hide (#3). #1 and #2 are Medium and worth doing before Phase 4 since #1's blob/scroll-parallax system is shared by later sections. None are blockers. No fixes implemented — awaiting your direction on whether to address these now or fold them into a later pass.
+---
+---
+
+# RESUME POINT — Phase 6D.1: Projects Walkthrough Refinement
+
+**Status: Complete. Do not continue into another phase after this — this is the resume point for the next session.**
+
+## Where things stand
+
+Phase 6 (Projects) is in refinement. Phase 6D established the new image architecture (thumbnail + modal-hero + showcase-01..04, all WebP, no feature-* images). Phase 6D.1 (this entry) restored the storytelling and premium visual treatment that were lost during the 6D gallery migration.
+
+## What changed in 6D.1
+
+**1. Walkthrough storytelling restored**
+`data/projects.js` — `showcase.images` entries are no longer bare `ProjectImage` objects. Each is now a `WalkthroughSection`:
+```js
+{ eyebrow, title, description, image }
+```
+LifeOS has 4 sections: Navigation, Priorities, Calendar, Habits & Insights — each with real copy, not placeholder text.
+
+`ShowcaseModal.jsx` renders each section as eyebrow → large title → description paragraph → `ShowcaseFrame(image)`, stacked vertically with generous spacing (`clamp(72px, 10vw, 120px)` between sections). This is a single-column case-study walkthrough, not a feature grid and not a plain image gallery.
+
+**2. Premium image container restored — via the shared component, not duplicated CSS**
+`components/ui/ShowcaseFrame/ShowcaseFrame.module.css` — the base `.frame` class was upgraded:
+- `border-radius: var(--radius-xl)` (20px, up from 16px)
+- `border: 1px solid var(--ink-a12)` (thicker/more visible than the old `ink-a07`)
+- soft radial-gradient surface background (green tint at 30%/20%) over `--color-cream-deep`
+- layered shadow: large soft drop shadow (`0 30px 68px -28px`) + `inset 0 1px 0 rgba(255,255,255,0.6)` (the light inner stroke that gives the "lifted" look)
+
+Because `ShowcaseFrame` is the single reusable component, **every usage benefits automatically**: modal walkthrough images, the accordion row thumbnail, and the expanded accordion preview all picked up the premium look with zero duplicated CSS. Verified in-browser: `previewFrame` and `rowThumb` both compute `border-radius: 20px` and the new layered box-shadow post-change.
+
+**3. Modal hero explicitly pinned — not modified**
+The task required the hero container to stay exactly as it was. Since `ShowcaseFrame` is shared, upgrading its base style would have changed the hero too. Fix: `.heroFrame` in `ShowcaseModal.module.css` now explicitly re-pins the *old* frame values (`border-radius: var(--radius-lg)` /16px, `border: 1px solid var(--ink-a07)`, `background: var(--color-cream-deep)`, single box-shadow, no inset stroke) so it overrides the new base and stays visually identical. Verified via computed styles: heroFrame radius 16px / border 0.07 alpha / single shadow — unchanged from pre-refinement.
+
+**4. Visual consistency**
+Spacing hierarchy inside each walkthrough section, measured: eyebrow→title 14px, title→description 18px, description→image ~39px (fluid clamp). Typography reuses the portfolio's existing scale (`--font-mono` eyebrow, `--font-display` title, `--font-mono`/body description) — no new type tokens introduced.
+
+## Image architecture (unchanged — do not modify)
+
+```
+public/images/projects/lifeos/
+├── thumbnail.webp      (accordion row + expanded preview, via ShowcaseFrame)
+├── modal-hero.webp     (modal header, via ShowcaseFrame, pinned styling)
+├── showcase-01.webp    (walkthrough section 1 — Navigation)
+├── showcase-02.webp    (walkthrough section 2 — Priorities)
+├── showcase-03.webp    (walkthrough section 3 — Calendar)
+└── showcase-04.webp    (walkthrough section 4 — Habits & Insights)
+```
+
+FinX and SkillGap Navigator still use SVG placeholders — no showcase data yet.
+
+## Verification performed
+
+- **Desktop**: 4 walkthrough sections render with eyebrow/title/description/image in order; premium frame styling confirmed via computed styles (radius, border, shadow, background) on both walkthrough images and hero (hero unchanged, walkthrough upgraded).
+- **Tablet (768×1024)**: modal `max-height` correctly computes to 88vh (901.12px); 4 sections present.
+- **Mobile (375×812)**: bottom-sheet modal, `max-height` 88vh (714.56px), walkthrough gap tightens per the 480px breakpoint, mobile back-button history (`#sc-modal` hash) pushes on open and clears on close.
+- **No console errors** at any breakpoint.
+- **No regressions**: Hero, Journey, and Capabilities files were not touched this session — only `data/projects.js`, `ShowcaseModal.jsx`, `ShowcaseModal.module.css`, and `ShowcaseFrame.module.css` changed.
+- **Production build**: `npm run build` compiles successfully, all routes prerender as static content, no type/lint errors.
+
+## Files changed this session (6D.1)
+
+- `data/projects.js` — `Showcase.images` typedef changed from `ProjectImage[]` to `WalkthroughSection[]`; LifeOS showcase content rewritten with eyebrow/title/description per section.
+- `components/ui/ShowcaseModal/ShowcaseModal.jsx` — gallery mapping replaced with walkthrough section rendering.
+- `components/ui/ShowcaseModal/ShowcaseModal.module.css` — `.gallery`/`.galleryFrame` replaced with `.walkthrough`/`.walkSection`/`.walkEyebrow`/`.walkTitle`/`.walkDesc`/`.walkFrame`; `.heroFrame` gained explicit pinned overrides.
+- `components/ui/ShowcaseFrame/ShowcaseFrame.module.css` — base `.frame` upgraded to premium treatment (radius, border, background, layered shadow).
+
+## Next session should
+
+Continue Projects refinement only if there's more to do (e.g. FinX/SkillGap real assets + showcase data), or move to the next major portfolio section only with explicit approval. **Do not start a new phase without that approval** — this document is the resume point.

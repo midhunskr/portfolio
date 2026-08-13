@@ -127,14 +127,18 @@ export function ShowcaseModal({ project, onClose }) {
             </div>
 
             {showcase.images?.length > 0 && (
-              <div className={styles.gallery}>
-                {showcase.images.map((image, i) => (
-                  <ShowcaseFrame
-                    key={i}
-                    image={image}
-                    sizes="(max-width: 760px) 90vw, 800px"
-                    className={styles.galleryFrame}
-                  />
+              <div className={styles.walkthrough}>
+                {showcase.images.map((section, i) => (
+                  <div key={i} className={styles.walkSection}>
+                    <div className={styles.walkEyebrow}>{section.eyebrow}</div>
+                    <h3 className={styles.walkTitle}>{section.title}</h3>
+                    <p className={styles.walkDesc}>{section.description}</p>
+                    <ShowcaseFrame
+                      image={section.image}
+                      sizes="(max-width: 760px) 90vw, 800px"
+                      className={styles.walkFrame}
+                    />
+                  </div>
                 ))}
               </div>
             )}

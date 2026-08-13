@@ -23,11 +23,17 @@
  * @property {string} solution
  * @property {string} outcome
  *
+ * @typedef {Object} WalkthroughSection
+ * @property {string} eyebrow      Short mono label, e.g. "Navigation".
+ * @property {string} title        Large display headline for this section.
+ * @property {string} description  Supporting paragraph.
+ * @property {ProjectImage} image  The showcase image for this section.
+ *
  * @typedef {Object} Showcase
  * @property {string} [liveUrl]
  * @property {string} summary
- * @property {ProjectImage} hero           Modal header image.
- * @property {ProjectImage[]} images       Walkthrough showcase images.
+ * @property {ProjectImage} hero              Modal header image.
+ * @property {WalkthroughSection[]} images    Walkthrough sections (eyebrow, title, description, image).
  * @property {string[]} tech
  *
  * @typedef {Object} Project
@@ -87,28 +93,52 @@ export const projects = [
       },
       images: [
         {
-          src: img('lifeos', 'showcase-01.webp'),
-          alt: 'LifeOS navigation and workspace layout',
-          width: 1448,
-          height: 1086,
+          eyebrow: 'Navigation',
+          title: 'A workspace built around focus, not folders',
+          description:
+            'Every surface — goals, tasks, calendar, habits — lives behind a single calm navigation system, so context never gets lost switching between apps.',
+          image: {
+            src: img('lifeos', 'showcase-01.webp'),
+            alt: 'LifeOS navigation and workspace layout',
+            width: 1448,
+            height: 1086,
+          },
         },
         {
-          src: img('lifeos', 'showcase-02.webp'),
-          alt: 'LifeOS task priorities and daily planning',
-          width: 1536,
-          height: 1024,
+          eyebrow: 'Priorities',
+          title: 'Know what matters before you open a single task',
+          description:
+            'Daily priorities surface automatically from your goals and calendar, so the first five minutes of the day are about doing — not deciding what to do.',
+          image: {
+            src: img('lifeos', 'showcase-02.webp'),
+            alt: 'LifeOS task priorities and daily planning',
+            width: 1536,
+            height: 1024,
+          },
         },
         {
-          src: img('lifeos', 'showcase-03.webp'),
-          alt: 'LifeOS calendar and schedule view',
-          width: 1448,
-          height: 1086,
+          eyebrow: 'Calendar',
+          title: 'A week that plans itself around your energy',
+          description:
+            'Focus blocks, meetings and rest sit side by side, giving you an honest picture of how the week is actually shaping up.',
+          image: {
+            src: img('lifeos', 'showcase-03.webp'),
+            alt: 'LifeOS calendar and schedule view',
+            width: 1448,
+            height: 1086,
+          },
         },
         {
-          src: img('lifeos', 'showcase-04.webp'),
-          alt: 'LifeOS habit tracking and analytics',
-          width: 1448,
-          height: 1086,
+          eyebrow: 'Habits & Insights',
+          title: 'Consistency you can actually see',
+          description:
+            'Streaks, completion rates and energy patterns turn small daily habits into a long-term signal — instead of disappearing into a checklist.',
+          image: {
+            src: img('lifeos', 'showcase-04.webp'),
+            alt: 'LifeOS habit tracking and analytics',
+            width: 1448,
+            height: 1086,
+          },
         },
       ],
       tech: [
