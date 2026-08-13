@@ -8,9 +8,17 @@
   box-shadow: 0 30px 70px -36px rgba(27, 26, 22, 0.28);
 }
 
-.frame img {
+/* Wrapper does the rounding via overflow:hidden — reliable across browsers,
+   unlike border-radius directly on a replaced <img> element (especially
+   combined with object-fit), which can fail to clip in some engines. */
+.imgWrap {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.imgWrap img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
 }

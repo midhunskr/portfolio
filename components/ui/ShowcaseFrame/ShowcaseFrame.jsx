@@ -6,15 +6,17 @@ export function ShowcaseFrame({ image, sizes, className, priority }) {
 
   return (
     <div className={`${styles.frame} ${className || ''}`}>
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        sizes={sizes}
-        unoptimized={isSvg}
-        priority={priority}
-      />
+      <div className={styles.imgWrap}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          sizes={sizes}
+          unoptimized={isSvg}
+          priority={priority}
+        />
+      </div>
     </div>
   );
 }

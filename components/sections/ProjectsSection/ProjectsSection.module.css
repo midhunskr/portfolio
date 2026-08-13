@@ -132,16 +132,23 @@
 }
 
 /* Doubled selector beats ShowcaseFrame's .frame at higher specificity,
-   independent of CSS Module bundle order. */
+   independent of CSS Module bundle order. Targets the imgWrap structurally
+   (direct child div) rather than by hashed class name. */
 .rowThumb.rowThumb {
+  padding: clamp(8px, 1.4vw, 14px);
   border-radius: var(--radius-lg);
 }
 
-.rowThumb.rowThumb img {
+.rowThumb.rowThumb > div {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.rowThumb.rowThumb > div img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: var(--radius-md);
 }
 
 .plusBtn {

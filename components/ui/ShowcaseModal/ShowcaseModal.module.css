@@ -162,9 +162,8 @@
   box-shadow: 0 30px 68px -28px rgba(27, 26, 22, 0.38);
 }
 
-.heroFrame.heroFrame img {
+.heroFrame.heroFrame > div {
   border-radius: 0;
-  box-shadow: none;
 }
 
 /* ── Inner content wrapper ───────────────────────────── */
