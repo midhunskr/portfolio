@@ -207,8 +207,26 @@
 }
 
 .walkSection {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 4vw, 64px);
+}
+
+.walkText {
+  order: 1;
+}
+
+.walkTextAlt {
+  order: 2;
+}
+
+.walkImage {
+  order: 2;
+}
+
+.walkImageAlt {
+  order: 1;
 }
 
 .walkEyebrow {
@@ -223,24 +241,19 @@
 .walkTitle {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
   letter-spacing: -0.02em;
   line-height: 1.05;
   color: var(--color-ink);
   margin-bottom: 18px;
-  max-width: 26ch;
+  max-width: 22ch;
 }
 
 .walkDesc {
   font-size: clamp(15px, 1.2vw, 17px);
   line-height: 1.68;
   color: var(--color-text-muted);
-  max-width: 60ch;
-  margin-bottom: clamp(28px, 4vw, 40px);
-}
-
-.walkFrame {
-  /* premium treatment inherited from ShowcaseFrame base */
+  max-width: 42ch;
 }
 
 /* ── Tech stack ──────────────────────────────────────── */
@@ -331,6 +344,26 @@
   .heroWrap {
     min-height: clamp(160px, 48vw, 280px);
     padding: clamp(20px, 4vw, 36px) clamp(14px, 4vw, 28px);
+  }
+
+  .walkSection {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 5vw, 32px);
+  }
+
+  .walkText,
+  .walkTextAlt {
+    order: 2;
+  }
+
+  .walkImage,
+  .walkImageAlt {
+    order: 1;
+  }
+
+  .walkTitle,
+  .walkDesc {
+    max-width: none;
   }
 }
 

@@ -1457,3 +1457,69 @@ FinX and SkillGap Navigator still use SVG placeholders — no showcase data yet.
 ## Next session should
 
 Continue Projects refinement only if there's more to do (e.g. FinX/SkillGap real assets + showcase data), or move to the next major portfolio section only with explicit approval. **Do not start a new phase without that approval** — this document is the resume point.
+
+---
+---
+
+# RESUME POINT — Phase 6D.2: Projects Editorial Walkthrough Refinement
+
+**Status: Complete. Do not continue into another phase after this — this is the resume point for the next session.**
+
+## Where things stand
+
+Phase 6 (Projects) is in refinement. Phase 6D.1 restored storytelling (eyebrow/title/description) and premium frame styling but rendered the walkthrough as stacked sections (text above image, every section identical layout) — it still read as an image gallery with captions. Phase 6D.2 (this entry) converts it into an alternating editorial layout, closer to Linear/Notion/Raycast/MORO-style product case studies.
+
+## What changed in 6D.2
+
+**1. Alternating editorial layout**
+`ShowcaseModal.jsx` — each walkthrough section is now a 2-column CSS grid (`grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr)` ≈ 45%/55%, verified in-browser at 352.6px/430px). Text (eyebrow/title/description) and image alternate sides by section index:
+- Sections 1 & 3 (index 0, 2): text left, image right
+- Sections 2 & 4 (index 1, 3): image left, text right
+
+Implemented via CSS `order` on two wrapper classes (`walkText`/`walkTextAlt`, `walkImage`/`walkImageAlt`) rather than DOM reordering or the old `direction: rtl` trick — cleaner and easier to reason about.
+
+**2. Premium ShowcaseFrame — single source, zero duplication**
+`components/ui/ShowcaseFrame/ShowcaseFrame.module.css` — base `.frame` upgraded further: thicker border (1.5px, `--ink-a12`), layered shadow (tight contact shadow + two soft ambient shadows + inset highlight), medium radius (`--radius-xl`, 20px), soft cream radial-gradient surface, overflow clipping. This is a genuinely "elevated card" look now, not just a bordered box.
+
+Removed duplicated CSS that had crept into `ProjectsSection.module.css`'s `.previewFrame` (it previously carried its own padding/background/box-shadow, overriding what should come from `ShowcaseFrame`). Verified via computed styles: `previewFrame`, `rowThumb`, and modal `walkImage` all report **byte-identical** `boxShadow`, `borderRadius`, and `backgroundImage` values — true single-source styling with no per-usage duplication.
+
+**3. Image is now the primary visual weight**
+Grid ratio confirmed at ≈45% text / 55% image across desktop and tablet (768px still uses the 2-column grid — the collapse breakpoint is 760px, unchanged from before). Image `sizes` hint bumped to `560px` to match the larger rendered width.
+
+**4. Typography / editorial rhythm preserved**
+Eyebrow → large heading → description, no cards around text (never had any). Spacing unchanged from 6D.1's verified hierarchy. Title `max-width` tightened to `22ch` to suit the narrower 45% column.
+
+**5. Mobile stacking**
+At ≤760px the grid collapses to a single column; image is always shown first (`order: 1`) regardless of which alternate side it was on at desktop, text follows. Verified: `gridCols: "323px"` (single column), `imgOrder: "1"`, `textOrder: "2"` at 375px viewport.
+
+## Image and data architecture — unchanged, as instructed
+
+Image mapping is untouched:
+```
+thumbnail.webp / modal-hero.webp / showcase-01..04.webp
+```
+Data model is untouched — still `{ eyebrow, title, description, image }` per walkthrough item in `data/projects.js`. No new fields, no renamed assets, no new architecture.
+
+## Modal hero — unchanged, as instructed
+
+`.heroFrame` in `ShowcaseModal.module.css` still explicitly pins its own `border-radius` (16px/`--radius-lg`), `border` (1px/`--ink-a07`), `background` (flat `--color-cream-deep`, no gradient), and single `box-shadow` — verified via computed styles to be identical before and after this refinement. `modal-hero.webp` was not touched.
+
+## Verification performed
+
+- **Desktop**: alternation confirmed section-by-section (0,2 = text-left; 1,3 = image-left); grid ratio 45.06%/54.94%; frame styling matches across walkthrough/thumbnail/preview exactly.
+- **Tablet (768×1024)**: still 2-column editorial layout, same ratio.
+- **Mobile (375×812)**: collapses to 1 column, image-first ordering, no horizontal overflow.
+- **No console errors** at any breakpoint.
+- **No regressions**: Hero, Journey, and Capabilities files were not touched. Only `components/ui/ShowcaseFrame/ShowcaseFrame.module.css`, `components/ui/ShowcaseModal/ShowcaseModal.jsx`, `components/ui/ShowcaseModal/ShowcaseModal.module.css`, and `components/sections/ProjectsSection/ProjectsSection.module.css` (duplicate-CSS removal only) changed.
+- **Production build**: `npm run build` compiles successfully, all routes prerender as static content, no type/lint errors.
+
+## Files changed this session (6D.2)
+
+- `components/ui/ShowcaseFrame/ShowcaseFrame.module.css` — premium frame treatment strengthened (thicker border, layered shadow).
+- `components/ui/ShowcaseModal/ShowcaseModal.jsx` — walkthrough rendering changed from stacked sections to alternating 2-column editorial sections.
+- `components/ui/ShowcaseModal/ShowcaseModal.module.css` — `.walkSection` converted to CSS grid with `order`-based alternation; mobile breakpoint updated to force image-first stacking; unused single-column-only rules removed.
+- `components/sections/ProjectsSection/ProjectsSection.module.css` — `.previewFrame` stripped of duplicated background/shadow CSS so it inherits purely from `ShowcaseFrame`.
+
+## Next session should
+
+Continue Projects refinement only if there's more to do (e.g. FinX/SkillGap real assets + showcase data), or move to the next major portfolio section only with explicit approval. **Do not start a new phase without that approval** — this document is the resume point.

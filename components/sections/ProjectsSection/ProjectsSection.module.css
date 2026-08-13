@@ -190,16 +190,7 @@
 }
 
 .previewFrame {
-  padding: clamp(18px, 2.4vw, 28px);
-  background: radial-gradient(
-      circle at 30% 20%,
-      rgba(18, 136, 106, 0.1),
-      transparent 60%
-    ),
-    var(--color-cream-deep);
-  box-shadow:
-    0 4px 24px -8px rgba(27, 26, 22, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  /* appearance comes entirely from ShowcaseFrame */
 }
 
 .tagsRow {
