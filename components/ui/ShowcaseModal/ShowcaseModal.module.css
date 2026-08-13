@@ -149,10 +149,22 @@
 .heroFrame {
   max-width: 800px;
   width: 100%;
+}
+
+/* Doubled selector beats ShowcaseFrame's .frame at higher specificity,
+   independent of CSS Module bundle order. Hero stays pinned to its
+   original edge-to-edge look — no padding, no inner image radius/shadow. */
+.heroFrame.heroFrame {
+  padding: 0;
   border-radius: var(--radius-lg);
   border: 1px solid var(--ink-a07);
   background: var(--color-cream-deep);
   box-shadow: 0 30px 68px -28px rgba(27, 26, 22, 0.38);
+}
+
+.heroFrame.heroFrame img {
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* ── Inner content wrapper ───────────────────────────── */

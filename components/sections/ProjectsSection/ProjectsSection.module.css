@@ -124,6 +124,17 @@
   aspect-ratio: 4 / 3;
 }
 
+/* Doubled selector beats ShowcaseFrame's .frame at higher specificity,
+   independent of CSS Module bundle order. Thumbnail is small, so both
+   the outer card and inner image use a smaller radius than the default. */
+.rowThumb.rowThumb {
+  border-radius: var(--radius-md);
+}
+
+.rowThumb.rowThumb img {
+  border-radius: var(--radius-sm);
+}
+
 .plusBtn {
   flex: 0 0 auto;
   width: 46px;
