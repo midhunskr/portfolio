@@ -27,7 +27,7 @@ const jbMono = JetBrains_Mono({
 
 /** @type {import('next').Metadata} */
 export const metadata = {
-  metadataBase: new URL('https://midhunshankar.com'),
+  metadataBase: new URL('https://midhunshankar.me'),
   title: {
     default: 'Midhun Shankar — Design · Build · Automate',
     template: '%s · Midhun Shankar',
@@ -44,8 +44,12 @@ export const metadata = {
   ],
   authors: [{ name: 'Midhun Shankar' }],
   creator: 'Midhun Shankar',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
+    url: '/',
     title: 'Midhun Shankar — Design · Build · Automate',
     description:
       'One person across UX design, frontend development and AI-powered automation.',

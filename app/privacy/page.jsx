@@ -5,8 +5,12 @@ export const metadata = {
   title: 'Privacy Policy',
   description:
     "How Midhun Shankar's portfolio collects, uses and protects the information you share through the contact form.",
+  alternates: {
+    canonical: '/privacy',
+  },
   openGraph: {
     type: 'website',
+    url: '/privacy',
     title: 'Privacy Policy · Midhun Shankar',
     description:
       "How Midhun Shankar's portfolio collects, uses and protects the information you share through the contact form.",

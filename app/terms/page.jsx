@@ -5,8 +5,12 @@ export const metadata = {
   title: 'Terms of Use',
   description:
     "The terms governing use of Midhun Shankar's portfolio — intellectual property, external links, and liability.",
+  alternates: {
+    canonical: '/terms',
+  },
   openGraph: {
     type: 'website',
+    url: '/terms',
     title: 'Terms of Use · Midhun Shankar',
     description:
       "The terms governing use of Midhun Shankar's portfolio — intellectual property, external links, and liability.",

@@ -1,0 +1,71 @@
+/* 404 — mirrors LegalPage's root/section/container rhythm, and the
+   centered single-column treatment ContactSection uses for its own
+   "endpoint" content, rather than inventing a new layout. */
+
+.root {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.section {
+  position: relative;
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.container {
+  max-width: var(--container-sm);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.code {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-contact);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-h2);
+  color: var(--color-ink);
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.body {
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 50ch;
+  margin: 0 auto clamp(36px, 5vh, 52px);
+}
+
+/* CTA recipe matches HeroIntro's .ctaPrimary exactly (ink -> green on
+   hover, radius-full, arrow) rather than a new button style. */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 15px 26px;
+  border-radius: var(--radius-full);
+  transition: background 0.35s ease, transform 0.35s ease;
+  will-change: transform;
+}
+
+.cta:hover {
+  background: var(--color-green);
+}
+
+.ctaArrow {
+  font-size: 17px;
+}

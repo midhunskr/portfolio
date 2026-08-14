@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { useScroll, useMotionValueEvent } from 'framer-motion';
 import styles from './Navbar.module.css';
 import { MobileDrawer } from './MobileDrawer';
@@ -15,11 +16,23 @@ import { site } from '@/data/site';
  *    ownership rule (Framer only reads the scroll position here).
  *  - active section indication via IntersectionObserver scroll-spy.
  *  - mobile drawer + hamburger morph below 880px.
+ *  - off the homepage (e.g. /privacy, /terms, 404), section anchors
+ *    don't exist on the current page — nav hrefs are prefixed with
+ *    "/" so they navigate back to the homepage and land on the right
+ *    anchor there, instead of silently doing nothing.
  */
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   const [condensed, setCondensed] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState('');
+
+  const navLinks = isHome
+    ? site.nav
+    : site.nav.map((link) => ({ ...link, href: `/${link.href}` }));
+  const logoHref = isHome ? '#top' : '/';
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, 'change', (v) => setCondensed(v > 40));
@@ -27,8 +40,11 @@ export function Navbar() {
     setCondensed(window.scrollY > 40);
   }, []);
 
-  // Scroll-spy: highlight the nav link whose section is in the upper viewport.
+  // Scroll-spy: highlight the nav link whose section is in the upper
+  // viewport. Only meaningful on the homepage — off it, none of these
+  // ids exist on the page, so skip setting up the observer entirely.
   useEffect(() => {
+    if (!isHome) return undefined;
     const ids = site.nav
       .filter((l) => !l.cta && l.href.startsWith('#'))
       .map((l) => l.href.slice(1));
@@ -47,7 +63,7 @@ export function Navbar() {
     );
     targets.forEach((t) => io.observe(t));
     return () => io.disconnect();
-  }, []);
+  }, [isHome]);
 
   // Escape closes the mobile drawer.
   useEffect(() => {
@@ -67,13 +83,13 @@ export function Navbar() {
         role="navigation"
         aria-label="Main navigation"
       >
-        <a href="#top" data-cursor className={styles.logoLink} aria-label="Back to top">
+        <a href={logoHref} data-cursor className={styles.logoLink} aria-label="Back to top">
           <span className={styles.logoBadge}>MS</span>
           <span className={styles.logoName}>{site.name}</span>
         </a>
 
         <div className={styles.navLinks} role="list">
-          {site.nav.map((link) =>
+          {navLinks.map((link) =>
             link.cta ? (
               <a
                 key={link.href}
@@ -90,10 +106,10 @@ export function Navbar() {
                 href={link.href}
                 data-cursor
                 role="listitem"
-                aria-current={activeId === link.href.slice(1) ? 'true' : undefined}
+                aria-current={activeId === link.href.split('#')[1] ? 'true' : undefined}
                 className={cx(
                   styles.navLink,
-                  activeId === link.href.slice(1) && styles.navLinkActive
+                  activeId === link.href.split('#')[1] && styles.navLinkActive
                 )}
               >
                 {link.label}
@@ -116,7 +132,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      <MobileDrawer open={open} links={site.nav} onClose={() => setOpen(false)} />
+      <MobileDrawer open={open} links={navLinks} onClose={() => setOpen(false)} />
     </>
   );
 }
