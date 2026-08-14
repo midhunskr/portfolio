@@ -1,13 +1,328 @@
-/* Contact section module — Phase 1 placeholder only. */
-.placeholder {
+/* Contact section — ported from the reference .contact-* rules. */
+
+.section {
+  position: relative;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  overflow: hidden;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  max-width: var(--container-sm);
+  margin: 0 auto;
+}
+
+.blobGreen {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(60vw, 720px);
+  height: min(60vw, 720px);
+  background: radial-gradient(
+    circle at center,
+    rgba(18, 136, 106, 0.1),
+    transparent 66%
+  );
+}
+
+/* ── Badge ────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white-a70);
+  border: 1px solid var(--ink-a08);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  margin-bottom: clamp(28px, 4vh, 44px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.badgeDotWrap {
+  position: relative;
+  display: flex;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green);
+}
+
+.badgeDotPulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-green);
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+
+.badgeText {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ── Journey path ─────────────────────────────────────── */
+.pathWrap {
+  margin-bottom: clamp(38px, 5.5vh, 60px);
+}
+
+.pathRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.track {
+  position: absolute;
+  top: 11px;
+  left: 9%;
+  right: 9%;
+  height: 2px;
+  background: var(--ink-a08);
+}
+
+.fill {
+  position: absolute;
+  top: 11px;
+  left: 9%;
+  height: 2px;
+  background: linear-gradient(90deg, #908b80, #12886a 40%, #1b1a16 70%, #cc8636);
+  width: 0%;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 0;
+}
+
+.dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cream);
+  border: 2px solid var(--ink-a15);
+  transition: background 0.5s ease, border-color 0.5s ease,
+    box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dotFinal {
+  composes: dot;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
-  padding: var(--section-pad-y) var(--section-pad-x);
+  font-size: 13px;
+  color: var(--color-cream);
+}
+
+.stage[data-active] .dot,
+.stage[data-active] .dotFinal {
+  background: var(--stage-color);
+  border-color: var(--stage-color);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--stage-color) 13%, transparent),
+    0 8px 18px -6px color-mix(in srgb, var(--stage-color) 60%, transparent);
+  transform: scale(1.12);
+}
+
+.stage[data-active] .dotFinal {
+  transform: scale(1.18);
+}
+
+.label {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: var(--tracking-eyebrow);
+  font-size: 11px;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--color-text-faint);
+  transition: color 0.5s ease;
+  white-space: nowrap;
+}
+
+.stage[data-active] .label {
+  color: var(--color-ink);
+}
+
+/* ── Headline / paragraph ─────────────────────────────── */
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-contact);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin-bottom: clamp(24px, 4vh, 40px);
+}
+
+.para {
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 50ch;
+  margin: 0 auto clamp(40px, 6vh, 64px);
+}
+
+/* ── Email CTA ────────────────────────────────────────── */
+.emailWrap {
+  display: inline-block;
+}
+
+.emailBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  padding: clamp(16px, 2vw, 22px) clamp(26px, 3vw, 40px);
+  border-radius: var(--radius-full);
+  transition: background 0.3s ease, transform 0.35s var(--ease-signature);
+  will-change: transform;
+}
+
+.emailBtn:hover {
+  background: var(--color-green);
+}
+
+.emailArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(244, 240, 232, 0.16);
+  font-size: 16px;
+}
+
+/* ── Socials / location ───────────────────────────────── */
+.socialRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(36px, 5vh, 56px);
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+  background: var(--white-a70);
+  border: 1px solid var(--ink-a10);
+  border-radius: var(--radius-full);
+  padding: 12px 22px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.socialBtn:hover {
+  background: #fff;
+  border-color: rgba(18, 136, 106, 0.5);
+}
+
+.location {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-faint);
+  padding: 12px 8px;
+}
+
+/* ── Footer bar ───────────────────────────────────────── */
+.footerBar {
+  position: relative;
+  max-width: var(--container-lg);
+  margin: clamp(70px, 10vh, 120px) auto 0;
+  border-top: 1px solid var(--ink-a10);
+  padding-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.footerTagline,
+.footerCopy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 540px) {
+  .label {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .pathRow {
+    max-width: 100%;
+  }
+
+  .track,
+  .fill {
+    left: 6%;
+  }
+
+  .track {
+    right: 6%;
+  }
+
+  .footerBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .h2 {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .emailBtn {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 20px 24px;
+  }
+
+  .emailArrow {
+    display: none;
+  }
 }

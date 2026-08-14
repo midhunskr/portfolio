@@ -33,9 +33,8 @@
 export const site = {
   name: 'Midhun Shankar',
   logoInitial: 'M',
-  // email / location / socials / contactPath are migrated in Phase 8.
-  email: '',
-  location: '',
+  email: 'hello@midhunshankar.me',
+  location: 'Kerala, India',
   // Nav content is migrated here in Phase 2 (Navbar). Mirrors the reference.
   nav: [
     { label: 'Work', href: '#work' },
@@ -43,6 +42,19 @@ export const site = {
     { label: 'Process', href: '#process' },
     { label: "Let's talk", href: '#contact', cta: true },
   ],
-  socials: [],
-  contactPath: [],
+  socials: [
+    {
+      label: 'LinkedIn ↗',
+      href: 'https://www.linkedin.com/in/midhunsankar199',
+      external: true,
+    },
+    { label: 'Email ↗', href: 'mailto:hello@midhunshankar.me' },
+  ],
+  contactPath: [
+    { label: 'Curiosity', color: '#908B80' },
+    { label: 'Design', color: '#12886A' },
+    { label: 'Development', color: '#1B1A16' },
+    { label: 'Automation', color: '#CC8636' },
+    { label: 'Build together', color: '#12886A', final: true },
+  ],
 };
