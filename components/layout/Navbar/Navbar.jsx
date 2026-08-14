@@ -6,7 +6,6 @@ import styles from './Navbar.module.css';
 import { MobileDrawer } from './MobileDrawer';
 import { cx } from '@/lib/utils';
 import { site } from '@/data/site';
-import { BrandMark } from '@/components/ui/BrandMark/BrandMark';
 
 /**
  * Global navigation, at visual parity with the reference.
@@ -69,9 +68,7 @@ export function Navbar() {
         aria-label="Main navigation"
       >
         <a href="#top" data-cursor className={styles.logoLink} aria-label="Back to top">
-          <span className={styles.logoBadge}>
-            <BrandMark />
-          </span>
+          <span className={styles.logoBadge}>MS</span>
           <span className={styles.logoName}>{site.name}</span>
         </a>
 
