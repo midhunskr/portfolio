@@ -4,7 +4,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ShowcaseFrame.module.css';
 
-export function ShowcaseFrame({ image, sizes, className, priority }) {
+/**
+ * @param {Object} props
+ * @param {() => void} [props.onImageReady]  Fires once, in addition to the
+ *   internal fade-in state, when this image finishes loading. Optional —
+ *   lets a consumer (e.g. ShowcaseModal) track completion across several
+ *   ShowcaseFrame instances without ShowcaseFrame knowing why.
+ */
+export function ShowcaseFrame({ image, sizes, className, priority, onImageReady }) {
   const [loaded, setLoaded] = useState(false);
   const isSvg = image.src.endsWith('.svg');
 
@@ -21,7 +28,10 @@ export function ShowcaseFrame({ image, sizes, className, priority }) {
           priority={priority}
           className={styles.img}
           data-loaded={loaded || undefined}
-          onLoad={() => setLoaded(true)}
+          onLoad={() => {
+            setLoaded(true);
+            onImageReady?.();
+          }}
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { ShowcaseFrame } from '@/components/ui/ShowcaseFrame/ShowcaseFrame';
 import { Tag } from '@/components/ui/Tag/Tag';
 import { useModalHistory } from '@/hooks/useModalHistory';
@@ -11,6 +11,18 @@ export function ShowcaseModal({ project, onClose }) {
   const overlayRef = useRef(null);
   const bodyRef = useRef(null);
   const closeRef = useRef(null);
+
+  // Content mounts immediately so every <Image> starts fetching right
+  // away, but stays visually hidden behind the loader until all of
+  // them report ready — the modal opens instantly, the *content*
+  // crossfades in once it has something complete to show.
+  const totalImages = 1 + (showcase.images?.length || 0); // hero + walkthrough
+  const [loadedCount, setLoadedCount] = useState(0);
+  const allLoaded = loadedCount >= totalImages;
+
+  const handleImageReady = useCallback(() => {
+    setLoadedCount((c) => c + 1);
+  }, []);
 
   const handleClose = useCallback(() => {
     const el = overlayRef.current;
@@ -97,6 +109,7 @@ export function ShowcaseModal({ project, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${name} showcase`}
+        aria-busy={!allLoaded}
       >
         <button
           ref={closeRef}
@@ -107,7 +120,23 @@ export function ShowcaseModal({ project, onClose }) {
           ×
         </button>
 
-        <div ref={bodyRef} className={styles.body}>
+        <div
+          className={styles.loader}
+          data-visible={allLoaded ? undefined : true}
+          role="status"
+          aria-live="polite"
+        >
+          <span className={styles.loaderSpinner} aria-hidden="true" />
+          <span className={styles.srOnly}>Loading project preview…</span>
+        </div>
+
+        <div
+          ref={bodyRef}
+          className={styles.body}
+          data-ready={allLoaded || undefined}
+          aria-hidden={!allLoaded}
+          inert={!allLoaded ? '' : undefined}
+        >
           <div className={styles.heroWrap}>
             <div className={styles.heroBg} />
             <div className={styles.heroInner}>
@@ -116,6 +145,7 @@ export function ShowcaseModal({ project, onClose }) {
                 sizes="(max-width: 760px) 90vw, 800px"
                 className={styles.heroFrame}
                 priority
+                onImageReady={handleImageReady}
               />
             </div>
           </div>
@@ -142,6 +172,8 @@ export function ShowcaseModal({ project, onClose }) {
                         image={section.image}
                         sizes="(max-width: 760px) 90vw, 560px"
                         className={imageFirst ? styles.walkImageAlt : styles.walkImage}
+                        priority
+                        onImageReady={handleImageReady}
                       />
                     </div>
                   );

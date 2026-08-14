@@ -95,12 +95,69 @@
 }
 
 /* ── Scrollable body ─────────────────────────────────── */
+/* Content mounts immediately (so its images start fetching right
+   away) but stays invisible until every image reports ready — see
+   ShowcaseModal.jsx. Panel dimensions never depend on this: .modal's
+   own max-width/max-height are fixed regardless of body opacity, so
+   there's no layout shift between the loading and loaded states.
+   Duration/easing mirror lib/motion.js's panelFade (0.35s, ease-in-out)
+   — this component doesn't use Framer Motion, so the crossfade is a
+   plain CSS transition matching those same values rather than a new
+   Framer dependency. */
 .body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   flex: 1;
   scroll-behavior: smooth;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.body[data-ready] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Loading overlay ──────────────────────────────────── */
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cream);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.loader[data-visible] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loaderSpinner {
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid var(--ink-a12);
+  border-top-color: var(--color-ink);
+  border-radius: 50%;
+  animation: ringspin 0.8s linear infinite;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Hero section ────────────────────────────────────── */
