@@ -74,6 +74,13 @@
   color: var(--color-amber);
 }
 
+/* Form-level error (submission failed) — sits below the submit button,
+   breaks to its own line regardless of how the row above wrapped. */
+.formError {
+  composes: errorText;
+  flex-basis: 100%;
+}
+
 /* ── Submit — same pill/ink/green treatment as the CTA it replaces ── */
 .submit {
   display: inline-flex;

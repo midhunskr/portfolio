@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { contactFields, contactCta } from '@/data/contact';
+import { submitContactForm } from '@/lib/contact';
 import styles from './ContactForm.module.css';
 
 /**
- * Contact form — replaces the email CTA. UI only: submit logs the payload
- * and transitions straight to a success state. `handleSubmit` is isolated
- * so a future phase can swap its body for a real Server Action / Resend
- * call without touching the surrounding component.
+ * Contact form — replaces the email CTA. Submits via the
+ * submitContactForm Server Action (lib/contact.js), which validates
+ * with Zod and sends through Resend.
  *
  * Layout: single horizontal row (Name / Email / Mobile / CTA) on desktop,
  * wrapping naturally at tighter widths, explicit vertical stack on mobile.
@@ -16,7 +16,8 @@ import styles from './ContactForm.module.css';
 export function ContactForm() {
   const [values, setValues] = useState({ name: '', email: '', mobile: '' });
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
-  const [errors] = useState({});
+  const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(field) {
     return (e) => {
@@ -28,11 +29,25 @@ export function ContactForm() {
    * @param {{ name: string, email: string, mobile: string }} payload
    */
   async function handleSubmit(payload) {
-    // Phase 1: no backend. Future phase swaps this body for a Server
-    // Action / Resend call — the payload shape and status transitions
-    // below are already what that integration will need.
-    console.log(payload);
-    setStatus('success');
+    setStatus('loading');
+    setErrors({});
+    setErrorMessage('');
+
+    const result = await submitContactForm(payload);
+
+    if (result.status === 'success') {
+      setStatus('success');
+      return;
+    }
+
+    if (result.fieldErrors) {
+      setErrors(result.fieldErrors);
+      setStatus('idle');
+      return;
+    }
+
+    setErrorMessage(result.message);
+    setStatus('error');
   }
 
   function onSubmit(e) {
@@ -72,6 +87,12 @@ export function ContactForm() {
         {status === 'loading' ? 'Sending…' : contactCta}
         <span className={styles.submitArrow}>→</span>
       </button>
+
+      {status === 'error' ? (
+        <span className={styles.formError} role="alert">
+          {errorMessage}
+        </span>
+      ) : null}
     </form>
   );
 }
