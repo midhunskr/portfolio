@@ -1,7 +1,11 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './ShowcaseFrame.module.css';
 
 export function ShowcaseFrame({ image, sizes, className, priority }) {
+  const [loaded, setLoaded] = useState(false);
   const isSvg = image.src.endsWith('.svg');
 
   return (
@@ -15,6 +19,9 @@ export function ShowcaseFrame({ image, sizes, className, priority }) {
           sizes={sizes}
           unoptimized={isSvg}
           priority={priority}
+          className={styles.img}
+          data-loaded={loaded || undefined}
+          onLoad={() => setLoaded(true)}
         />
       </div>
     </div>
