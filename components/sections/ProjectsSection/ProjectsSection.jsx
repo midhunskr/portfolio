@@ -122,11 +122,27 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
         <div className={styles.bodyGrid}>
           <div className={styles.previewCol}>
             <div className={styles.previewLabel}>Product preview</div>
-            <ShowcaseFrame
-              image={project.thumbnail}
-              sizes="(max-width: 760px) 100vw, 500px"
-              className={styles.previewFrame}
-            />
+            <div className={styles.previewImgWrap}>
+              <ShowcaseFrame
+                image={project.thumbnail}
+                sizes="(max-width: 760px) 100vw, 500px"
+                className={styles.previewFrame}
+              />
+              {project.showcase && (
+                <button
+                  className={
+                    isOpen ? styles.showcaseBtnVisible : styles.showcaseBtn
+                  }
+                  aria-label={`Open ${project.name} showcase`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onShowcase(project);
+                  }}
+                >
+                  ↗
+                </button>
+              )}
+            </div>
             <div className={styles.tagsRow}>
               {project.tags.map((tag) => (
                 <span key={tag} className={styles.tag}>
@@ -157,21 +173,6 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
             })}
           </div>
         </div>
-
-        {project.showcase && (
-          <button
-            className={
-              isOpen ? styles.showcaseBtnVisible : styles.showcaseBtn
-            }
-            aria-label={`Open ${project.name} showcase`}
-            onClick={(e) => {
-              e.stopPropagation();
-              onShowcase(project);
-            }}
-          >
-            ↗
-          </button>
-        )}
       </div>
     </div>
   );
