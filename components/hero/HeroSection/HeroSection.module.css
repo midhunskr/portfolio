@@ -120,3 +120,14 @@
     width: 100%;
   }
 }
+
+/* AnchorPill overhangs the orbit stage by bottom:-14% at this width
+   (see AnchorPill.module.css) and intrudes into the hero's bottom
+   padding, where the scroll hint lives — extra padding here is what
+   actually pushes the scroll hint clear of the card, since scrollHint
+   is bottom-anchored to .hero, not to the pill. */
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: clamp(150px, 20vh, 190px);
+  }
+}
