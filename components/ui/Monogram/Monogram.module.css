@@ -1,17 +1,21 @@
-/* Monogram — one construction, one stroke width, three flat bars.
-   Coordinate space is an 18x18 local box, centered by the badge's own
+/* Monogram — one construction, one stroke width, four flat bars.
+   Coordinate space is a 20x20 local box, centered by the badge's own
    flex alignment (see Navbar.module.css .logoBadge). All bars share a
    2px stroke and a 1px terminal radius — the same idiom already used
    by the Navbar's hamburger bars, so the mark reads as part of the
    same visual system rather than a foreign asset.
 
    Reading order (top-left to bottom-right):
-     ::before  — top bar     — the flattened top of an "M"
-     .connector — diagonal   — a single lean bridging the two bars,
-                                borrowed from the diagonal-rhythm concept
-     ::after   — bottom bar  — the terminal step of an "S"
-   Together the three read as one unbroken zigzag stroke — not two
-   overlaid letterforms. */
+     .leg       — vertical    — hangs from the top bar's left end,
+                                forming a right-angle "M" corner
+     ::before   — top bar     — the flattened top of an "M"
+     .connector — diagonal    — a single lean bridging the two bars
+     ::after    — bottom bar  — the terminal step of an "S"
+   The leg is the one refinement over the previous version: it sits
+   apart from the diagonal/bottom-bar group entirely (no shared edges,
+   no overlap risk), so it reads as a second, distinct cue rather than
+   thickening the existing zigzag. Together the four strokes still
+   read as one construction — not two overlaid letterforms. */
 
 .mark {
   position: relative;
@@ -63,4 +67,20 @@
   background: currentColor;
   transform: rotate(-20deg);
   transform-origin: top center;
+}
+
+/* Secondary stroke — a short leg hanging from the top bar's left end,
+   axis-aligned, well clear of the diagonal/bottom-bar group. Top bar
+   + leg form a right-angle corner (vertical meeting horizontal) — the
+   same corner construction as the top-left of an "M". The diagonal +
+   bottom bar are untouched, so they keep reading as the "S" sweep.
+   This is the one deliberate addition the refinement calls for. */
+.leg {
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  width: 2px;
+  height: 6px;
+  border-radius: 1px;
+  background: currentColor;
 }
