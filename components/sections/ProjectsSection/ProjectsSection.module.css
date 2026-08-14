@@ -339,6 +339,25 @@
   transform: scale(1) rotate(0deg);
 }
 
+.showcaseBtnVisible:disabled {
+  cursor: default;
+}
+
+/* Compact loading spinner — swaps in for the ↗ glyph while a project's
+   showcase images preload. Button keeps its fixed width/height, so
+   this never shifts layout. Reuses the existing global `ringspin`
+   keyframe (styles/animations.css) rather than defining a new one;
+   the global prefers-reduced-motion rule there already collapses its
+   duration to ~0, so no separate override is needed here. */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(244, 240, 232, 0.3);
+  border-top-color: var(--color-cream);
+  border-radius: 50%;
+  animation: ringspin 0.7s linear infinite;
+}
+
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 768px) {
   .h2 {
