@@ -6,20 +6,15 @@ import styles from './ContactSection.module.css';
 import { site } from '@/data/site';
 import { ParallaxBlob } from '@/components/ui/ParallaxBlob/ParallaxBlob';
 import { revealVariants, REVEAL_VIEWPORT, DUR, EASE } from '@/lib/motion';
-import { useMagnetic } from '@/hooks/useMagnetic';
-import { usePointerFine } from '@/hooks/usePointerFine';
-import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { ContactForm } from './ContactForm';
 
 /**
- * Contact section — badge, staged journey path, headline, magnetic email
- * CTA, socials, location and footer bar. Ported from the reference
- * .contact-badge / .contact-path / .contact-h2 / .contact-email-* rules.
+ * Contact section — badge, staged journey path, headline, contact form,
+ * socials, location and footer bar. Ported from the reference
+ * .contact-badge / .contact-path / .contact-h2 rules; the email CTA has
+ * been replaced by ContactForm (UI-only, see ContactForm.jsx).
  */
 export function ContactSection() {
-  const fine = usePointerFine();
-  const reduced = usePrefersReducedMotion();
-  const magneticRef = useMagnetic({ enabled: fine && !reduced });
-
   const pathRef = useRef(null);
   const [pathVisible, setPathVisible] = useState(false);
   const [activeStages, setActiveStages] = useState(() => new Set());
@@ -122,21 +117,13 @@ export function ContactSection() {
         </motion.p>
 
         <motion.div
-          className={styles.emailWrap}
+          className={styles.formWrap}
           variants={revealVariants('up', 0.16)}
           initial="hidden"
           whileInView="shown"
           viewport={REVEAL_VIEWPORT}
         >
-          <a
-            ref={magneticRef}
-            href={`mailto:${site.email}`}
-            data-cursor
-            className={styles.emailBtn}
-          >
-            {site.email}
-            <span className={styles.emailArrow}>→</span>
-          </a>
+          <ContactForm />
         </motion.div>
 
         <motion.div

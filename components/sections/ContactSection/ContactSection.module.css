@@ -189,41 +189,10 @@
   margin: 0 auto clamp(40px, 6vh, 64px);
 }
 
-/* ── Email CTA ────────────────────────────────────────── */
-.emailWrap {
-  display: inline-block;
-}
-
-.emailBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--color-ink);
-  color: var(--color-cream);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  padding: clamp(16px, 2vw, 22px) clamp(26px, 3vw, 40px);
-  border-radius: var(--radius-full);
-  transition: background 0.3s ease, transform 0.35s var(--ease-signature);
-  will-change: transform;
-}
-
-.emailBtn:hover {
-  background: var(--color-green);
-}
-
-.emailArrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(244, 240, 232, 0.16);
-  font-size: 16px;
+/* ── Contact form ─────────────────────────────────────── */
+.formWrap {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 /* ── Socials / location ───────────────────────────────── */
@@ -313,16 +282,5 @@
 @media (max-width: 480px) {
   .h2 {
     font-size: clamp(2rem, 10vw, 2.6rem);
-  }
-
-  .emailBtn {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-    padding: 20px 24px;
-  }
-
-  .emailArrow {
-    display: none;
   }
 }
