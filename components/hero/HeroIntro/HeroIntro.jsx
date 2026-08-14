@@ -31,7 +31,7 @@ export function HeroIntro() {
           <span className={styles.badgeDotPulse} />
         </span>
         <span className={styles.badgeText}>
-          Available for freelance &amp; full-time · Kerala, India
+          Available for freelance &amp; full-time
         </span>
       </motion.div>
 
