@@ -19,6 +19,12 @@
  * @property {string} color
  * @property {boolean} [final]
  *
+ * @typedef {Object} OgImage
+ * @property {string} url
+ * @property {number} width
+ * @property {number} height
+ * @property {string} alt
+ *
  * @typedef {Object} SiteContent
  * @property {string} name
  * @property {string} email
@@ -26,6 +32,7 @@
  * @property {NavLink[]} nav
  * @property {SocialLink[]} socials
  * @property {ContactStage[]} contactPath
+ * @property {OgImage} ogImage
  */
 
 /** @type {SiteContent} */
@@ -55,4 +62,10 @@ export const site = {
     { label: 'Automation', color: '#CC8636' },
     { label: 'Build together', color: '#12886A', final: true },
   ],
+  ogImage: {
+    url: '/og-image.jpg',
+    width: 1200,
+    height: 630,
+    alt: 'Midhun Shankar — Product Designer & Frontend Developer',
+  },
 };

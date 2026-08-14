@@ -1,4 +1,5 @@
 import { LegalPage } from '@/components/layout/LegalPage/LegalPage';
+import { site } from '@/data/site';
 
 /** @type {import('next').Metadata} */
 export const metadata = {
@@ -15,6 +16,7 @@ export const metadata = {
     description:
       "How Midhun Shankar's portfolio collects, uses and protects the information you share through the contact form.",
     siteName: 'Midhun Shankar',
+    images: [site.ogImage],
   },
   robots: { index: true, follow: true },
 };

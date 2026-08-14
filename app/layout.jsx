@@ -1,6 +1,7 @@
 import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import { CursorFollower } from '@/components/layout/CursorFollower/CursorFollower';
+import { site } from '@/data/site';
 
 /* next/font loads the three families and exposes each as a CSS variable,
    which styles/tokens.css maps onto --font-display / --font-sans / --font-mono. */
@@ -54,12 +55,14 @@ export const metadata = {
     description:
       'One person across UX design, frontend development and AI-powered automation.',
     siteName: 'Midhun Shankar',
+    images: [site.ogImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Midhun Shankar — Design · Build · Automate',
     description:
       'One person across UX design, frontend development and AI-powered automation.',
+    images: [site.ogImage],
   },
   robots: { index: true, follow: true },
 };

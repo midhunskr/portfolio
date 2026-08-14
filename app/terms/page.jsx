@@ -1,4 +1,5 @@
 import { LegalPage } from '@/components/layout/LegalPage/LegalPage';
+import { site } from '@/data/site';
 
 /** @type {import('next').Metadata} */
 export const metadata = {
@@ -15,6 +16,7 @@ export const metadata = {
     description:
       "The terms governing use of Midhun Shankar's portfolio — intellectual property, external links, and liability.",
     siteName: 'Midhun Shankar',
+    images: [site.ogImage],
   },
   robots: { index: true, follow: true },
 };
