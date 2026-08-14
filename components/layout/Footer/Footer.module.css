@@ -1,0 +1,68 @@
+/* Site footer — ported verbatim from the former ContactSection footer
+   bar, now shared across the homepage and standalone pages. */
+/* No horizontal padding here by design — Footer is always rendered as
+   a direct child of a `--section-pad-x`-padded section (ContactSection
+   on the homepage, LegalPage.module.css's .section on standalone
+   pages), matching every other section's own convention rather than
+   padding itself. */
+.footerBar {
+  position: relative;
+  max-width: var(--container-lg);
+  margin: clamp(70px, 10vh, 120px) auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--ink-a10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.footerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+
+.footerTagline,
+.footerCopy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+}
+
+.footerLegal {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.footerLink {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+  transition: color var(--dur-micro) ease;
+}
+
+.footerLink:hover,
+.footerLink:focus-visible {
+  color: var(--color-ink);
+}
+
+.footerLink:focus-visible {
+  outline: none;
+  text-decoration: underline;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 540px) {
+  .footerMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

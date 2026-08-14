@@ -57,9 +57,8 @@ const socialLinks = [
 ];
 
 /**
- * Icon-only social row for the Contact section's footer bar. Keyboard
- * accessible, aria-labelled per link since the icons carry no visible
- * text. Section-specific — not a components/ui primitive.
+ * Icon-only social row used inside the site Footer. Keyboard accessible,
+ * aria-labelled per link since the icons carry no visible text.
  */
 export function SocialLinks() {
   return (
