@@ -40,13 +40,4 @@ export const contactFields = [
   },
 ];
 
-/** @type {{ name: string, label: string, placeholder: string, required: boolean, rows: number }} */
-export const contactMessageField = {
-  name: 'message',
-  label: 'Message',
-  placeholder: 'What are you building?',
-  required: false,
-  rows: 4,
-};
-
 export const contactCta = "Let's Talk";

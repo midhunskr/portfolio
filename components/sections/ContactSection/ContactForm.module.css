@@ -4,7 +4,9 @@
 
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: wrap;
   gap: 18px;
   text-align: left;
   background: var(--white-a70);
@@ -15,19 +17,12 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-.row {
-  display: flex;
-  gap: 18px;
-}
-
-.row > * {
-  flex: 1 1 0;
-}
-
 .fieldGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1 1 160px;
+  min-width: 140px;
 }
 
 .label {
@@ -43,8 +38,7 @@
   margin-left: 3px;
 }
 
-.input,
-.textarea {
+.input {
   font-family: var(--font-sans);
   font-size: 15px;
   color: var(--color-ink);
@@ -52,34 +46,25 @@
   border: 1px solid var(--ink-a10);
   border-radius: var(--radius-md);
   padding: 12px 16px;
+  height: 46px;
   transition: border-color var(--dur-micro) ease, box-shadow var(--dur-micro) ease;
 }
 
-.input::placeholder,
-.textarea::placeholder {
+.input::placeholder {
   color: var(--color-text-faint);
 }
 
-.textarea {
-  resize: vertical;
-  min-height: 96px;
-  line-height: 1.5;
-}
-
-.input:focus-visible,
-.textarea:focus-visible {
+.input:focus-visible {
   outline: none;
   border-color: var(--color-green);
   box-shadow: 0 0 0 3px var(--green-a16);
 }
 
-.input[aria-invalid='true'],
-.textarea[aria-invalid='true'] {
+.input[aria-invalid='true'] {
   border-color: var(--color-amber);
 }
 
-.input[aria-invalid='true']:focus-visible,
-.textarea[aria-invalid='true']:focus-visible {
+.input[aria-invalid='true']:focus-visible {
   box-shadow: 0 0 0 3px var(--amber-a18);
 }
 
@@ -95,7 +80,8 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  align-self: flex-start;
+  flex: 0 0 auto;
+  height: 46px;
   background: var(--color-ink);
   color: var(--color-cream);
   font-family: var(--font-display);
@@ -162,14 +148,18 @@
 
 /* ── Responsive ───────────────────────────────────────── */
 @media (max-width: 640px) {
-  .row {
+  .form {
     flex-direction: column;
-    gap: 18px;
+    align-items: stretch;
+  }
+
+  .fieldGroup {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .submit {
-    align-self: stretch;
-    justify-content: center;
+    width: 100%;
   }
 }
 

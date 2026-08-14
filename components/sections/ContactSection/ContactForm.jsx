@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { contactFields, contactMessageField, contactCta } from '@/data/contact';
+import { contactFields, contactCta } from '@/data/contact';
 import styles from './ContactForm.module.css';
 
 /**
@@ -9,9 +9,12 @@ import styles from './ContactForm.module.css';
  * and transitions straight to a success state. `handleSubmit` is isolated
  * so a future phase can swap its body for a real Server Action / Resend
  * call without touching the surrounding component.
+ *
+ * Layout: single horizontal row (Name / Email / Mobile / CTA) on desktop,
+ * wrapping naturally at tighter widths, explicit vertical stack on mobile.
  */
 export function ContactForm() {
-  const [values, setValues] = useState({ name: '', email: '', mobile: '', message: '' });
+  const [values, setValues] = useState({ name: '', email: '', mobile: '' });
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [errors] = useState({});
 
@@ -22,7 +25,7 @@ export function ContactForm() {
   }
 
   /**
-   * @param {{ name: string, email: string, mobile: string, message: string }} payload
+   * @param {{ name: string, email: string, mobile: string }} payload
    */
   async function handleSubmit(payload) {
     // Phase 1: no backend. Future phase swaps this body for a Server
@@ -50,50 +53,15 @@ export function ContactForm() {
 
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
-      <div className={styles.row}>
-        {contactFields.slice(0, 2).map((field) => (
-          <Field
-            key={field.name}
-            field={field}
-            value={values[field.name]}
-            error={errors[field.name]}
-            onChange={handleChange(field.name)}
-          />
-        ))}
-      </div>
-
-      <div className={styles.row}>
+      {contactFields.map((field) => (
         <Field
-          field={contactFields[2]}
-          value={values.mobile}
-          error={errors.mobile}
-          onChange={handleChange('mobile')}
+          key={field.name}
+          field={field}
+          value={values[field.name]}
+          error={errors[field.name]}
+          onChange={handleChange(field.name)}
         />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label} htmlFor="contact-message">
-          {contactMessageField.label}
-        </label>
-        <textarea
-          id="contact-message"
-          name={contactMessageField.name}
-          className={styles.textarea}
-          placeholder={contactMessageField.placeholder}
-          rows={contactMessageField.rows}
-          required={contactMessageField.required}
-          autoComplete="off"
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? 'contact-message-error' : undefined}
-          value={values.message}
-          onChange={handleChange('message')}
-        />
-        {errors.message ? (
-          <span id="contact-message-error" className={styles.errorText}>
-            {errors.message}
-          </span>
-        ) : null}
-      </div>
+      ))}
 
       <button
         type="submit"
