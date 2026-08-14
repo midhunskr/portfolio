@@ -1,13 +1,262 @@
-/* Skills section module — Phase 1 placeholder only. */
-.placeholder {
+/* Skills constellation — ported from the reference .stack-section,
+   .constellation-*, [data-con-node] rules. */
+
+.section {
+  position: relative;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  position: relative;
+}
+
+.blobGreen {
+  position: absolute;
+  top: 8%;
+  left: -8%;
+  width: min(40vw, 520px);
+  height: min(40vw, 520px);
+  background: radial-gradient(
+    circle at center,
+    rgba(18, 136, 106, 0.09),
+    transparent 66%
+  );
+}
+
+.blobAmber {
+  position: absolute;
+  bottom: -6%;
+  right: -8%;
+  width: min(40vw, 520px);
+  height: min(40vw, 520px);
+  background: radial-gradient(
+    circle at center,
+    rgba(204, 134, 54, 0.08),
+    transparent 66%
+  );
+}
+
+/* ── Section header ───────────────────────────────────── */
+.header {
+  margin-bottom: clamp(30px, 4vh, 46px);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h2);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  max-width: 18ch;
+}
+
+.para {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 50ch;
+}
+
+/* ── Filter bar ───────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.filterActive,
+.filterInactive {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.filterActive {
+  border: none;
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.filterInactive {
+  border: 1px solid var(--ink-a15);
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+/* ── Constellation host ───────────────────────────────── */
+.constellationWrap {
+  position: relative;
+}
+
+.constellationBg {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 54vw, 580px);
+  border-radius: var(--radius-3xl);
+  background: radial-gradient(circle at 50% 46%, #fffdf8, var(--color-cream-deep) 80%);
+  border: 1px solid var(--ink-a07);
+  overflow: hidden;
+  box-shadow: 0 34px 80px -48px rgba(27, 26, 22, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.driftLayer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+
+.signalLine {
+  animation: signal 5s linear infinite;
+}
+
+.toolLine {
+  transition: opacity 0.45s ease;
+}
+
+.nodeLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* ── Shared node transition/dim state ─────────────────── */
+.hub,
+.toolPill {
+  transition: transform 0.4s var(--ease-signature), opacity 0.4s ease,
+    filter 0.4s ease;
+}
+
+.hub[data-dim],
+.toolPill[data-dim] {
+  opacity: 0.22;
+  filter: saturate(0.4);
+}
+
+/* ── Hub ──────────────────────────────────────────────── */
+.hub {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.hubDisc {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
-  padding: var(--section-pad-y) var(--section-pad-x);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-text-faint);
+  box-shadow: 0 20px 38px -18px rgba(27, 26, 22, 0.42);
+}
+
+.hubHalo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  opacity: 0.38;
+  animation-name: nodeBeat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.hubCore {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+}
+
+.hubLabel {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* ── Tool pill ────────────────────────────────────────── */
+.toolPill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid var(--ink-a08);
+  border-radius: var(--radius-full);
+  padding: 7px 13px;
+  box-shadow: 0 12px 26px -18px rgba(27, 26, 22, 0.4);
+  white-space: nowrap;
+  cursor: default;
+}
+
+.toolPill:hover {
+  z-index: 9;
+  box-shadow: 0 20px 36px -16px var(--tool-shadow);
+  border-color: var(--tool-accent);
+}
+
+.toolDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.toolLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .h2 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .toolLabel {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .constellationBg {
+    height: clamp(520px, 140vw, 640px);
+  }
 }
