@@ -7,6 +7,7 @@ import { site } from '@/data/site';
 import { ParallaxBlob } from '@/components/ui/ParallaxBlob/ParallaxBlob';
 import { revealVariants, REVEAL_VIEWPORT, DUR, EASE } from '@/lib/motion';
 import { ContactForm } from './ContactForm';
+import { SocialLinks } from './SocialLinks';
 
 /**
  * Contact section — badge, staged journey path, headline, contact form,
@@ -152,12 +153,15 @@ export function ContactSection() {
       </div>
 
       <div className={styles.footerBar}>
-        <span className={styles.footerTagline}>
-          Design · Development · Automation
-        </span>
-        <span className={styles.footerCopy}>
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
-        </span>
+        <SocialLinks />
+        <div className={styles.footerMeta}>
+          <span className={styles.footerTagline}>
+            Design · Development · Automation
+          </span>
+          <span className={styles.footerCopy}>
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </span>
+        </div>
       </div>
     </section>
   );
