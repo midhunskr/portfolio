@@ -188,10 +188,18 @@
   letter-spacing: 1px;
 }
 
-/* ── Responsive: 1024px — compact cards, tools row hidden ── */
+/* ── Responsive: 1024px — compact cards ───────────────── */
 @media (max-width: 1024px) {
   .toolsRow {
-    display: none;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .chip {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    font-size: 10px;
   }
 
   .card {
