@@ -304,8 +304,8 @@
 /* ── Showcase trigger (↗) ─────────────────────────────── */
 .showcaseBtn {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 36px;
+  right: 36px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -359,8 +359,8 @@
 
   .showcaseBtn,
   .showcaseBtnVisible {
-    bottom: 8px;
-    right: 8px;
+    bottom: 22px;
+    right: 22px;
     width: 36px;
     height: 36px;
     font-size: 14px;
