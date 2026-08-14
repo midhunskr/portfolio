@@ -156,27 +156,103 @@ export const projects = [
     },
   },
   {
-    slug: 'finx',
+    slug: 'moro',
     order: '02',
-    name: 'FinX',
-    category: 'Fintech Conversion Page',
-    tagline: 'A responsive marketing site built to convert.',
+    name: 'MORO',
+    category: 'Food Ordering Platform',
+    tagline:
+      'A food ordering experience designed around discovery, consistency and effortless checkout across every screen.',
     narrative: {
       challenge:
-        'Communicate dense credit-card benefits clearly while driving sign-ups.',
+        'Food apps default to listings — a wall of restaurants before anyone has decided what they actually want to eat.',
       process:
-        'Landing-page architecture, clear visual hierarchy, responsive layout and SEO considerations.',
+        'Product strategy and UX research first, then an interaction and design system built to stay consistent from a craving to a completed order.',
       solution:
-        'A conversion-focused page where the value is obvious in seconds and the CTA never gets lost.',
+        'A continuous journey from discovery to checkout, designed for Kochi, that carries the same structure across web, tablet and mobile.',
       outcome:
-        'A clean, fast, responsive funnel optimised around a single decisive action.',
+        'An ordering flow where every screen answers a question before it becomes a doubt — designed end-to-end.',
     },
-    tags: ['UX Design', 'Responsive', 'SEO', 'Conversion UI'],
+    tags: [
+      'Product Strategy',
+      'UX Research',
+      'Interaction Design',
+      'Design System',
+      'Responsive Design',
+    ],
     thumbnail: {
-      src: img('finx', 'thumbnail.svg'),
-      alt: 'FinX credit card landing page',
-      width: 800,
-      height: 600,
+      src: img('moro', 'thumbnail.webp'),
+      alt: 'MORO food ordering app overview',
+      width: 1536,
+      height: 1024,
+    },
+    showcase: {
+      summary:
+        'Designed for Kochi, MORO turns discovering food into a continuous journey — from craving to checkout — through one consistent experience across web, tablet and mobile.',
+      hero: {
+        src: img('moro', 'hero.webp'),
+        alt: 'MORO hero composition',
+        width: 1536,
+        height: 1024,
+      },
+      images: [
+        {
+          eyebrow: 'Discovery',
+          title: "Start with what you're craving, not where you're ordering from.",
+          description:
+            'The home screen opens with intent instead of listings. Cuisine shortcuts, personalised recommendations and nearby favourites help people decide what they want before asking them to choose a restaurant.',
+          image: {
+            src: img('moro', 'food-discovery.webp'),
+            alt: 'MORO home screen with cuisine shortcuts and recommendations',
+            width: 1536,
+            height: 1024,
+          },
+        },
+        {
+          eyebrow: 'Consistency',
+          title: 'Every restaurant tells its story the same way.',
+          description:
+            'Menus, offers, delivery information and signatures stay in a familiar structure across every restaurant. Once people learn one page, they understand them all.',
+          image: {
+            src: img('moro', 'restaurant-discovery.webp'),
+            alt: 'MORO restaurant page with menu and offers',
+            width: 1536,
+            height: 1024,
+          },
+        },
+        {
+          eyebrow: 'Decision',
+          title: 'The cart answers questions before they become doubts.',
+          description:
+            "Order edits, applied offers and the final price stay visible together, so people always know what they're paying for. The goal wasn't adding more information — it was removing hesitation.",
+          image: {
+            src: img('moro', 'cart.webp'),
+            alt: 'MORO cart with order edits and pricing',
+            width: 1448,
+            height: 1086,
+          },
+        },
+        {
+          eyebrow: 'Checkout',
+          title: "The last step shouldn't feel like another journey.",
+          description:
+            'Delivery details, payment summary and confirmation are organised into one calm flow. Nothing changes unexpectedly, giving people confidence to complete their order without second-guessing.',
+          image: {
+            src: img('moro', 'checkout.webp'),
+            alt: 'MORO checkout flow with delivery and payment summary',
+            width: 1536,
+            height: 1024,
+          },
+        },
+      ],
+      tech: [
+        'Product Strategy',
+        'UX Research',
+        'Interaction Design',
+        'Design System',
+        'Responsive Design',
+        'React',
+        'Next.js',
+      ],
     },
   },
   {
