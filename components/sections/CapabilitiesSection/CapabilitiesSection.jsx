@@ -6,6 +6,8 @@ import styles from './CapabilitiesSection.module.css';
 import { capabilities } from '@/data/capabilities';
 import { cx } from '@/lib/utils';
 import { revealVariants, REVEAL_VIEWPORT, panelFade } from '@/lib/motion';
+import { Eyebrow } from '@/components/ui/Eyebrow/Eyebrow';
+import { Tag } from '@/components/ui/Tag/Tag';
 
 const ICON_TONE = {
   green: styles.iconGreen,
@@ -14,9 +16,9 @@ const ICON_TONE = {
 };
 
 const SIDE_EYEBROW_TONE = {
-  green: styles.sideEyebrowGreen,
-  amber: styles.sideEyebrowAmber,
-  muted: styles.sideEyebrowMuted,
+  green: 'green',
+  amber: 'amber',
+  muted: 'faint',
 };
 
 const ARROW_TONE = {
@@ -39,10 +41,7 @@ export function CapabilitiesSection() {
           whileInView="shown"
           viewport={REVEAL_VIEWPORT}
         >
-          <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrowNum}>02</span>
-            <span className={styles.eyebrowLabel}>What I Do</span>
-          </div>
+          <Eyebrow number="02" label="What I Do" />
           <h2 className={styles.h2}>
             Three capabilities that <span className="accent-green">compound</span>{' '}
             when one person holds them.
@@ -89,7 +88,7 @@ export function CapabilitiesSection() {
                   <div className={styles.skillsLabel}>{activeCap.skillsLabel}</div>
                   <div className={styles.tags}>
                     {activeCap.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
+                      <Tag key={tag} variant="muted">{tag}</Tag>
                     ))}
                   </div>
                 </div>
@@ -97,9 +96,11 @@ export function CapabilitiesSection() {
                 <div className={styles.sideCol}>
                   {activeCap.side.map((s, i) => (
                     <div key={i} className={styles.sideCard}>
-                      <div className={cx(styles.sideEyebrow, SIDE_EYEBROW_TONE[s.tone])}>
-                        {s.eyebrow}
-                      </div>
+                      <Eyebrow
+                        label={s.eyebrow}
+                        variant="capability"
+                        tone={SIDE_EYEBROW_TONE[s.tone]}
+                      />
                       {s.steps ? (
                         <div className={styles.processSteps}>
                           {s.steps.map((step, j) => (

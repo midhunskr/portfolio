@@ -4,13 +4,13 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './JourneySection.module.css';
 import { journeySteps } from '@/data/journey';
-import { cx } from '@/lib/utils';
 import { revealVariants, REVEAL_VIEWPORT } from '@/lib/motion';
+import { Eyebrow } from '@/components/ui/Eyebrow/Eyebrow';
 
 const EYEBROW_TONE = {
-  green: styles.eyebrowGreen,
-  amber: styles.eyebrowAmber,
-  light: styles.eyebrowLight,
+  green: 'green',
+  amber: 'amber',
+  light: 'bright',
 };
 
 const NODE_VARIANT = {
@@ -48,10 +48,7 @@ export function JourneySection() {
           whileInView="shown"
           viewport={REVEAL_VIEWPORT}
         >
-          <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrowNum}>01</span>
-            <span className={styles.eyebrowLabel}>The Journey</span>
-          </div>
+          <Eyebrow number="01" label="The Journey" />
           <h2 className={styles.h2}>
             From <span className="accent-green">curiosity</span> to building{' '}
             <span className="accent-amber">whole products.</span>
@@ -110,9 +107,7 @@ function JourneyCard({ step }) {
   const cardClass = step.dark ? styles.cardDark : styles.card;
   return (
     <div className={cardClass}>
-      <div className={cx(styles.cardEyebrow, EYEBROW_TONE[step.tone])}>
-        {step.eyebrow}
-      </div>
+      <Eyebrow label={step.eyebrow} variant="journeyCard" tone={EYEBROW_TONE[step.tone]} />
       <div className={step.titleLg ? styles.cardTitleLg : styles.cardTitle}>
         {step.title}
       </div>

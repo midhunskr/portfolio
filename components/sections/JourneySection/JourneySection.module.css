@@ -17,27 +17,6 @@
   margin-bottom: clamp(50px, 8vh, 90px);
 }
 
-.eyebrowRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-}
-
-.eyebrowNum {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-green);
-}
-
-.eyebrowLabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-}
-
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -135,26 +114,6 @@
   display: inline-block;
   text-align: left;
   max-width: 400px;
-}
-
-.cardEyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.eyebrowGreen {
-  color: var(--color-green);
-}
-
-.eyebrowAmber {
-  color: var(--color-amber);
-}
-
-.eyebrowLight {
-  color: var(--color-green-bright);
 }
 
 .cardTitle {

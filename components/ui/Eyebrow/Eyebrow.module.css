@@ -1,0 +1,62 @@
+/* Eyebrow — small mono uppercase label used two ways across the site:
+   1. Section eyebrow: a numbered pair ("03  Selected Work").
+   2. Inline tone eyebrow: a single colored label on a card
+      (journey milestone cards, capability side cards).
+   Each semantic context below is a verbatim copy of the values it
+   replaced — no values were changed or merged during extraction. */
+
+/* ── Section eyebrow (number + label) ─────────────────── */
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-green);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+/* ── Inline tone eyebrow variants (label only, no number) ─ */
+.journeyCard {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.capability {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Tone colors (shared across inline-tone variants) ──── */
+.toneGreen {
+  color: var(--color-green);
+}
+
+.toneAmber {
+  color: var(--color-amber);
+}
+
+.toneBright {
+  color: var(--color-green-bright);
+}
+
+.toneFaint {
+  color: var(--color-text-faint);
+}

@@ -20,27 +20,6 @@
   margin-bottom: clamp(36px, 5vh, 56px);
 }
 
-.eyebrowRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-}
-
-.eyebrowNum {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-green);
-}
-
-.eyebrowLabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-}
-
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -174,14 +153,6 @@
   gap: 9px;
 }
 
-.tag {
-  font-size: 14px;
-  color: var(--color-ink);
-  background: var(--color-cream-deep);
-  border-radius: var(--radius-full);
-  padding: 8px 15px;
-}
-
 /* ── Side column ──────────────────────────────────────── */
 .sideCol {
   display: flex;
@@ -196,26 +167,6 @@
   padding: 28px 30px;
   box-shadow: 0 26px 54px -34px rgba(27, 26, 22, 0.35);
   flex: 1;
-}
-
-.sideEyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.sideEyebrowGreen {
-  color: var(--color-green);
-}
-
-.sideEyebrowAmber {
-  color: var(--color-amber);
-}
-
-.sideEyebrowMuted {
-  color: var(--color-text-faint);
 }
 
 .processSteps {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import { ShowcaseFrame } from '@/components/ui/ShowcaseFrame/ShowcaseFrame';
+import { Tag } from '@/components/ui/Tag/Tag';
 import { useModalHistory } from '@/hooks/useModalHistory';
 import styles from './ShowcaseModal.module.css';
 
@@ -153,7 +154,7 @@ export function ShowcaseModal({ project, onClose }) {
                 <div className={styles.techLabel}>Built with</div>
                 <div className={styles.techChips}>
                   {showcase.tech.map((t) => (
-                    <span key={t} className={styles.techChip}>{t}</span>
+                    <Tag key={t} variant="chip">{t}</Tag>
                   ))}
                 </div>
               </div>

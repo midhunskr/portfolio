@@ -23,27 +23,6 @@
   margin-bottom: clamp(34px, 5vh, 52px);
 }
 
-.eyebrowRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-}
-
-.eyebrowNum {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-green);
-}
-
-.eyebrowLabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-}
-
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -250,16 +229,6 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 18px;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: var(--color-ink);
-  background: var(--color-cream-deep);
-  border-radius: var(--radius-full);
-  padding: 7px 13px;
 }
 
 /* ── Steps column ─────────────────────────────────────── */

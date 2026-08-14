@@ -5,6 +5,8 @@ import styles from './ProjectsSection.module.css';
 import { projects } from '@/data/projects';
 import { ShowcaseFrame } from '@/components/ui/ShowcaseFrame/ShowcaseFrame';
 import { ShowcaseModal } from '@/components/ui/ShowcaseModal/ShowcaseModal';
+import { Eyebrow } from '@/components/ui/Eyebrow/Eyebrow';
+import { Tag } from '@/components/ui/Tag/Tag';
 
 const NARRATIVE_STEPS = [
   { key: 'challenge', label: 'Challenge' },
@@ -27,10 +29,7 @@ export function ProjectsSection() {
       <div className={styles.container}>
         <div className={styles.header}>
           <div>
-            <div className={styles.eyebrowRow}>
-              <span className={styles.eyebrowNum}>03</span>
-              <span className={styles.eyebrowLabel}>Selected Work</span>
-            </div>
+            <Eyebrow number="03" label="Selected Work" />
             <h2 className={styles.h2}>
               Three problems, solved{' '}
               <span className="accent-green">end-to-end.</span>
@@ -145,9 +144,9 @@ function ProjectCard({ project, isOpen, onToggle, onShowcase }) {
             </div>
             <div className={styles.tagsRow}>
               {project.tags.map((tag) => (
-                <span key={tag} className={styles.tag}>
+                <Tag key={tag} variant="mono">
                   {tag}
-                </span>
+                </Tag>
               ))}
             </div>
           </div>
