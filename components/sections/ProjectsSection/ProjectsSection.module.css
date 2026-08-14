@@ -130,7 +130,7 @@
 /* Doubled selector beats ShowcaseFrame's .frame at higher specificity,
    independent of CSS Module bundle order. */
 .rowThumb.rowThumb {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 .rowThumb.rowThumb > div {
