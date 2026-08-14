@@ -1,0 +1,57 @@
+/* Brand mark — "The Open Loop".
+
+   A 20x20 coordinate space holding two forms:
+     ::before — the loop  — a 2px ring with one 90deg break
+     ::after  — the node  — a solid dot at the ring's centre
+
+   Both draw in currentColor, so the badge (or any future host) owns the
+   fill. Nothing here assumes a background colour, which keeps the mark
+   usable on ink, cream, or a future light-on-dark inversion.
+
+   The 2px stroke is the same weight already used by the Navbar's
+   hamburger bars, so the mark sits inside the existing system rather
+   than reading as an imported asset. */
+
+.mark {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: inherit;
+}
+
+/* The loop. `border-top-color: transparent` opens the quadrant centred
+   on 12 o'clock; rotating the whole ring 45deg swings that opening onto
+   the upper-right diagonal, where it reads as deliberate rather than as
+   a top-heavy gap. Rotation is otherwise invisible on a circle, so it
+   costs nothing optically and nothing in rendering cost.
+
+   A full 90deg break is intentional: a hairline gap would close up at
+   favicon scale, and the opening is the one detail that distinguishes
+   this from a target/aperture glyph. It has to survive shrinking. */
+.mark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+/* The node. 4px = twice the ring stroke, so it reads as its own mass
+   rather than as a thickening of the line. Inset is (20 - 4) / 2, i.e.
+   true-centred in the coordinate space — the ring is centred by `inset:
+   0`, so both forms share one centre and the mark stays optically
+   balanced at any scale. */
+.mark::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
