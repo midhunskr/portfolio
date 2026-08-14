@@ -37,9 +37,9 @@ export const site = {
   location: 'Kerala, India',
   // Nav content is migrated here in Phase 2 (Navbar). Mirrors the reference.
   nav: [
-    { label: 'Work', href: '#work' },
     { label: 'Capabilities', href: '#capabilities' },
-    { label: 'Process', href: '#process' },
+    { label: 'Work', href: '#work' },
+    { label: 'Skills', href: '#skills' },
     { label: "Let's talk", href: '#contact', cta: true },
   ],
   socials: [

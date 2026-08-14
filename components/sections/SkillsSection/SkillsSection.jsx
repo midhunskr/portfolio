@@ -155,7 +155,7 @@ export function SkillsSection() {
   }, [pointerFine, reducedMotion, width]);
 
   return (
-    <section id="stack" className={styles.section}>
+    <section id="skills" className={styles.section}>
       <ParallaxBlob className={styles.blobGreen} factor={0.045} />
       <ParallaxBlob className={styles.blobAmber} factor={-0.035} />
 
