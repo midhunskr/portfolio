@@ -4,7 +4,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 9500;
+  z-index: var(--z-modal);
   background: rgba(15, 14, 12, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -14,19 +14,19 @@
   padding: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s var(--ease-signature);
 }
 
 .open {
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.38s var(--ease-signature);
 }
 
 .closing {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s var(--ease-signature);
 }
 
 /* ── Modal panel ─────────────────────────────────────── */
@@ -40,26 +40,26 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.55),
+  box-shadow: var(--shadow-modal),
     0 0 0 1px rgba(255, 255, 255, 0.06);
   transform: scale(0.94) translateY(18px);
   opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s var(--ease-signature),
+    opacity 0.3s var(--ease-signature);
 }
 
 .open .modal {
   transform: scale(1) translateY(0);
   opacity: 1;
-  transition: transform 0.52s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.52s var(--ease-signature),
+    opacity 0.38s var(--ease-signature);
 }
 
 .closing .modal {
   transform: scale(0.94) translateY(18px);
   opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s var(--ease-signature),
+    opacity 0.3s var(--ease-signature);
 }
 
 /* ── Close button (over dark hero — light colours) ──── */
@@ -81,7 +81,7 @@
   line-height: 1;
   color: rgba(255, 255, 255, 0.88);
   transition: background 0.22s ease,
-    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.3s var(--ease-signature);
 }
 
 .close:hover {
@@ -324,7 +324,7 @@
   padding: clamp(15px, 1.6vw, 19px) clamp(28px, 3vw, 42px);
   border-radius: var(--radius-full);
   transition: background 0.3s ease,
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    transform 0.35s var(--ease-signature), box-shadow 0.3s ease;
   box-shadow: 0 16px 44px -16px rgba(27, 26, 22, 0.42);
 }
 
@@ -343,7 +343,7 @@
   border-radius: 50%;
   background: rgba(244, 240, 232, 0.15);
   font-size: 14px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s var(--ease-signature);
 }
 
 .liveBtn:hover .liveArrow {

@@ -3,7 +3,7 @@
 
 .section {
   position: relative;
-  padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 72px);
+  padding: var(--section-pad-y) var(--section-pad-x);
   background: var(--color-cream-deep);
   border-top: 1px solid rgba(27, 26, 22, 0.06);
   border-bottom: 1px solid rgba(27, 26, 22, 0.06);
@@ -44,7 +44,7 @@
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2rem, 4.6vw, 3.6rem);
+  font-size: var(--text-h2);
   line-height: 1.04;
   letter-spacing: -0.025em;
   max-width: 20ch;
