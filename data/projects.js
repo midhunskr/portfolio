@@ -259,29 +259,102 @@ export const projects = [
     slug: 'skillgap-navigator',
     order: '03',
     name: 'SkillGap Navigator',
-    category: 'Career Development Tool',
-    tagline: 'Identify skill gaps and chart a learning path.',
+    category: 'AI Career Intelligence • Product Design',
+    tagline: 'Turning career uncertainty into a clear path forward.',
     narrative: {
       challenge:
-        'Professionals struggle to identify which skills to learn next for their career goals.',
+        'Professionals know they need to grow, but rarely know what to improve first — so they default to generic courses instead of a clear plan.',
       process:
-        'User research, information architecture, then a clear UI that maps current skills against target roles.',
+        'Research into how candidates prepare for interviews came first, then a product built around three pillars — Analyze, Improve, Prove — with explainability prioritised over pure AI automation.',
       solution:
-        'An interactive tool that visualises skill gaps and recommends a prioritised learning path.',
+        'A guided workflow that turns a resume and portfolio into a personalised roadmap, backed by evidence and broken into milestones people can actually finish.',
       outcome:
-        'A focused, actionable view that turns vague career ambition into a concrete plan.',
+        'A mobile career-growth system that replaces vague advice with a measurable, evidence-first path to becoming interview-ready — designed end-to-end.',
     },
     tags: [
-      'UX Research',
+      'Research',
+      'UX Strategy',
+      'Product Thinking',
       'Information Architecture',
       'UI Design',
-      'Data Visualization',
     ],
     thumbnail: {
-      src: img('skillgap-navigator', 'thumbnail.svg'),
-      alt: 'SkillGap Navigator interface',
-      width: 800,
-      height: 600,
+      src: img('skillgap-navigator', 'thumbnail.webp'),
+      alt: 'SkillGap Navigator app overview',
+      width: 1672,
+      height: 941,
+    },
+    showcase: {
+      summary:
+        "Most professionals know they need to improve, but very few know exactly what to improve first. SkillGap Navigator transforms scattered resumes, portfolios and work history into a personalized roadmap that identifies missing skills, explains why they matter, and guides users toward becoming interview-ready with confidence.",
+      hero: {
+        src: img('skillgap-navigator', 'hero.webp'),
+        alt: 'SkillGap Navigator hero composition',
+        width: 1672,
+        height: 941,
+      },
+      images: [
+        {
+          eyebrow: 'Getting Started',
+          title: 'Building a profile that actually understands you.',
+          description:
+            'Instead of asking users to start from scratch, the onboarding experience gathers information from resumes, LinkedIn, portfolios and design tools to create a rich understanding of their professional background. The goal is reducing setup friction while giving the AI enough context to produce meaningful recommendations.',
+          image: {
+            src: img('skillgap-navigator', 'showcase-01.webp'),
+            alt: 'SkillGap Navigator onboarding and profile setup',
+            width: 1672,
+            height: 941,
+          },
+        },
+        {
+          eyebrow: 'Making the Invisible Visible',
+          title: 'Turning vague career advice into measurable skill gaps.',
+          description:
+            'The analysis screen distills complex profile data into a simple alignment score, highlights the biggest opportunities for growth, and explains exactly which capabilities deserve immediate attention. Every recommendation is designed to feel actionable rather than overwhelming.',
+          image: {
+            src: img('skillgap-navigator', 'showcase-02.webp'),
+            alt: 'SkillGap Navigator skill analysis and alignment score',
+            width: 1536,
+            height: 1024,
+          },
+        },
+        {
+          eyebrow: 'Connecting the Dots',
+          title: 'Helping people understand why every improvement matters.',
+          description:
+            "Every recommendation is backed by evidence from the user's own work. Instead of generic feedback, the experience shows missing proof points, explains hiring expectations, and suggests focused exercises that strengthen both skills and portfolio quality simultaneously.",
+          image: {
+            src: img('skillgap-navigator', 'showcase-03.webp'),
+            alt: 'SkillGap Navigator evidence and hiring expectations',
+            width: 1536,
+            height: 1024,
+          },
+        },
+        {
+          eyebrow: 'From Insight to Momentum',
+          title: 'Breaking career growth into small wins people can actually finish.',
+          description:
+            "The personalized roadmap transforms long-term career goals into manageable milestones. Users always know what to tackle next, how much progress they've made, and how every completed task moves them closer to becoming interview-ready.",
+          image: {
+            src: img('skillgap-navigator', 'showcase-04.webp'),
+            alt: 'SkillGap Navigator personalized roadmap and milestones',
+            width: 1536,
+            height: 1024,
+          },
+        },
+      ],
+      tech: [
+        'AI UX',
+        'Career Development',
+        'Product Strategy',
+        'Mobile Design',
+        'UX Research',
+        'Interaction Design',
+        'Information Architecture',
+        'Design Systems',
+        'Prototyping',
+        'Portfolio Intelligence',
+      ],
     },
   },
 ];
