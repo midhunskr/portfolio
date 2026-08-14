@@ -1,4 +1,4 @@
-# Project Assets Guide
+ero.webp# Project Assets Guide
 
 Single source of truth for all portfolio project images.
 
@@ -10,7 +10,7 @@ Each folder contains exactly these files:
 | File | Purpose | Used in |
 |------|---------|---------|
 | `thumbnail.webp` | Card-row preview + expanded accordion preview | ProjectCard (row + expanded) |
-| `modal-hero.webp` | Showcase modal header image | ShowcaseModal hero section |
+| `hero.webp` | Showcase modal header image | ShowcaseModal hero section |
 | `showcase-01.webp` | Walkthrough image 1 | ShowcaseModal gallery |
 | `showcase-02.webp` | Walkthrough image 2 | ShowcaseModal gallery |
 | `showcase-03.webp` | Walkthrough image 3 | ShowcaseModal gallery |
@@ -22,7 +22,7 @@ Each folder contains exactly these files:
 public/images/projects/
 ├── lifeos/
 │   ├── thumbnail.webp
-│   ├── modal-hero.webp
+│   ├── hero.webp
 │   ├── showcase-01.webp
 │   ├── showcase-02.webp
 │   ├── showcase-03.webp
@@ -46,7 +46,7 @@ public/images/projects/
 | Asset | Target resolution | Aspect ratio |
 |-------|------------------|--------------|
 | `thumbnail.webp` | ~1448×1086 | ~4:3 |
-| `modal-hero.webp` | ~1448×1086 | ~4:3 |
+| `hero.webp` | ~1448×1086 | ~4:3 |
 | `showcase-*.webp` | ~1448×1086 or ~1536×1024 | ~4:3 or 3:2 |
 
 Exact pixel counts can vary. What matters:
@@ -92,7 +92,7 @@ Bad examples:
 ## Adding a new project
 
 1. Create `public/images/projects/{slug}/`.
-2. Add all 6 assets (thumbnail + modal-hero + showcase-01..04).
+2. Add all 6 assets (thumbnail + hero + showcase-01..04).
 3. Add the project entry to `data/projects.js` with correct `thumbnail` and `showcase` data.
 4. The `ShowcaseFrame` component and `ShowcaseModal` handle rendering automatically.
 

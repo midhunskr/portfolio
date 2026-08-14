@@ -86,7 +86,7 @@ export const projects = [
       summary:
         'LifeOS is a full-stack personal productivity platform built to unify goals, tasks, habits, focus sessions and reflection in one calm workspace. Designed end-to-end — from research to shipped product.',
       hero: {
-        src: img('lifeos', 'modal-hero.webp'),
+        src: img('lifeos', 'hero.webp'),
         alt: 'LifeOS hero composition',
         width: 1448,
         height: 1086,
