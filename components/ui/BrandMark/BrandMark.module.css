@@ -1,57 +1,113 @@
-/* Brand mark — "The Open Loop".
+/* Brand mark — a constructed "MS" lockup. Two letterforms, one
+   stroke width (2px, matching the Navbar hamburger bars), built
+   entirely from flat bars — no font, no SVG, no curves.
 
-   A 20x20 coordinate space holding two forms:
-     ::before — the loop  — a 2px ring with one 90deg break
-     ::after  — the node  — a solid dot at the ring's centre
-
-   Both draw in currentColor, so the badge (or any future host) owns the
-   fill. Nothing here assumes a background colour, which keeps the mark
-   usable on ink, cream, or a future light-on-dark inversion.
-
-   The 2px stroke is the same weight already used by the Navbar's
-   hamburger bars, so the mark sits inside the existing system rather
-   than reading as an imported asset. */
+   .mark lays the two letter boxes out with a flex row + fixed gap;
+   .m and .s are local coordinate spaces for their own strokes,
+   sized so both sit on the same baseline and the same visual weight. */
 
 .mark {
   position: relative;
-  display: block;
-  width: 20px;
-  height: 20px;
-  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  width: 24px;
+  height: 16px;
+  color: inherit; /* strokes use currentColor so the badge controls fill */
 }
 
-/* The loop. `border-top-color: transparent` opens the quadrant centred
-   on 12 o'clock; rotating the whole ring 45deg swings that opening onto
-   the upper-right diagonal, where it reads as deliberate rather than as
-   a top-heavy gap. Rotation is otherwise invisible on a circle, so it
-   costs nothing optically and nothing in rendering cost.
-
-   A full 90deg break is intentional: a hairline gap would close up at
-   favicon scale, and the opening is the one detail that distinguishes
-   this from a target/aperture glyph. It has to survive shrinking. */
-.mark::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  box-sizing: border-box;
-  border: 2px solid currentColor;
-  border-top-color: transparent;
-  border-radius: 50%;
-  transform: rotate(45deg);
+/* ── M — two full-height legs, joined by a shallow V ──────
+   The V's diagonals share their top corners with the legs' inner
+   edges and meet at one valley point, so the whole letter reads as
+   one connected stroke rather than three floating pieces. */
+.m {
+  position: relative;
+  width: 11px;
+  height: 16px;
+  flex: 0 0 auto;
 }
 
-/* The node. 4px = twice the ring stroke, so it reads as its own mass
-   rather than as a thickening of the line. Inset is (20 - 4) / 2, i.e.
-   true-centred in the coordinate space — the ring is centred by `inset:
-   0`, so both forms share one centre and the mark stays optically
-   balanced at any scale. */
-.mark::after {
+.m::before,
+.m::after {
   content: '';
   position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
+  top: 0;
+  width: 2px;
+  height: 16px;
+  border-radius: 1px;
   background: currentColor;
+}
+
+.m::before {
+  left: 0;
+}
+
+.m::after {
+  right: 0;
+}
+
+.mLeft,
+.mRight {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 9.7px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+/* Left diagonal: pivots at the left leg's inner-top corner (2, 0)
+   and leans right, down to the valley at roughly (5.5, 9). */
+.mLeft {
+  left: 2px;
+  transform-origin: top left;
+  transform: rotate(-21deg);
+}
+
+/* Right diagonal: mirrors .mLeft from the right leg's inner-top
+   corner (9, 0), leaning left to the same valley point. */
+.mRight {
+  left: 9px;
+  transform-origin: top left;
+  transform: rotate(21deg);
+}
+
+/* ── S — top bar, diagonal, bottom bar, one continuous zigzag ──── */
+.s {
+  position: relative;
+  width: 10px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.s::before,
+.s::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.s::before {
+  top: 1px;
+  right: 0;
+}
+
+.s::after {
+  bottom: 1px;
+  left: 0;
+}
+
+.sConnector {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 2px;
+  height: 14.3px;
+  border-radius: 1px;
+  background: currentColor;
+  transform-origin: top left;
+  transform: rotate(-25deg);
 }
