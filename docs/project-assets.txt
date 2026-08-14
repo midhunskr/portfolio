@@ -1,0 +1,4 @@
+Thumbnail      1200×900   (4:3)
+Showcase Hero  1600×1200  (4:3)
+Modal Hero     1600×900   (16:9)
+Feature Image  1200×1200  (1:1)

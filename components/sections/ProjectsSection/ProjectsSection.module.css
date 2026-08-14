@@ -130,11 +130,11 @@
 /* Doubled selector beats ShowcaseFrame's .frame at higher specificity,
    independent of CSS Module bundle order. */
 .rowThumb.rowThumb {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 
 .rowThumb.rowThumb > div {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
 }
 
 .plusBtn {
@@ -330,19 +330,19 @@
 /* ── Showcase trigger (↗) ─────────────────────────────── */
 .showcaseBtn {
   position: absolute;
-  bottom: 36px;
-  right: 36px;
+  bottom: 20px;
+  right: 20px;
   width: 44px;
   height: 44px;
+  border: none;
   border-radius: 50%;
   background: var(--color-ink);
   color: var(--color-cream);
-  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 300;
   z-index: 5;
   box-shadow: 0 8px 24px -8px rgba(27, 26, 22, 0.36);

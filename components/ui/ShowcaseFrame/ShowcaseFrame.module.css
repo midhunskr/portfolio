@@ -1,6 +1,6 @@
 .frame {
   position: relative;
-  padding: clamp(14px, 2.2vw, 24px);
+  padding: clamp(10px, 2.2vw, 10px);
   border-radius: var(--radius-2xl);
   overflow: hidden;
   border: 1px solid var(--ink-a10);
