@@ -21,7 +21,6 @@
  *
  * @typedef {Object} SiteContent
  * @property {string} name
- * @property {string} logoInitial
  * @property {string} email
  * @property {string} location
  * @property {NavLink[]} nav
@@ -32,7 +31,6 @@
 /** @type {SiteContent} */
 export const site = {
   name: 'Midhun Shankar',
-  logoInitial: 'M',
   email: 'hello@midhunshankar.me',
   location: 'Kerala, India',
   // Nav content is migrated here in Phase 2 (Navbar). Mirrors the reference.
