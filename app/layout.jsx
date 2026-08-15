@@ -2,6 +2,7 @@ import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from 'next/font/g
 import '@/styles/globals.css';
 import { CursorFollower } from '@/components/layout/CursorFollower/CursorFollower';
 import { site } from '@/data/site';
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 /* next/font loads the three families and exposes each as a CSS variable,
    which styles/tokens.css maps onto --font-display / --font-sans / --font-mono. */
@@ -85,6 +86,7 @@ export default function RootLayout({ children }) {
         <CursorFollower />
         {children}
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
     </html>
   );
 }
