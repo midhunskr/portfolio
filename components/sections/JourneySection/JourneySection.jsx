@@ -29,9 +29,14 @@ const NODE_VARIANT = {
  */
 export function JourneySection() {
   const sectionRef = useRef(null);
+  const timelineRef = useRef(null);
 
+  // Tracked against .timelineWrap, not the whole section — the section
+  // also contains the header (eyebrow/h2/para) above the timeline, so
+  // measuring against it meant the fill's 0%/100% points didn't line
+  // up with the actual first/last node.
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: timelineRef,
     offset: ['start 0.6', 'end 0.2'],
   });
 
@@ -60,7 +65,7 @@ export function JourneySection() {
         </motion.div>
 
         {/* Timeline */}
-        <div className={styles.timelineWrap}>
+        <div className={styles.timelineWrap} ref={timelineRef}>
           <div className={styles.track} />
           <motion.div className={styles.fill} style={{ height: fillHeight }} />
 

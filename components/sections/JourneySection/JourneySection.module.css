@@ -42,9 +42,16 @@
   position: relative;
 }
 
+/* Spine position: true 50% (of .timelineWrap, not the viewport) is what
+   actually centers it — a prior clamp(22px, 4vw, 50%) used viewport-
+   width as a stand-in for "half the container width," which only
+   coincidentally lined up at the extremes (this desktop tier's own
+   floor was already dead below the 880px breakpoint below, since that
+   breakpoint overrides `left` outright) and visibly drifted at
+   in-between widths. */
 .track {
   position: absolute;
-  left: clamp(22px, 4vw, 50%);
+  left: 50%;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -55,7 +62,7 @@
 /* Fill line — structure only; JS writes height in Phase 4B. */
 .fill {
   position: absolute;
-  left: clamp(22px, 4vw, 50%);
+  left: 50%;
   top: 0;
   width: 2px;
   height: 0%;
@@ -147,7 +154,7 @@
 /* ── Nodes ─────────────────────────────────────────────── */
 .node {
   position: absolute;
-  left: clamp(22px, 4vw, 50%);
+  left: 50%;
   transform: translateX(-50%);
   width: 18px;
   height: 18px;
@@ -159,7 +166,7 @@
 
 .nodeFirst {
   position: absolute;
-  left: clamp(22px, 4vw, 50%);
+  left: 50%;
   transform: translateX(-50%);
   width: 18px;
   height: 18px;
@@ -171,7 +178,7 @@
 
 .nodeLast {
   position: absolute;
-  left: clamp(22px, 4vw, 50%);
+  left: 50%;
   transform: translateX(-50%);
   width: 22px;
   height: 22px;
