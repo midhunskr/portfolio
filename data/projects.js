@@ -186,6 +186,7 @@ export const projects = [
       height: 1024,
     },
     showcase: {
+      liveUrl: 'https://moro-seven.vercel.app/',
       summary:
         'Designed for Kochi, MORO turns discovering food into a continuous journey — from craving to checkout — through one consistent experience across web, tablet and mobile.',
       hero: {
@@ -285,6 +286,7 @@ export const projects = [
       height: 941,
     },
     showcase: {
+      liveUrl: 'https://www.behance.net/gallery/251729917/SkillGap-Navigator-AI-Powered-Career-Platform',
       summary:
         "Most professionals know they need to improve, but very few know exactly what to improve first. SkillGap Navigator transforms scattered resumes, portfolios and work history into a personalized roadmap that identifies missing skills, explains why they matter, and guides users toward becoming interview-ready with confidence.",
       hero: {
